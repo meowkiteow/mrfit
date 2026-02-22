@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRFIT - Join Us</title>
+    <meta name="description"
+        content="Choose your MRFIT membership plan. Access world-class gym equipment, manual cardio, and electrical cardio machines.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="join.css">
+</head>
+
+<body>
+    <!-- Page Entry Animation (circle shrinks to reveal) -->
+    <div id="pageReveal" class="page-reveal"></div>
+
+    <div class="join-page">
+        <!-- Back to Home -->
+        <header class="join-header">
+            <a href="index.html" class="back-link">
+                <i class="ri-arrow-left-line"></i>
+                <span>Back</span>
+            </a>
+            <div class="logo">
+                <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                    <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                    <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                    <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                    <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+                </svg>
+                <span>MRFIT</span>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="join-hero">
+            <span class="join-tag">MEMBERSHIP</span>
+            <h1 class="join-title">CHOOSE YOUR <br><span class="outline-text">PLAN</span></h1>
+            <p class="join-subtitle">Unlock your potential with a membership tailored to your goals.</p>
+        </section>
+
+        <!-- Pricing Cards -->
+        <section class="pricing-section">
+            <div class="pricing-grid">
+
+                <!-- BASIC -->
+                <div class="pricing-card" data-plan="basic">
+                    <div class="card-header">
+                        <span class="plan-tag">STARTER</span>
+                        <h2 class="plan-name">Basic</h2>
+                        <div class="plan-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">800</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="feature-list">
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>Full Machines Access</span>
+                            </li>
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>All Equipment & Free Weights</span>
+                            </li>
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>Locker Room Access</span>
+                            </li>
+                            <li class="excluded">
+                                <i class="ri-close-line"></i>
+                                <span>Manual Cardio Machines</span>
+                            </li>
+                            <li class="excluded">
+                                <i class="ri-close-line"></i>
+                                <span>Electrical Cardio Machines</span>
+                            </li>
+                            <li class="excluded">
+                                <i class="ri-close-line"></i>
+                                <span>Personal Trainer Sessions</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="plan-btn">
+                            <span>Get Started</span>
+                            <i class="ri-arrow-right-up-line"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SEMI PREMIUM -->
+                <div class="pricing-card featured" data-plan="semi-premium">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="card-header">
+                        <span class="plan-tag">SEMI PREMIUM</span>
+                        <h2 class="plan-name">Pro</h2>
+                        <div class="plan-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">1200</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="feature-list">
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>Full Machines Access</span>
+                            </li>
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>All Equipment & Free Weights</span>
+                            </li>
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>Locker Room Access</span>
+                            </li>
+                            <li class="included highlight">
+                                <i class="ri-check-line"></i>
+                                <span>Manual Cardio Machines</span>
+                            </li>
+                            <li class="excluded">
+                                <i class="ri-close-line"></i>
+                                <span>Electrical Cardio Machines</span>
+                            </li>
+                            <li class="excluded">
+                                <i class="ri-close-line"></i>
+                                <span>Personal Trainer Sessions</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="plan-btn plan-btn-featured">
+                            <span>Get Started</span>
+                            <i class="ri-arrow-right-up-line"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FULL PREMIUM -->
+                <div class="pricing-card" data-plan="premium">
+                    <div class="card-header">
+                        <span class="plan-tag">FULL PREMIUM</span>
+                        <h2 class="plan-name">Elite</h2>
+                        <div class="plan-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">1500</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="feature-list">
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>Full Machines Access</span>
+                            </li>
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>All Equipment & Free Weights</span>
+                            </li>
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>Locker Room Access</span>
+                            </li>
+                            <li class="included">
+                                <i class="ri-check-line"></i>
+                                <span>Manual Cardio Machines</span>
+                            </li>
+                            <li class="included highlight">
+                                <i class="ri-check-line"></i>
+                                <span>Electrical Cardio Machines</span>
+                            </li>
+                            <li class="included highlight">
+                                <i class="ri-check-line"></i>
+                                <span>Personal Trainer Sessions</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="plan-btn">
+                            <span>Get Started</span>
+                            <i class="ri-arrow-right-up-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison note -->
+        <section class="comparison-note">
+            <p>All plans include <strong>unlimited access</strong> during operating hours. Upgrade or downgrade anytime.
+            </p>
+        </section>
+    </div>
+
+    <!-- Navbar Overlay -->
+    <div id="navOverlay" class="nav-overlay"></div>
+
+    <!-- Slide-up Menu -->
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="join.html" class="nav-link"><span>JOIN US</span></a>
+                <a href="#supplements" class="nav-link"><span>SUPPLEMENTS</span></a>
+                <a href="#cafe" class="nav-link"><span>CAFE</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Navbar -->
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+
+        <div class="nav-divider"></div>
+
+        <a href="index.html" class="nav-logo">MRFIT</a>
+
+        <div class="nav-divider"></div>
+
+        <button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+
+    <script src="join.js"></script>
+</body>
+
+</html>

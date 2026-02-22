@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Fit - Make Your Gym Incomparable</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="We are a complete ecosystem of high-quality fitness solutions. We offer high-end equipment and a variety of services to set up your gym from scratch.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Videos -->
+    <div class="video-background">
+        <video id="bgVideo1" class="bg-video active" autoplay muted loop playsinline>
+            <source src="assets/Video_Generation_Successful.mp4" type="video/mp4">
+        </video>
+        <video id="bgVideo2" class="bg-video" autoplay muted loop playsinline>
+            <source src="assets/Trainer_and_Member_Video_Generated.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Subtle Background Glow -->
+    <div class="bg-glow"></div>
+
+    <div class="hero-section fade-in">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                    <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                    <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                    <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                    <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+                </svg>
+                <span>MRFIT</span>
+            </div>
+            <a href="#join" id="joinUsBtn" class="cart-btn group" aria-label="Join Us">
+                <span class="cart-text">Join Us</span>
+                <span class="cart-count"><i class="ri-arrow-right-up-line"></i></span>
+            </a>
+        </header>
+
+        <!-- Circle Transition Overlay -->
+        <div id="circleTransition" class="circle-transition">
+            <div class="transition-content">
+                <div class="transition-title">WELCOME</div>
+                <div class="transition-sub">Loading your experience...</div>
+            </div>
+        </div>
+
+        <!-- Main Content Center -->
+        <main class="main-content">
+            <div class="badge fade-up" style="animation-delay: 0.1s;">
+                <span class="badge-new">NEW</span>
+                <span class="badge-text">MRFIT 2025!</span>
+            </div>
+
+            <!-- Slide 1: Deadlift Video -->
+            <div id="heroSlide1" class="hero-slide active">
+                <h1 class="main-title fade-up" style="animation-delay: 0.2s;">
+                    SILENCE <br>
+                    <span class="dynamic-text-container">
+                        <span class="dynamic-text fill-mode">EXCUSES.</span>
+                    </span>
+                </h1>
+                <p class="description fade-up" style="animation-delay: 0.3s;">
+                    Competition-grade iron for those who demand results.<br>
+                    <strong>No fluff.</strong> Just work.
+                </p>
+                <a href="#machines" class="primary-btn fade-up" style="animation-delay: 0.4s;">
+                    <span class="btn-text">Start the Grind</span>
+                    <span class="btn-icon">
+                        <i class="ri-arrow-right-up-line"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Slide 2: Trainer & Member Video -->
+            <div id="heroSlide2" class="hero-slide">
+                <h1 class="main-title">
+                    PURE <br>
+                    <span class="dynamic-text-container">
+                        <span class="dynamic-text fill-mode">PROGRESS.</span>
+                    </span>
+                </h1>
+                <p class="description">
+                    Master your mechanics with elite coaching.<br>
+                    <strong>We map the blueprint,</strong> you execute.
+                </p>
+                <a href="#machines" class="primary-btn">
+                    <span class="btn-text">Meet the Trainers</span>
+                    <span class="btn-icon">
+                        <i class="ri-arrow-right-up-line"></i>
+                    </span>
+                </a>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="footer fade-up" style="animation-delay: 0.5s;">
+            <div class="scroll-down group">
+                <i class="ri-arrow-down-line group-hover:block transition-all"></i>
+                <span>See more</span>
+            </div>
+
+            <div class="partners-logo">
+                <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon hover-scale"
+                    aria-label="Contact us on WhatsApp">
+                    <i class="ri-whatsapp-fill"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Navbar Overlay -->
+    <div id="navOverlay" class="nav-overlay"></div>
+
+    <!-- Slide-up Menu -->
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="join.html" class="nav-link"><span>JOIN US</span></a>
+                <a href="#supplements" class="nav-link"><span>SUPPLEMENTS</span></a>
+                <a href="#cafe" class="nav-link"><span>CAFE</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Navbar -->
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+
+        <div class="nav-divider"></div>
+
+        <a href="#" class="nav-logo">MRFIT</a>
+
+        <div class="nav-divider"></div>
+
+        <button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
