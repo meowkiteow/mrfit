@@ -46,55 +46,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     /* ══════════════════════════════════════════════════ */
-    /* ══ AMBIENT MUSIC (WEB AUDIO API) ══ */
+    /* ══ MUSIC PLAYER (MP3) ══ */
     /* ══════════════════════════════════════════════════ */
     const musicBtn = document.getElementById('musicBtn');
     const musicBars = document.querySelectorAll('.music-bars .bar');
     let isMusicPlaying = false;
-    let audioContext = null;
-    let masterGain = null;
-    let oscillators = [];
     let animationFrameId = null;
 
+    const audio = new Audio('tunetank-jazz-cafe-music-348267.mp3');
+    audio.loop = true;
+    audio.volume = 0.4;
+
     function startMusic() {
-        if (audioContext) return;
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        masterGain = audioContext.createGain();
-        masterGain.gain.value = 0.15;
-        masterGain.connect(audioContext.destination);
-        const notes = [130.81, 164.81, 196.00, 261.63];
-        notes.forEach((freq, i) => {
-            const osc = audioContext.createOscillator();
-            osc.type = i % 2 === 0 ? "sine" : "triangle";
-            osc.frequency.value = freq;
-            const lfo = audioContext.createOscillator();
-            lfo.type = "sine"; lfo.frequency.value = 0.3 + i * 0.1;
-            const lfoGain = audioContext.createGain(); lfoGain.gain.value = 2;
-            lfo.connect(lfoGain); lfoGain.connect(osc.frequency); lfo.start();
-            const voiceGain = audioContext.createGain(); voiceGain.gain.value = 0.25;
-            osc.connect(voiceGain); voiceGain.connect(masterGain); osc.start();
-            oscillators.push(osc);
-        });
-        const bufferSize = audioContext.sampleRate * 2;
-        const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
-        const data = noiseBuffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) { data[i] = (Math.random() * 2 - 1) * 0.02; }
-        const noiseSource = audioContext.createBufferSource();
-        noiseSource.buffer = noiseBuffer; noiseSource.loop = true;
-        const noiseFilter = audioContext.createBiquadFilter();
-        noiseFilter.type = "lowpass"; noiseFilter.frequency.value = 800;
-        noiseSource.connect(noiseFilter); noiseFilter.connect(masterGain); noiseSource.start();
+        audio.play();
         isMusicPlaying = true;
         animateBars();
     }
 
     function stopMusic() {
-        if (masterGain && audioContext) {
-            masterGain.gain.setTargetAtTime(0, audioContext.currentTime, 0.3);
-            setTimeout(() => {
-                if (audioContext) { audioContext.close(); audioContext = null; masterGain = null; oscillators = []; }
-            }, 500);
-        }
+        audio.pause();
         isMusicPlaying = false;
         if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
         musicBars.forEach(bar => {
