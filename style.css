@@ -708,7 +708,7 @@ body {
         height: 48px;
         bottom: 16px;
         padding: 0 18px;
-        border-radius: 100px;
+        border-radius: 0;
     }
 
     .nav-logo {
@@ -755,12 +755,13 @@ body {
     height: 53px;
     background-color: #d1c9b8;
     color: #030303;
-    border-radius: 100px;
+    border-radius: 0;
+    border: 2px solid #000000;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 4px 4px 0px 0px #000000;
     opacity: 1;
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
@@ -870,7 +871,9 @@ body {
     transform: translateX(-50%) translateY(100%);
     width: 326px;
     background-color: rgb(22, 16, 3);
-    border-radius: 12px 12px 0 0;
+    border-radius: 0;
+    border: 2px solid #ffffff;
+    box-shadow: 4px 4px 0px 0px #ffffff;
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
@@ -2315,7 +2318,7 @@ body {
     background: var(--red-accent) !important;
     color: #ffffff !important;
     border: 2px solid #ffffff !important;
-    border-radius: 5px !important;
+    border-radius: 0 !important;
     font-family: var(--font-heading) !important;
     font-size: 15px !important;
     font-weight: 700 !important;
