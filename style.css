@@ -2339,3 +2339,189 @@ body {
     transform: translate(4px, 4px) !important;
     box-shadow: 0px 0px 0px 0px #ffffff !important;
 }
+
+
+/* ══════════════════════════════════════════════════ */
+/* ══ MOBILE OPTIMIZATION — PHONE (<600px) ══ */
+/* ══════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+
+    /* ── Global Section Padding ── */
+    .standalone-section {
+        padding: 56px 16px !important;
+    }
+
+    .standalone-inner {
+        padding: 0 !important;
+    }
+
+    /* ── Hero tweaks ── */
+    .header {
+        padding: 16px 16px !important;
+    }
+
+    /* ── Offer Section ── */
+    .offer-section {
+        padding: 40px 16px !important;
+    }
+
+    .offer-section .offer-heading {
+        font-size: 1.8rem !important;
+    }
+
+    /* ── Stats Bar — 2x2 grid ── */
+    .stats-inner {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+        padding: 32px 16px !important;
+    }
+
+    .stat-number {
+        font-size: 2.2rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.75rem !important;
+    }
+
+    /* ── Why BeFit cards — tighter padding ── */
+    .why-befit-card {
+        padding: 20px !important;
+    }
+
+    .why-befit-card h3 {
+        font-size: 1.3rem !important;
+    }
+
+    .why-befit-card p {
+        font-size: 0.9rem !important;
+    }
+
+    /* ── Services Grid ── */
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .service-card {
+        padding: 20px !important;
+    }
+
+    /* ── Stacking Cards — reduce empty space ── */
+    .stack-cards__item {
+        min-height: 360px !important;
+    }
+
+    /* ── Single Coach Card — STACK on mobile ── */
+    .single-coach-card {
+        flex-direction: column !important;
+        gap: 24px !important;
+        padding: 20px !important;
+    }
+
+    .single-coach-card .coach-img {
+        flex: none !important;
+        width: 100% !important;
+    }
+
+    .single-coach-card .coach-img img {
+        height: 280px !important;
+        width: 100% !important;
+    }
+
+    .single-coach-card .coach-info h3 {
+        font-size: 1.8rem !important;
+    }
+
+    .single-coach-card .coach-info p:first-of-type {
+        font-size: 1rem !important;
+    }
+
+    /* ── Diet & Nutrition Teaser — scale down text ── */
+    .nutrition-teaser-section {
+        padding: 56px 16px !important;
+    }
+
+    .nutrition-teaser-section .rising-heading {
+        font-size: 2rem !important;
+        line-height: 1.15 !important;
+    }
+
+    .nutrition-teaser-section h3 {
+        font-size: 1.5rem !important;
+    }
+
+    .nutrition-teaser-section p {
+        font-size: 0.95rem !important;
+    }
+
+    /* ── Cafe Section ── */
+    .cafe-layout {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    .cafe-desc {
+        font-size: 0.92rem !important;
+    }
+
+    /* ── Buttons — allow wrapping on mobile ── */
+    .offer-cta,
+    .section-cta,
+    .cta-btn-primary,
+    .why-befit-btn,
+    .nav-cta {
+        white-space: normal !important;
+        font-size: 13px !important;
+        padding: 10px 18px !important;
+        box-shadow: 3px 3px 0px 0px #ffffff !important;
+        text-align: center !important;
+    }
+
+    .offer-cta:hover,
+    .section-cta:hover,
+    .cta-btn-primary:hover,
+    .why-befit-btn:hover,
+    .nav-cta:hover {
+        transform: translate(3px, 3px) !important;
+        box-shadow: 0px 0px 0px 0px #ffffff !important;
+    }
+
+    /* ── Section headings — tighter on mobile ── */
+    .rising-heading {
+        font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+    }
+
+    .rising-label {
+        font-size: 0.7rem !important;
+    }
+
+    /* ── Footer — single column ── */
+    .footer-inner {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    .site-footer {
+        padding: 48px 16px 100px !important;
+    }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+        padding: 48px 16px !important;
+    }
+
+    .cta-heading {
+        font-size: 2.2rem !important;
+    }
+
+    .cta-banner-btns {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .cta-banner-btns .section-cta,
+    .cta-banner-btns .cta-btn-primary {
+        width: 100% !important;
+    }
+}
