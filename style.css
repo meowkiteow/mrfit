@@ -1859,11 +1859,11 @@ body {
 
     .stack-cards__item {
         height: auto;
-        min-height: 400px;
+        min-height: auto;
     }
 
     .stack-card-image {
-        display: none;
+        height: 200px;
     }
 
     .stack-card-text {
@@ -2709,11 +2709,18 @@ body {
     }
 
     .stack-card-image {
-        display: none !important;
+        height: 180px !important;
+        display: block !important;
+    }
+
+    .stack-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
     }
 
     .stack-card-text {
-        padding: 24px 20px !important;
+        padding: 20px 16px !important;
     }
 
     .stack-card-number {
