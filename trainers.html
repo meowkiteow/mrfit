@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRFIT - Meet Karan Singh (Head Coach)</title>
+    <meta name="description"
+        content="Learn about our Head Coach Karan Singh, his journey, and the incredible transformations he has engineered for our members.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .coach-hero {
+            padding: 140px 64px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .coach-hero img {
+            width: 100%;
+            height: auto;
+            border: 2px solid var(--border-color);
+            box-shadow: 8px 8px 0px 0px var(--border-color);
+            filter: grayscale(10%);
+        }
+
+        .coach-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .coach-subtitle {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .coach-hero p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .coach-journey {
+            padding: 100px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .coach-journey-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .coach-journey h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .coach-journey p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .coach-results {
+            padding: 100px 64px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .coach-results h2 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 64px;
+            text-transform: uppercase;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .result-card {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            box-shadow: 6px 6px 0px 0px var(--border-color);
+            padding: 32px;
+            transition: transform 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .result-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .result-stats {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            background: var(--border-color);
+            color: var(--bg-color);
+            padding: 6px 16px;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+        }
+
+        .stat-badge.highlight {
+            background: var(--red-accent);
+            color: white;
+        }
+
+        .result-desc {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .result-quote {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: var(--text-primary);
+            border-left: 3px solid var(--red-accent);
+            padding-left: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .coach-hero {
+                grid-template-columns: 1fr;
+                padding: 120px 24px 60px;
+                gap: 40px;
+            }
+
+            .coach-journey,
+            .coach-results {
+                padding: 60px 24px;
+            }
+
+            .coach-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Circle Transition Overlay -->
+    <div id="circleTransition" class="circle-transition">
+        <div class="transition-content">
+            <div class="transition-title">MRFIT</div>
+            <div class="transition-sub">Loading profile...</div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header" style="position: absolute; top: 0; width: 100%; padding: 24px 64px; z-index: 100;">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+            </svg>
+            <span>MRFIT</span>
+        </a>
+        <a href="join.html" class="cart-btn group" aria-label="Join Us" style="text-decoration: none;">
+            <span class="cart-text">Join Us</span>
+            <span class="cart-count"><i class="ri-arrow-right-up-line"></i></span>
+        </a>
+    </header>
+
+    <!-- Coach Hero -->
+    <section class="coach-hero">
+        <div class="coach-img-wrapper">
+            <img src="assets/trainer.jpeg" alt="Head Coach Karan Singh">
+        </div>
+        <div class="coach-hero-content">
+            <span class="rising-label">HEAD COACH</span>
+            <h1 class="coach-title">Karan Singh</h1>
+            <p class="coach-subtitle">Strength & Conditioning Specialist</p>
+            <p>
+                Specializing in advanced body recomposition, powerlifting mechanics, and functional hypertrophy. With
+                over 8 years of in-the-trenches experience, Karan doesn't just train—he educates, breaks down barriers,
+                and engineers the strongest version of you.
+            </p>
+            <a href="join.html" class="section-cta particle-btn">Train With Karan <i
+                    class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </section>
+
+    <!-- Coach Journey -->
+    <section class="coach-journey">
+        <div class="coach-journey-inner">
+            <h2>The Journey.</h2>
+            <p>
+                Karan started his fitness journey as a competitive powerlifter, obsessed with the mechanics of the human
+                body under heavy loads. But chasing personal records wasn't enough; he wanted to decode the science of
+                building muscle and shedding fat for anyone, regardless of their starting point.
+            </p>
+            <p>
+                Over the past 8 years, he has completely dismantled old-school bro-science, developing a methodology
+                that relies on evidence-based training and strict nutritional tracking. He built MRFIT on the philosophy
+                that there are no shortcuts—only consistent effort driven by intelligent programming.
+            </p>
+            <p>
+                His coaching style is intense but precise. Karan expects 100% effort when you step onto the floor. If
+                you bring the dedication, he maps out the blueprint for success.
+            </p>
+        </div>
+    </section>
+
+    <!-- Student Transformations -->
+    <section class="coach-results">
+        <h2>Student Results.</h2>
+        <div class="results-grid">
+            <!-- Student 1 -->
+            <div class="result-card">
+                <h3>Vikas R.</h3>
+                <div class="result-stats">
+                    <span class="stat-badge highlight">-15 KG</span>
+                    <span class="stat-badge">12 Weeks</span>
+                </div>
+                <p class="result-desc">
+                    Vikas was stuck in a plateau for years doing endless cardio. Karan switched him to heavy compound
+                    lifts and a calculated caloric deficit. The result? A complete physique overhaul and doubled
+                    strength metrics.
+                </p>
+                <p class="result-quote">"I never thought lifting weights would get me leaner than running. Karan's
+                    methods completely changed my life."</p>
+            </div>
+
+            <!-- Student 2 -->
+            <div class="result-card">
+                <h3>Neha P.</h3>
+                <div class="result-stats">
+                    <span class="stat-badge highlight">+8 KG Muscle</span>
+                    <span class="stat-badge">6 Months</span>
+                </div>
+                <p class="result-desc">
+                    Neha wanted to build strong definition but struggled to eat properly. Karan programmed a lean
+                    bulking phase alongside progressive overload on squats and deadlifts.
+                </p>
+                <p class="result-quote">"He cares about your form first and foremost. I've never felt stronger or more
+                    confident in the gym."</p>
+            </div>
+
+            <!-- Student 3 -->
+            <div class="result-card">
+                <h3>Aditya M.</h3>
+                <div class="result-stats">
+                    <span class="stat-badge highlight">Powerlifting Total: 450-&gt;520KG</span>
+                    <span class="stat-badge">16 Weeks</span>
+                </div>
+                <p class="result-desc">
+                    Aditya needed to push past his strength plateau for a local meet. Karan analyzed his lifting
+                    mechanics, refined his technique, and built an intensive peaking block.
+                </p>
+                <p class="result-quote">"The level of technical detail Karan brings is unmatched. I added 70kg to my
+                    total seamlessly."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">
+                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg>
+                    <span>MRFIT</span>
+                </div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="trainers.html">Coach</a>
+                <a href="supplements.html">Supplements</a>
+                <a href="cafe.html">Cafe</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                    <a href="#"><i class="ri-youtube-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Navbar -->
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><span>HOME</span></a>
+                <a href="about.html" class="nav-link"><span>ABOUT US</span></a>
+                <a href="trainers.html" class="nav-link"><span>COACH</span></a>
+                <a href="cafe.html" class="nav-link"><span>CAFE</span></a>
+                <a href="supplements.html" class="nav-link"><span>SUPPLEMENTS</span></a>
+            </div>
+            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+        <div class="nav-divider"></div>
+        <a href="index.html" class="nav-logo">MRFIT</a>
+        <div class="nav-divider"></div>
+        <button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
