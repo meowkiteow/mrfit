@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRFIT Cafe — Fuel Before You Lift</title>
+    <meta name="description"
+        content="Fresh protein shakes, pre-workout meals and daily nutrition — right inside MRFIT.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Cafe Page Specific */
+        .cafe-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 64px 80px;
+            background: var(--bg-color);
+            position: relative;
+        }
+
+        .cafe-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .cafe-hero .rising-label {
+            color: var(--accent);
+        }
+
+        .cafe-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .cafe-hero p {
+            font-family: var(--font-body);
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* Menu Categories */
+        .cafe-menu-section {
+            padding: 100px 64px;
+            background: var(--bg-color);
+        }
+
+        .cafe-menu-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            margin-bottom: 64px;
+        }
+
+        .menu-category h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .menu-item h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .menu-item p {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .menu-price {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--red-accent);
+        }
+
+        /* Cafe CTA */
+        .cafe-cta-section {
+            padding: 80px 64px;
+            background: var(--red-accent);
+            text-align: center;
+        }
+
+        .cafe-cta-section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .cafe-cta-section p {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .cafe-hero {
+                padding: 120px 24px 60px;
+            }
+
+            .cafe-menu-section {
+                padding: 60px 24px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cafe-cta-section {
+                padding: 60px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Cafe Hero -->
+    <section class="cafe-hero">
+        <div class="cafe-hero-inner">
+            <span class="rising-label">☕ MRFIT CAFE</span>
+            <h1>Fuel Before<br>You Lift.</h1>
+            <p>Fresh protein shakes, pre-workout meals and daily nutrition — right inside MRFIT. Eat clean, train hard,
+                repeat.</p>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="cafe-menu-section">
+        <div class="cafe-menu-inner">
+
+            <div class="menu-category">
+                <h2>🥤 Protein Shakes</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>The Classic Whey</h3>
+                        <p>Whey isolate, banana, peanut butter, oat milk. 42g protein.</p>
+                        <span class="menu-price">₹249</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chocolate Monster</h3>
+                        <p>Double chocolate whey, almond milk, cacao nibs. 38g protein.</p>
+                        <span class="menu-price">₹279</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Green Machine</h3>
+                        <p>Spinach, matcha, whey, honey, coconut water. 30g protein.</p>
+                        <span class="menu-price">₹299</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h2>🍳 Pre-Workout Meals</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Egg White Omelette</h3>
+                        <p>6 egg whites, bell peppers, mushrooms, whole wheat toast.</p>
+                        <span class="menu-price">₹199</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Oat Power Bowl</h3>
+                        <p>Steel-cut oats, protein powder, berries, honey, almonds.</p>
+                        <span class="menu-price">₹229</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chicken Wrap</h3>
+                        <p>Grilled chicken breast, quinoa, avocado, whole wheat wrap.</p>
+                        <span class="menu-price">₹349</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h2>🥗 Post-Workout Recovery</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Recovery Bowl</h3>
+                        <p>Brown rice, grilled paneer, steamed broccoli, sesame dressing.</p>
+                        <span class="menu-price">₹329</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Greek Yogurt Parfait</h3>
+                        <p>High-protein Greek yogurt, granola, mixed berries, honey drizzle.</p>
+                        <span class="menu-price">₹219</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Protein Pancakes</h3>
+                        <p>3 fluffy protein pancakes, maple syrup, banana, whipped cream.</p>
+                        <span class="menu-price">₹279</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cafe-cta-section">
+        <h2>Hungry? Come Early.</h2>
+        <p>The cafe opens at 6 AM. Fuel up before your session.</p>
+        <a href="join.html" class="cta-btn-primary">Join MRFIT <i class="ri-arrow-right-up-line"></i></a>
+    </section>
+
+    <!-- Footer (same as homepage) -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">
+                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg>
+                    <span>MRFIT</span>
+                </div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="trainers.html">Trainers</a>
+                <a href="supplements.html">Supplements</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+                <p>Public Holidays: 7:00 AM – 8:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <p>info@mrfit.com</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                    <a href="#"><i class="ri-youtube-fill"></i></a>
+                    <a href="https://wa.me/1234567890"><i class="ri-whatsapp-fill"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 MRFIT. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Navbar (same as homepage) -->
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><span>HOME</span></a>
+                <a href="about.html" class="nav-link"><span>ABOUT US</span></a>
+                <a href="trainers.html" class="nav-link"><span>TRAINERS</span></a>
+                <a href="cafe.html" class="nav-link"><span>CAFE</span></a>
+                <a href="supplements.html" class="nav-link"><span>SUPPLEMENTS</span></a>
+            </div>
+            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+        <div class="nav-divider"></div>
+        <a href="index.html" class="nav-logo">MRFIT</a>
+        <div class="nav-divider"></div>
+        <button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
