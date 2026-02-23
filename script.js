@@ -78,7 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     window.location.href = href;
                 }, 900);
+
+                // Safety fallback: if navigation fails or is blocked, remove the overlay after 3 seconds
+                setTimeout(() => {
+                    circleTransition.classList.remove('expanding');
+                }, 3000);
             });
+        });
+
+        // Fix for BFCache (when user hits the browser Back button)
+        window.addEventListener('pageshow', (e) => {
+            if (e.persisted) {
+                circleTransition.classList.remove('expanding');
+            }
         });
     }
 
