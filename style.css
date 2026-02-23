@@ -2515,82 +2515,237 @@ body {
 }
 
 
-/* ══════════════════════════════════════════════════ */
-/* ══ MOBILE OPTIMIZATION — PHONE (<600px) ══ */
-/* ══════════════════════════════════════════════════ */
-@media (max-width: 600px) {
+/* ══════════════════════════════════════════════════════════════ */
+/* ══ COMPREHENSIVE MOBILE OVERHAUL — PHONE (≤480px) ══ */
+/* ══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
 
-    /* ── Global Section Padding ── */
+    /* ═══════════════════════════════ */
+    /* ── 1. HERO SECTION ── */
+    /* ═══════════════════════════════ */
+    .hero-section {
+        padding: 16px !important;
+        min-height: 100svh !important;
+    }
+
+    .header {
+        padding: 12px 16px !important;
+    }
+
+    .main-title {
+        font-size: clamp(2.2rem, 10vw, 3rem) !important;
+    }
+
+    .description {
+        font-size: 0.85rem !important;
+        max-width: 90% !important;
+    }
+
+    .description br {
+        display: none !important;
+    }
+
+    .cart-btn {
+        padding: 8px 16px !important;
+        font-size: 11px !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 2. MARQUEE TICKER ── */
+    /* ═══════════════════════════════ */
+    .marquee-strip {
+        padding: 12px 0 !important;
+    }
+
+    .marquee-text {
+        font-size: 1.6rem !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 3. OFFER / CTA SECTION ── */
+    /* ═══════════════════════════════ */
+    .offer-section {
+        padding: 32px 16px !important;
+    }
+
+    .offer-heading {
+        font-size: 1.4rem !important;
+    }
+
+    .offer-desc {
+        font-size: 0.85rem !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 4. STATS BAR ── */
+    /* ═══════════════════════════════ */
+    .stats-section {
+        padding: 0 !important;
+    }
+
+    .stats-inner {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 24px 16px !important;
+    }
+
+    .stat-number {
+        font-size: 1.8rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.65rem !important;
+        letter-spacing: 0.08em !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 5. WHY BEFIT — ONNIT STYLE ── */
+    /* ═══════════════════════════════ */
+    .why-befit {
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
+        margin: 24px 0 !important;
+    }
+
+    .why-befit-media {
+        min-height: 240px !important;
+    }
+
+    .why-befit-content {
+        padding: 32px 20px !important;
+    }
+
+    .why-befit-heading {
+        font-size: 3rem !important;
+        margin-bottom: 24px !important;
+    }
+
+    .why-befit-desc {
+        font-size: 0.9rem !important;
+        line-height: 1.55 !important;
+        margin-bottom: 24px !important;
+    }
+
+    .why-befit-btn {
+        padding: 12px 28px !important;
+        font-size: 12px !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 6. SERVICES GRID ── */
+    /* ═══════════════════════════════ */
     .standalone-section {
-        padding: 56px 16px !important;
+        padding: 40px 16px !important;
     }
 
     .standalone-inner {
         padding: 0 !important;
     }
 
-    /* ── Hero tweaks ── */
-    .header {
-        padding: 16px 16px !important;
+    .rising-heading {
+        font-size: clamp(1.5rem, 7vw, 2rem) !important;
+        line-height: 1.1 !important;
     }
 
-    /* ── Offer Section ── */
-    .offer-section {
-        padding: 40px 16px !important;
+    .rising-label {
+        font-size: 0.65rem !important;
+        letter-spacing: 0.12em !important;
     }
 
-    .offer-section .offer-heading {
-        font-size: 1.8rem !important;
-    }
-
-    /* ── Stats Bar — 2x2 grid ── */
-    .stats-inner {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
-        padding: 32px 16px !important;
-    }
-
-    .stat-number {
-        font-size: 2.2rem !important;
-    }
-
-    .stat-label {
-        font-size: 0.75rem !important;
-    }
-
-    /* ── Why BeFit cards — tighter padding ── */
-    .why-befit-card {
-        padding: 20px !important;
-    }
-
-    .why-befit-card h3 {
-        font-size: 1.3rem !important;
-    }
-
-    .why-befit-card p {
-        font-size: 0.9rem !important;
-    }
-
-    /* ── Services Grid ── */
     .services-grid {
         grid-template-columns: 1fr !important;
-        gap: 16px !important;
+        gap: 12px !important;
     }
 
     .service-card {
         padding: 20px !important;
     }
 
-    /* ── Stacking Cards — reduce empty space ── */
-    .stack-cards__item {
-        min-height: 360px !important;
+    .service-card h3 {
+        font-size: 1.1rem !important;
     }
 
-    /* ── Single Coach Card — STACK on mobile ── */
+    .service-card p {
+        font-size: 0.82rem !important;
+    }
+
+    .service-icon {
+        font-size: 1.3rem !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 7. TRANSFORMATION / STACKING CARDS ── */
+    /* ═══════════════════════════════ */
+    .transform-section {
+        padding: 40px 16px 32px !important;
+    }
+
+    .transform-header {
+        margin-bottom: 24px !important;
+    }
+
+    .transform-heading {
+        font-size: 1.6rem !important;
+    }
+
+    .transform-label {
+        font-size: 10px !important;
+    }
+
+    /* CRITICAL: Disable sticky behavior on mobile — it breaks scroll */
+    .stack-cards__item {
+        position: relative !important;
+        top: auto !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin-bottom: 16px !important;
+        border-radius: 12px !important;
+    }
+
+    .stack-card-inner {
+        grid-template-columns: 1fr !important;
+    }
+
+    .stack-card-image {
+        display: none !important;
+    }
+
+    .stack-card-text {
+        padding: 24px 20px !important;
+    }
+
+    .stack-card-number {
+        font-size: 11px !important;
+    }
+
+    .stack-card-title {
+        font-size: 1.4rem !important;
+        margin-bottom: 8px !important;
+    }
+
+    .stack-card-desc {
+        font-size: 0.82rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .stack-card-result {
+        font-size: 1.8rem !important;
+    }
+
+    .stack-card-result-label {
+        font-size: 0.65rem !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 8. HEAD COACH TEASER ── */
+    /* ═══════════════════════════════ */
     .single-coach-card {
         flex-direction: column !important;
-        gap: 24px !important;
-        padding: 20px !important;
+        gap: 16px !important;
+        padding: 16px !important;
+        margin-top: 20px !important;
     }
 
     .single-coach-card .coach-img {
@@ -2599,54 +2754,118 @@ body {
     }
 
     .single-coach-card .coach-img img {
-        height: 280px !important;
+        height: 220px !important;
         width: 100% !important;
     }
 
     .single-coach-card .coach-info h3 {
-        font-size: 1.8rem !important;
-    }
-
-    .single-coach-card .coach-info p:first-of-type {
-        font-size: 1rem !important;
-    }
-
-    /* ── Diet & Nutrition Teaser — scale down text ── */
-    .nutrition-teaser-section {
-        padding: 56px 16px !important;
-    }
-
-    .nutrition-teaser-section .rising-heading {
-        font-size: 2rem !important;
-        line-height: 1.15 !important;
-    }
-
-    .nutrition-teaser-section h3 {
         font-size: 1.5rem !important;
     }
 
-    .nutrition-teaser-section p {
-        font-size: 0.95rem !important;
+    .single-coach-card .coach-info p {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
     }
 
-    /* ── Cafe Section ── */
+    /* ═══════════════════════════════ */
+    /* ── 9. DIET & NUTRITION TEASER ── */
+    /* ═══════════════════════════════ */
+    .nutrition-teaser-section {
+        padding: 40px 16px !important;
+    }
+
+    .nutrition-teaser-section .rising-heading {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .nutrition-teaser-section h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .nutrition-teaser-section p {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+        margin: 16px auto 24px !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 10. CAFE SECTION ── */
+    /* ═══════════════════════════════ */
     .cafe-layout {
         grid-template-columns: 1fr !important;
-        gap: 24px !important;
+        gap: 16px !important;
     }
 
     .cafe-desc {
-        font-size: 0.92rem !important;
+        font-size: 0.85rem !important;
     }
 
-    /* ── Buttons — allow wrapping on mobile ── */
+    .cafe-item-name {
+        font-size: 1rem !important;
+    }
+
+    .cafe-item-price {
+        font-size: 0.9rem !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 11. CTA BANNER ── */
+    /* ═══════════════════════════════ */
+    .cta-banner {
+        padding: 36px 16px !important;
+    }
+
+    .cta-heading {
+        font-size: 1.8rem !important;
+    }
+
+    .cta-desc {
+        font-size: 0.85rem !important;
+    }
+
+    .cta-banner-btns {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .cta-banner-btns .section-cta,
+    .cta-banner-btns .cta-btn-primary {
+        width: 100% !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── 12. FOOTER ── */
+    /* ═══════════════════════════════ */
+    .site-footer {
+        padding: 36px 16px 90px !important;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .footer-col h4 {
+        font-size: 0.85rem !important;
+        margin-bottom: 8px !important;
+    }
+
+    .footer-col a,
+    .footer-col p {
+        font-size: 0.8rem !important;
+    }
+
+    /* ═══════════════════════════════ */
+    /* ── GLOBAL: ALL BUTTONS ── */
+    /* ═══════════════════════════════ */
     .offer-cta,
     .section-cta,
     .cta-btn-primary,
     .why-befit-btn,
     .nav-cta {
         white-space: normal !important;
-        font-size: 13px !important;
+        font-size: 12px !important;
         padding: 10px 18px !important;
         box-shadow: 3px 3px 0px 0px #ffffff !important;
         text-align: center !important;
@@ -2661,41 +2880,20 @@ body {
         box-shadow: 0px 0px 0px 0px #ffffff !important;
     }
 
-    /* ── Section headings — tighter on mobile ── */
-    .rising-heading {
-        font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+    /* ═══════════════════════════════ */
+    /* ── FLOATING NAVBAR (smaller) ── */
+    /* ═══════════════════════════════ */
+    .floating-navbar {
+        height: 44px !important;
+        bottom: 12px !important;
+        padding: 0 14px !important;
     }
 
-    .rising-label {
-        font-size: 0.7rem !important;
+    .nav-logo {
+        font-size: 0.9rem !important;
     }
 
-    /* ── Footer — single column ── */
-    .footer-inner {
-        grid-template-columns: 1fr !important;
-        gap: 24px !important;
-    }
-
-    .site-footer {
-        padding: 48px 16px 100px !important;
-    }
-
-    /* ── CTA Banner ── */
-    .cta-banner {
-        padding: 48px 16px !important;
-    }
-
-    .cta-heading {
-        font-size: 2.2rem !important;
-    }
-
-    .cta-banner-btns {
-        flex-direction: column !important;
-        gap: 12px !important;
-    }
-
-    .cta-banner-btns .section-cta,
-    .cta-banner-btns .cta-btn-primary {
-        width: 100% !important;
+    .hamburger-line {
+        width: 14px !important;
     }
 }
