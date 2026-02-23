@@ -27,50 +27,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ══════════════════════════════════════════════════ */
-    /* ══ CIRCLE EXPAND TRANSITION ══ */
+    /* ══ CIRCLE EXPAND TRANSITION — ALL PAGE LINKS ══ */
     /* ══════════════════════════════════════════════════ */
-    const joinUsBtn = document.getElementById('joinUsBtn');
     const circleTransition = document.getElementById('circleTransition');
 
-    if (joinUsBtn && circleTransition) {
-        joinUsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+    if (circleTransition) {
+        // Apply circle transition to ALL links that navigate to .html pages
+        const pageLinks = document.querySelectorAll(
+            'a[href$=".html"], .offer-cta, .section-cta, .cta-btn-primary, .cta-btn-secondary, .why-befit-btn, .nav-cta, .cart-btn'
+        );
 
-            // ── Particle burst effect ──
-            const btnRect = joinUsBtn.getBoundingClientRect();
-            const colors = ['#d12229', '#d1c9b8', '#fff', '#ff6b6b', '#ffd93d', '#6bcb77'];
-            for (let i = 0; i < 18; i++) {
-                const particle = document.createElement('span');
-                particle.classList.add('btn-particle');
-                const angle = (Math.PI * 2 * i) / 18 + (Math.random() - 0.5) * 0.5;
-                const dist = 40 + Math.random() * 60;
-                particle.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
-                particle.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.width = (4 + Math.random() * 6) + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.left = '50%';
-                particle.style.top = '50%';
-                joinUsBtn.appendChild(particle);
-                setTimeout(() => particle.remove(), 750);
-            }
+        pageLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                // Skip anchor-only links (#) and external links
+                if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('javascript')) return;
 
-            // Get button center coordinates
-            const rect = joinUsBtn.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
+                e.preventDefault();
 
-            // Set the origin point as CSS variables
-            circleTransition.style.setProperty('--cx', cx + 'px');
-            circleTransition.style.setProperty('--cy', cy + 'px');
+                // ── Particle burst from click position ──
+                const colors = ['#cc0000', '#ff0000', '#fff', '#ff6b6b', '#ffd93d'];
+                for (let i = 0; i < 12; i++) {
+                    const particle = document.createElement('span');
+                    particle.classList.add('btn-particle');
+                    const angle = (Math.PI * 2 * i) / 12 + (Math.random() - 0.5) * 0.5;
+                    const dist = 40 + Math.random() * 60;
+                    particle.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                    particle.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.width = (4 + Math.random() * 6) + 'px';
+                    particle.style.height = particle.style.width;
+                    // Position at click point relative to button
+                    const btnRect = link.getBoundingClientRect();
+                    particle.style.left = (e.clientX - btnRect.left) + 'px';
+                    particle.style.top = (e.clientY - btnRect.top) + 'px';
+                    link.style.position = 'relative';
+                    link.style.overflow = 'visible';
+                    link.appendChild(particle);
+                    setTimeout(() => particle.remove(), 750);
+                }
 
-            // Trigger the expanding circle
-            circleTransition.classList.add('expanding');
+                // Set circle origin to actual click position
+                circleTransition.style.setProperty('--cx', e.clientX + 'px');
+                circleTransition.style.setProperty('--cy', e.clientY + 'px');
 
-            // Navigate to join page after circle fills the screen
-            setTimeout(() => {
-                window.location.href = 'join.html';
-            }, 900);
+                // Trigger the expanding circle
+                circleTransition.classList.add('expanding');
+
+                // Navigate after circle fills the screen
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 900);
+            });
         });
     }
 
