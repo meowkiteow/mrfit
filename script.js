@@ -299,4 +299,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })();
 
+    /* ══════════════════════════════════════════════════ */
+    /* ══ BEFORE/AFTER DRAGGABLE SLIDER ══ */
+    /* ══════════════════════════════════════════════════ */
+    const baSlider = document.getElementById('baSlider');
+    const baSliderBefore = document.getElementById('baSliderBefore');
+    const baSliderHandle = document.getElementById('baSliderHandle');
+
+    if (baSlider && baSliderBefore && baSliderHandle) {
+        let isDragging = false;
+
+        // Set the before image width to match the full slider width
+        function setBeforeImageWidth() {
+            const beforeImg = baSliderBefore.querySelector('img');
+            if (beforeImg) {
+                beforeImg.style.width = baSlider.offsetWidth + 'px';
+            }
+        }
+        setBeforeImageWidth();
+        window.addEventListener('resize', setBeforeImageWidth);
+
+        function updateSlider(clientX) {
+            const rect = baSlider.getBoundingClientRect();
+            let x = clientX - rect.left;
+            x = Math.max(0, Math.min(x, rect.width));
+            const pct = (x / rect.width) * 100;
+            baSliderBefore.style.width = pct + '%';
+            baSliderHandle.style.left = pct + '%';
+        }
+
+        // Mouse events
+        baSlider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            updateSlider(e.clientX);
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.clientX);
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Touch events
+        baSlider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            updateSlider(e.touches[0].clientX);
+        }, { passive: true });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.touches[0].clientX);
+        }, { passive: true });
+
+        document.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+    }
+
 });

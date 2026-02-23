@@ -256,10 +256,16 @@
                         </div>
                     </div>
                     <div class="stack-card-image">
-                        <div class="ba-placeholder">
-                            <span>BEFORE</span>
-                            <div class="ba-divider"></div>
-                            <span>AFTER</span>
+                        <div class="ba-images">
+                            <div class="ba-img-col">
+                                <span class="ba-label">BEFORE</span>
+                                <img src="assets/before-priya.jpg" alt="Before transformation" class="ba-photo">
+                            </div>
+                            <div class="ba-divider-line"></div>
+                            <div class="ba-img-col">
+                                <span class="ba-label">AFTER</span>
+                                <img src="assets/after-priya.jpg" alt="After transformation" class="ba-photo">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -276,10 +282,16 @@
                         </div>
                     </div>
                     <div class="stack-card-image">
-                        <div class="ba-placeholder">
-                            <span>BEFORE</span>
-                            <div class="ba-divider"></div>
-                            <span>AFTER</span>
+                        <div class="ba-images">
+                            <div class="ba-img-col">
+                                <span class="ba-label">BEFORE</span>
+                                <img src="assets/before-priya.jpg" alt="Before transformation" class="ba-photo">
+                            </div>
+                            <div class="ba-divider-line"></div>
+                            <div class="ba-img-col">
+                                <span class="ba-label">AFTER</span>
+                                <img src="assets/after-priya.jpg" alt="After transformation" class="ba-photo">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -296,10 +308,35 @@
                         </div>
                     </div>
                     <div class="stack-card-image">
-                        <div class="ba-placeholder">
-                            <span>BEFORE</span>
-                            <div class="ba-divider"></div>
-                            <span>AFTER</span>
+                        <div class="ba-slider" id="baSlider">
+                            <!-- After image (base layer) -->
+                            <div class="ba-slider__after">
+                                <img src="assets/after-rohan.jpg" alt="After transformation">
+                            </div>
+                            <!-- Before image (overlay, clipped by width) -->
+                            <div class="ba-slider__before" id="baSliderBefore" style="width: 50%;">
+                                <img src="assets/before-rohan.jpg" alt="Before transformation">
+                            </div>
+                            <!-- Draggable handle -->
+                            <div class="ba-slider__handle" id="baSliderHandle" style="left: 50%;">
+                                <div class="ba-slider__handle-line"></div>
+                                <div class="ba-slider__handle-circle">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M15 19l-7-7 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 5l7 7-7 7" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="ba-slider__handle-line"></div>
+                            </div>
+                            <!-- Labels -->
+                            <div class="ba-slider__labels">
+                                <span class="ba-slider__label">BEFORE</span>
+                                <span class="ba-slider__label">AFTER</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -308,75 +345,78 @@
     </section>
 
 
-    <!-- ══ S8: HEAD COACH TEASER ══ -->
+    <!-- ══ S8: TRAINERS TEASER ══ -->
     <section class="standalone-section trainers-section">
         <div class="standalone-inner">
-            <span class="rising-label rising-label--light">HEAD COACH</span>
-            <h2 class="rising-heading rising-heading--light">Meet the Architect of Your Results.</h2>
+            <span class="rising-label rising-label--light">OUR TEAM</span>
+            <h2 class="rising-heading rising-heading--light">Meet Your Coaches.</h2>
 
-            <div class="single-coach-card"
-                style="display: flex; gap: 40px; margin-top: 40px; align-items: center; background: var(--card-bg); padding: 32px; border: 2px solid var(--border-color); border-radius: 0; box-shadow: 4px 4px 0px 0px var(--border-color);">
-                <div class="coach-img" style="flex: 0 0 300px;">
-                    <img src="assets/trainer.jpeg" alt="Head Coach"
-                        style="width: 100%; height: 350px; object-fit: cover; border-radius: 0; filter: grayscale(20%); border: 2px solid var(--border-color);">
+            <div class="trainers-grid">
+                <div class="trainer-card">
+                    <div class="trainer-img-placeholder">
+                        <span>🏋️</span>
+                    </div>
+                    <div class="trainer-info">
+                        <h3>Arjun Mehta</h3>
+                        <p>Strength & Powerlifting</p>
+                    </div>
                 </div>
-                <div class="coach-info" style="flex: 1;">
-                    <h3
-                        style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--text-primary); margin-bottom: 8px;">
-                        Karan Singh</h3>
-                    <p
-                        style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--red-accent); margin-bottom: 24px; text-transform: uppercase;">
-                        Strength & Conditioning Specialist</p>
-                    <p
-                        style="font-family: var(--font-body); font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
-                        Specializing in advanced body recomposition, powerlifting mechanics, and functional hypertrophy.
-                        With over 8 years of in-the-trenches experience, Karan doesn't just train—he educates, breaks
-                        down barriers, and engineers the strongest version of you.
-                    </p>
-
-                    <a href="trainers.html" class="section-cta">View Full Profile & Results <i
-                            class="ri-arrow-right-up-line"></i></a>
+                <div class="trainer-card">
+                    <div class="trainer-img-placeholder">
+                        <span>🧘</span>
+                    </div>
+                    <div class="trainer-info">
+                        <h3>Priya Sharma</h3>
+                        <p>Functional Fitness & Mobility</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-img-placeholder">
+                        <span>🏃</span>
+                    </div>
+                    <div class="trainer-info">
+                        <h3>Vikram Singh</h3>
+                        <p>Conditioning & Fat Loss</p>
+                    </div>
                 </div>
             </div>
+
+            <a href="trainers.html" class="section-cta">View All Trainers <i class="ri-arrow-right-up-line"></i></a>
         </div>
     </section>
 
 
-    <!-- ══ S9: DIET & NUTRITION TEASER ══ -->
-    <section class="standalone-section nutrition-teaser-section"
-        style="background-color: var(--card-bg); border-top: 2px solid var(--border-color); border-bottom: 2px solid var(--border-color); padding: 100px 24px;">
-        <div class="standalone-inner" style="max-width: 900px; margin: 0 auto; text-align: center;">
-            <span class="rising-label rising-label--light"
-                style="color: var(--red-accent); border-color: var(--red-accent);">THE REAL SECRET</span>
+    <!-- ══ S9: SUPPLEMENTS PREVIEW ══ -->
+    <section class="standalone-section supplements-section">
+        <div class="standalone-inner">
+            <span class="rising-label rising-label--light">FUEL YOUR GAINS</span>
+            <h2 class="rising-heading rising-heading--light">Premium Supplements.</h2>
 
-            <h2 class="rising-heading rising-heading--light"
-                style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin: 24px 0;">
-                Do you know what is <br>more important than <br><span style="color: var(--red-accent);">working
-                    out?</span>
-            </h2>
-
-            <h3
-                style="font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.5rem); color: #ffffff; text-transform: uppercase; margin-bottom: 24px; letter-spacing: -1px;">
-                A Good Diet & Smart Supplementation.
-            </h3>
-
-            <p
-                style="font-family: var(--font-body); font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 48px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                You cannot out-train a bad diet. Muscle is broken down in the gym, but it is built in the kitchen.
-                Whether you are aiming for fat loss, muscle gain, or peak performance, your nutrition dictates your
-                results. Equip yourself with the right knowledge and the highest-grade fuel.
-            </p>
-
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="supplements.html" class="section-cta"
-                    style="background: var(--red-accent) !important; color: white !important;">
-                    Shop Premium Supplements <i class="ri-arrow-right-up-line"></i>
-                </a>
-                <a href="blog.html" class="section-cta"
-                    style="background: transparent !important; color: white !important; border-color: var(--border-color) !important; box-shadow: 4px 4px 0px 0px var(--border-color) !important;">
-                    Read Diet & Nutrition Guides <i class="ri-book-open-line" style="margin-left: 8px;"></i>
-                </a>
+            <div class="supplements-grid">
+                <div class="supplement-card">
+                    <div class="supp-img-placeholder"><span>🥤</span></div>
+                    <h3>Whey Protein Isolate</h3>
+                    <p class="supp-price">₹1,499</p>
+                </div>
+                <div class="supplement-card">
+                    <div class="supp-img-placeholder"><span>⚡</span></div>
+                    <h3>Pre-Workout Surge</h3>
+                    <p class="supp-price">₹999</p>
+                </div>
+                <div class="supplement-card">
+                    <div class="supp-img-placeholder"><span>💪</span></div>
+                    <h3>Creatine Monohydrate</h3>
+                    <p class="supp-price">₹799</p>
+                </div>
+                <div class="supplement-card">
+                    <div class="supp-img-placeholder"><span>🌿</span></div>
+                    <h3>BCAA Recovery</h3>
+                    <p class="supp-price">₹899</p>
+                </div>
             </div>
+
+            <a href="supplements.html" class="section-cta">Shop All Supplements <i
+                    class="ri-arrow-right-up-line"></i></a>
         </div>
     </section>
 
