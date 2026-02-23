@@ -2694,55 +2694,82 @@ body {
         font-size: 10px !important;
     }
 
-    /* CRITICAL: Disable sticky behavior on mobile — it breaks scroll */
+    /* Keep sticky cards, but adjust height for mobile */
     .stack-cards__item {
-        position: relative !important;
-        top: auto !important;
-        height: auto !important;
-        min-height: auto !important;
-        margin-bottom: 16px !important;
+        height: 320px !important;
         border-radius: 12px !important;
     }
 
+    /* Keep 2-column layout (text | images) but give images more space */
     .stack-card-inner {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr 1.2fr !important;
     }
 
-    .stack-card-image {
-        height: 180px !important;
-        display: block !important;
-    }
-
-    .stack-card-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-
+    /* Text side — compact for phone */
     .stack-card-text {
-        padding: 20px 16px !important;
+        padding: 16px 14px !important;
     }
 
     .stack-card-number {
-        font-size: 11px !important;
+        font-size: 10px !important;
+        margin-bottom: 4px !important;
     }
 
     .stack-card-title {
-        font-size: 1.4rem !important;
-        margin-bottom: 8px !important;
+        font-size: 1.1rem !important;
+        margin-bottom: 4px !important;
     }
 
     .stack-card-desc {
-        font-size: 0.82rem !important;
-        line-height: 1.5 !important;
+        font-size: 0.7rem !important;
+        line-height: 1.4 !important;
     }
 
     .stack-card-result {
-        font-size: 1.8rem !important;
+        font-size: 1.5rem !important;
     }
 
     .stack-card-result-label {
-        font-size: 0.65rem !important;
+        font-size: 0.6rem !important;
+    }
+
+    /* Image side — show at full height */
+    .stack-card-image {
+        display: flex !important;
+    }
+
+    .ba-images {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 12px 12px 0 !important;
+    }
+
+    .ba-label {
+        font-size: 8px !important;
+        padding: 3px 8px !important;
+        top: 8px !important;
+    }
+
+    /* Slider (card 3) — keep intact, just size it */
+    .ba-slider {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 12px 12px 0 !important;
+    }
+
+    .ba-slider__handle-circle {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .ba-slider__handle-circle svg {
+        width: 12px !important;
+        height: 12px !important;
+    }
+
+    .ba-slider__label {
+        font-size: 8px !important;
+        padding: 3px 8px !important;
     }
 
     /* ═══════════════════════════════ */
