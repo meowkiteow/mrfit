@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRFIT - Diet & Nutrition Guides</title>
+    <meta name="description" content="Read MRFIT's ultimate guides to diet, nutrition, and engineered performance.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .blog-header {
+            padding: 180px 24px 80px;
+            text-align: center;
+        }
+
+        .blog-header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .blog-header p {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            padding: 0 24px 120px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .article-card {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            box-shadow: 6px 6px 0px 0px var(--border-color);
+            padding: 32px;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .article-tag {
+            display: inline-block;
+            background: var(--red-accent);
+            color: white;
+            padding: 4px 12px;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        .article-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+
+        .article-card p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="circleTransition" class="circle-transition">
+        <div class="transition-content">
+            <div class="transition-title">MRFIT</div>
+            <div class="transition-sub">Loading Guides...</div>
+        </div>
+    </div>
+    <header class="header" style="position: absolute; top: 0; width: 100%; padding: 24px 64px; z-index: 100;">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+            </svg>
+            <span>MRFIT</span>
+        </a>
+        <a href="join.html" class="cart-btn group" style="text-decoration: none;"><span class="cart-text">Join
+                Us</span><span class="cart-count"><i class="ri-arrow-right-up-line"></i></span></a>
+    </header>
+
+    <div class="blog-header">
+        <span class="rising-label" style="color: var(--red-accent); border-color: var(--red-accent);">KNOWLEDGE
+            BASE</span>
+        <h1>Diet & Nutrition</h1>
+        <p>You can't out-train a bad diet. Access our library of science-backed articles covering cutting, bulking, and
+            functional nutrition.</p>
+    </div>
+
+    <div class="blog-grid">
+        <div class="article-card">
+            <span class="article-tag">MACROS 101</span>
+            <h3>How to Calculate Your True Caloric Maintenance</h3>
+            <p>Stop guessing your macros. Learn the definitive step-by-step formula for finding your maintenance
+                calories and setting up your caloric deficit or surplus based on your goals.</p>
+            <a href="#" class="section-cta" style="border-radius: 0; padding: 10px 20px;">Read Article <i
+                    class="ri-arrow-right-up-line"></i></a>
+        </div>
+        <div class="article-card">
+            <span class="article-tag">SUPPLEMENTS</span>
+            <h3>Creatine Explained: Myths vs. Science</h3>
+            <p>Is creatine just water weight? Does it cause baldness? We break down the clinical literature on the
+                world's most researched sports supplement and how to dose it properly.</p>
+            <a href="#" class="section-cta" style="border-radius: 0; padding: 10px 20px;">Read Article <i
+                    class="ri-arrow-right-up-line"></i></a>
+        </div>
+        <div class="article-card">
+            <span class="article-tag">PRE-WORKOUT</span>
+            <h3>Optimal Fuel: What to Eat Before Heavy Lifting</h3>
+            <p>Timing your carbs and proteins around your workout dictates your energy levels and recovery rate.
+                Discover the optimal pre-workout meals for powerlifters and bodybuilders.</p>
+            <a href="#" class="section-cta" style="border-radius: 0; padding: 10px 20px;">Read Article <i
+                    class="ri-arrow-right-up-line"></i></a>
+        </div>
+        <div class="article-card">
+            <span class="article-tag">MINDSET</span>
+            <h3>The Psychology of Dieting and Refeeds</h3>
+            <p>Staying on track during a 16-week cut is brutal. Learn psychological strategies to maintain adherence and
+                understand when strategic "refeed" days can actually boost fat loss.</p>
+            <a href="#" class="section-cta" style="border-radius: 0; padding: 10px 20px;">Read Article <i
+                    class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><span>HOME</span></a>
+                <a href="about.html" class="nav-link"><span>ABOUT US</span></a>
+                <a href="trainers.html" class="nav-link"><span>COACH</span></a>
+                <a href="blog.html" class="nav-link"><span>DIET BLOG</span></a>
+            </div>
+            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu"><span class="hamburger-line top"></span><span
+                class="hamburger-line bottom"></span></button>
+        <div class="nav-divider"></div>
+        <a href="index.html" class="nav-logo">MRFIT</a>
+        <div class="nav-divider"></div>
+        <button id="musicBtn" class="music-btn">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+            </div>
+        </button>
+    </nav>
+    <script src="script.js"></script>
+</body>
+
+</html>
