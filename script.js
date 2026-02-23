@@ -36,6 +36,25 @@ document.addEventListener('DOMContentLoaded', () => {
         joinUsBtn.addEventListener('click', (e) => {
             e.preventDefault();
 
+            // ── Particle burst effect ──
+            const btnRect = joinUsBtn.getBoundingClientRect();
+            const colors = ['#d12229', '#d1c9b8', '#fff', '#ff6b6b', '#ffd93d', '#6bcb77'];
+            for (let i = 0; i < 18; i++) {
+                const particle = document.createElement('span');
+                particle.classList.add('btn-particle');
+                const angle = (Math.PI * 2 * i) / 18 + (Math.random() - 0.5) * 0.5;
+                const dist = 40 + Math.random() * 60;
+                particle.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                particle.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.width = (4 + Math.random() * 6) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = '50%';
+                particle.style.top = '50%';
+                joinUsBtn.appendChild(particle);
+                setTimeout(() => particle.remove(), 750);
+            }
+
             // Get button center coordinates
             const rect = joinUsBtn.getBoundingClientRect();
             const cx = rect.left + rect.width / 2;
@@ -139,5 +158,99 @@ document.addEventListener('DOMContentLoaded', () => {
     musicBars.forEach(bar => {
         bar.style.height = bar.getAttribute('data-h') + 'px';
     });
+
+    // ══ STACKING CARDS (CodyHouse) ══
+    (function () {
+        var stackCardsEls = document.getElementsByClassName('js-stack-cards');
+        if (stackCardsEls.length === 0) return;
+
+        var StackCards = function (el) {
+            this.element = el;
+            this.items = el.getElementsByClassName('js-stack-cards__item');
+            this.scrollingFn = false;
+            this.scrolling = false;
+            this.init();
+        };
+
+        StackCards.prototype.init = function () {
+            this.setProps();
+            var self = this;
+            var observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) {
+                    if (!self.scrollingFn) {
+                        self.scrollingFn = function () {
+                            if (!self.scrolling) {
+                                self.scrolling = true;
+                                requestAnimationFrame(function () { self.animate(); });
+                            }
+                        };
+                        window.addEventListener('scroll', self.scrollingFn);
+                    }
+                } else {
+                    if (self.scrollingFn) {
+                        window.removeEventListener('scroll', self.scrollingFn);
+                        self.scrollingFn = false;
+                    }
+                }
+            }, { threshold: [0, 1] });
+            observer.observe(this.element);
+
+            window.addEventListener('resize', function () {
+                clearTimeout(self._resizeTimer);
+                self._resizeTimer = setTimeout(function () { self.setProps(); }, 300);
+            });
+        };
+
+        StackCards.prototype.setProps = function () {
+            var gap = getComputedStyle(this.element).getPropertyValue('--stack-cards-gap');
+            // Convert gap to px
+            var tempDiv = document.createElement('div');
+            tempDiv.style.cssText = 'position:absolute;opacity:0;height:' + gap;
+            this.element.appendChild(tempDiv);
+            this.marginY = parseInt(getComputedStyle(tempDiv).height);
+            this.element.removeChild(tempDiv);
+
+            this.elementHeight = this.element.offsetHeight;
+            if (this.items.length > 0) {
+                var cs = getComputedStyle(this.items[0]);
+                this.cardTop = Math.floor(parseFloat(cs.top));
+                this.cardHeight = Math.floor(parseFloat(cs.height));
+            }
+            this.windowHeight = window.innerHeight;
+
+            if (isNaN(this.marginY)) {
+                this.element.style.paddingBottom = '0px';
+            } else {
+                this.element.style.paddingBottom = (this.marginY * (this.items.length - 1)) + 'px';
+            }
+            for (var i = 0; i < this.items.length; i++) {
+                this.items[i].style.transform = isNaN(this.marginY)
+                    ? 'none'
+                    : 'translateY(' + (this.marginY * i) + 'px)';
+            }
+        };
+
+        StackCards.prototype.animate = function () {
+            if (isNaN(this.marginY)) { this.scrolling = false; return; }
+            var top = this.element.getBoundingClientRect().top;
+            if (this.cardTop - top + this.windowHeight - this.elementHeight - this.cardHeight + this.marginY + this.marginY * this.items.length > 0) {
+                this.scrolling = false; return;
+            }
+            for (var i = 0; i < this.items.length; i++) {
+                var scrolling = this.cardTop - top - i * (this.cardHeight + this.marginY);
+                if (scrolling > 0) {
+                    var scaling = (i === this.items.length - 1) ? 1 : (this.cardHeight - scrolling * 0.05) / this.cardHeight;
+                    this.items[i].style.transform = 'translateY(' + (this.marginY * i) + 'px) scale(' + scaling + ')';
+                } else {
+                    this.items[i].style.transform = 'translateY(' + (this.marginY * i) + 'px)';
+                }
+            }
+            this.scrolling = false;
+        };
+
+        for (var i = 0; i < stackCardsEls.length; i++) {
+            new StackCards(stackCardsEls[i]);
+        }
+    })();
 
 });
