@@ -1058,7 +1058,10 @@ body {
     z-index: 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 600px;
+    min-height: 800px;
+    /* Matched to Onnit's ~800px height */
+    margin: 80px 0;
+    /* Added gap above and below to separate the box */
 }
 
 /* Left: Grayscale image panel */
@@ -1133,7 +1136,8 @@ body {
 /* Right: Red content panel */
 .why-befit-content {
     background: #D43C2C;
-    padding: 80px 64px;
+    padding: 64px;
+    /* Exact Onnit padding */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1141,13 +1145,15 @@ body {
 
 .why-befit-heading {
     font-family: 'Bebas Neue', var(--font-heading), sans-serif;
-    font-size: clamp(4rem, 8vw, 5.5rem);
+    font-size: clamp(3.5rem, 6vw, 74px);
+    /* Onnit uses exactly 74px */
     font-weight: 400;
     color: #ffffff;
     text-transform: uppercase;
     line-height: 0.95;
     letter-spacing: -0.01em;
-    margin-bottom: 28px;
+    margin-bottom: 80px;
+    /* Huge gap after title, just like Onnit */
 }
 
 .why-befit-desc {
