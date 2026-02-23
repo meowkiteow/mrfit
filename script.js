@@ -287,47 +287,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })();
 
-    // ══ PARTICLE BUTTON EFFECT ══
-    // Vanilla JS equivalent of particle-button.tsx
-    const particleButtons = document.querySelectorAll(
-        '.offer-cta, .section-cta, .cta-btn-primary, .why-befit-btn, .cart-btn, .nav-cta'
-    );
-
-    particleButtons.forEach(btn => {
-        btn.classList.add('particle-btn');
-        btn.addEventListener('click', function (e) {
-            // Scale-down effect
-            btn.classList.add('particle-active');
-            setTimeout(() => btn.classList.remove('particle-active'), 300);
-
-            // Spawn particles from click position (not button center)
-            const cx = e.clientX;
-            const cy = e.clientY;
-
-            // Spawn 6 particles
-            for (let i = 0; i < 6; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const angle = (Math.PI * 2 * i) / 6 + (Math.random() * 0.5 - 0.25);
-                const dist = Math.random() * 50 + 25;
-                const dist2 = dist * 1.5;
-                const px = Math.cos(angle) * dist;
-                const py = Math.sin(angle) * dist - 15;
-                const px2 = Math.cos(angle) * dist2;
-                const py2 = Math.sin(angle) * dist2 - 25;
-
-                particle.style.left = cx + 'px';
-                particle.style.top = cy + 'px';
-                particle.style.setProperty('--px', px + 'px');
-                particle.style.setProperty('--py', py + 'px');
-                particle.style.setProperty('--px2', px2 + 'px');
-                particle.style.setProperty('--py2', py2 + 'px');
-                particle.style.animationDelay = (i * 0.05) + 's';
-
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 800);
-            }
-        });
-    });
-
 });
