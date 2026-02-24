@@ -1035,6 +1035,23 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
+.offer-product-img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.6));
+    animation: float-product 6s ease-in-out infinite;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes float-product {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
 .offer-img-placeholder {
     background: rgba(255, 255, 255, 0.06);
     border-radius: 16px;

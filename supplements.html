@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -84,6 +84,55 @@
             margin-bottom: 24px;
             display: block;
         }
+
+        /* ── Categories Filter ── */
+        .shop-filters {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+            padding: 0 24px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 10px 24px;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--red-accent);
+            border-color: var(--red-accent);
+            color: #fff;
+        }
+
+        /* ── Product Tags ── */
+        .product-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--red-accent);
+            color: white;
+            font-family: var(--font-heading);
+            padding: 4px 12px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .product-card {
+            position: relative;
+        }
     </style>
 </head>
 
@@ -115,8 +164,19 @@
         <p>Lab-tested, competition-grade fuel for those who demand the absolute best from their bodies.</p>
     </div>
 
+    <!-- Category Filters -->
+    <div class="shop-filters">
+        <button class="filter-btn active">All Products</button>
+        <button class="filter-btn">Proteins</button>
+        <button class="filter-btn">Pre-Workouts</button>
+        <button class="filter-btn">Vitamins & Recovery</button>
+        <button class="filter-btn">Apparel</button>
+    </div>
+
     <div class="shop-grid">
+        <!-- Product 1 -->
         <div class="product-card">
+            <span class="product-tag">BESTSELLER</span>
             <div class="product-icon">🥤</div>
             <h3>Whey Protein Isolate</h3>
             <p>25g pure isolate for rapid absorption.</p>
@@ -124,6 +184,7 @@
             <button class="section-cta" style="width: 100%; border-radius: 0;">Add to Cart <i
                     class="ri-shopping-cart-line"></i></button>
         </div>
+        <!-- Product 2 -->
         <div class="product-card">
             <div class="product-icon">⚡</div>
             <h3>Pre-Workout Surge</h3>
@@ -132,6 +193,7 @@
             <button class="section-cta" style="width: 100%; border-radius: 0;">Add to Cart <i
                     class="ri-shopping-cart-line"></i></button>
         </div>
+        <!-- Product 3 -->
         <div class="product-card">
             <div class="product-icon">💪</div>
             <h3>Creatine Monohydrate</h3>
@@ -140,11 +202,49 @@
             <button class="section-cta" style="width: 100%; border-radius: 0;">Add to Cart <i
                     class="ri-shopping-cart-line"></i></button>
         </div>
+        <!-- Product 4 -->
         <div class="product-card">
+            <span class="product-tag">NEW</span>
             <div class="product-icon">🌿</div>
             <h3>Vegan Protein Blend</h3>
             <p>Plant-based nutrition with full amino profile.</p>
             <span class="price">₹1,699</span>
+            <button class="section-cta" style="width: 100%; border-radius: 0;">Add to Cart <i
+                    class="ri-shopping-cart-line"></i></button>
+        </div>
+        <!-- Product 5 -->
+        <div class="product-card">
+            <div class="product-icon">💊</div>
+            <h3>Essential Amino Acids (EAA)</h3>
+            <p>Intra-workout hydration and muscle preservation.</p>
+            <span class="price">₹1,199</span>
+            <button class="section-cta" style="width: 100%; border-radius: 0;">Add to Cart <i
+                    class="ri-shopping-cart-line"></i></button>
+        </div>
+        <!-- Product 6 -->
+        <div class="product-card">
+            <div class="product-icon">🐟</div>
+            <h3>Omega-3 Fish Oil</h3>
+            <p>High EPA/DHA for joint and heart health.</p>
+            <span class="price">₹599</span>
+            <button class="section-cta" style="width: 100%; border-radius: 0;">Add to Cart <i
+                    class="ri-shopping-cart-line"></i></button>
+        </div>
+        <!-- Product 7 -->
+        <div class="product-card">
+            <div class="product-icon">🍫</div>
+            <h3>Protein Bar Box</h3>
+            <p>12-pack of chocolate peanut butter bars (20g protein each).</p>
+            <span class="price">₹1,299</span>
+            <button class="section-cta" style="width: 100%; border-radius: 0;">Add to Cart <i
+                    class="ri-shopping-cart-line"></i></button>
+        </div>
+        <!-- Product 8 -->
+        <div class="product-card">
+            <div class="product-icon">👕</div>
+            <h3>MRFIT Oversized Tee</h3>
+            <p>Heavyweight cotton for training and streetwear.</p>
+            <span class="price">₹899</span>
             <button class="section-cta" style="width: 100%; border-radius: 0;">Add to Cart <i
                     class="ri-shopping-cart-line"></i></button>
         </div>

@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -112,7 +112,28 @@
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.5;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .menu-macros {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .macro-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-family: var(--font-heading);
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .macro-tag.protein {
+            color: var(--red-accent);
+            border-color: rgba(230, 57, 70, 0.3);
         }
 
         .menu-price {
@@ -193,17 +214,32 @@
                 <div class="menu-grid">
                     <div class="menu-item">
                         <h3>The Classic Whey</h3>
-                        <p>Whey isolate, banana, peanut butter, oat milk. 42g protein.</p>
+                        <p>Whey isolate, banana, peanut butter, oat milk.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">42g P</span>
+                            <span class="macro-tag">35g C</span>
+                            <span class="macro-tag">12g F</span>
+                        </div>
                         <span class="menu-price">₹249</span>
                     </div>
                     <div class="menu-item">
                         <h3>Chocolate Monster</h3>
-                        <p>Double chocolate whey, almond milk, cacao nibs. 38g protein.</p>
+                        <p>Double chocolate whey, almond milk, cacao nibs.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">38g P</span>
+                            <span class="macro-tag">20g C</span>
+                            <span class="macro-tag">8g F</span>
+                        </div>
                         <span class="menu-price">₹279</span>
                     </div>
                     <div class="menu-item">
                         <h3>Green Machine</h3>
-                        <p>Spinach, matcha, whey, honey, coconut water. 30g protein.</p>
+                        <p>Spinach, matcha, whey, honey, coconut water.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">30g P</span>
+                            <span class="macro-tag">45g C</span>
+                            <span class="macro-tag">2g F</span>
+                        </div>
                         <span class="menu-price">₹299</span>
                     </div>
                 </div>
@@ -215,16 +251,31 @@
                     <div class="menu-item">
                         <h3>Egg White Omelette</h3>
                         <p>6 egg whites, bell peppers, mushrooms, whole wheat toast.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">28g P</span>
+                            <span class="macro-tag">30g C</span>
+                            <span class="macro-tag">4g F</span>
+                        </div>
                         <span class="menu-price">₹199</span>
                     </div>
                     <div class="menu-item">
                         <h3>Oat Power Bowl</h3>
                         <p>Steel-cut oats, protein powder, berries, honey, almonds.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">25g P</span>
+                            <span class="macro-tag">55g C</span>
+                            <span class="macro-tag">14g F</span>
+                        </div>
                         <span class="menu-price">₹229</span>
                     </div>
                     <div class="menu-item">
                         <h3>Chicken Wrap</h3>
                         <p>Grilled chicken breast, quinoa, avocado, whole wheat wrap.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">45g P</span>
+                            <span class="macro-tag">40g C</span>
+                            <span class="macro-tag">15g F</span>
+                        </div>
                         <span class="menu-price">₹349</span>
                     </div>
                 </div>
@@ -236,16 +287,31 @@
                     <div class="menu-item">
                         <h3>Recovery Bowl</h3>
                         <p>Brown rice, grilled paneer, steamed broccoli, sesame dressing.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">35g P</span>
+                            <span class="macro-tag">65g C</span>
+                            <span class="macro-tag">18g F</span>
+                        </div>
                         <span class="menu-price">₹329</span>
                     </div>
                     <div class="menu-item">
                         <h3>Greek Yogurt Parfait</h3>
                         <p>High-protein Greek yogurt, granola, mixed berries, honey drizzle.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">22g P</span>
+                            <span class="macro-tag">35g C</span>
+                            <span class="macro-tag">8g F</span>
+                        </div>
                         <span class="menu-price">₹219</span>
                     </div>
                     <div class="menu-item">
                         <h3>Protein Pancakes</h3>
                         <p>3 fluffy protein pancakes, maple syrup, banana, whipped cream.</p>
+                        <div class="menu-macros">
+                            <span class="macro-tag protein">32g P</span>
+                            <span class="macro-tag">48g C</span>
+                            <span class="macro-tag">10g F</span>
+                        </div>
                         <span class="menu-price">₹279</span>
                     </div>
                 </div>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRFIT - The Ultimate Guide to Body Recomposition</title>
+    <meta name="description"
+        content="Can you build muscle and lose fat at the same time? A deep dive into the science of body recomposition.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .post-hero {
+            padding: 180px 24px 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .post-tag {
+            display: inline-block;
+            background: var(--red-accent);
+            color: white;
+            padding: 4px 12px;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .post-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .post-meta {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .post-meta img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .post-cover {
+            width: 100%;
+            max-width: 1200px;
+            height: 500px;
+            margin: 0 auto 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            border: 2px solid var(--border-color);
+            font-size: 5rem;
+        }
+
+        .post-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 120px;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 64px;
+        }
+
+        .post-content {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .post-content h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin: 48px 0 24px;
+            line-height: 1.1;
+        }
+
+        .post-content p {
+            margin-bottom: 24px;
+        }
+
+        .post-content ul {
+            margin-bottom: 32px;
+            padding-left: 24px;
+            color: var(--text-primary);
+        }
+
+        .post-content li {
+            margin-bottom: 12px;
+        }
+
+        .post-content blockquote {
+            border-left: 4px solid var(--red-accent);
+            padding-left: 24px;
+            margin: 48px 0;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 32px;
+            text-align: center;
+        }
+
+        .sidebar-widget h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-widget p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .post-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .post-cover {
+                height: 300px;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Circle Transition Overlay -->
+    <div id="circleTransition" class="circle-transition">
+        <div class="transition-content">
+            <div class="transition-title">MRFIT</div>
+            <div class="transition-sub">Loading Article...</div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header" style="position: absolute; top: 0; width: 100%; padding: 24px 64px; z-index: 100;">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+            </svg>
+            <span>MRFIT</span>
+        </a>
+        <a href="join.html" class="cart-btn group" style="text-decoration: none;">
+            <span class="cart-text">Join Us</span>
+            <span class="cart-count"><i class="ri-arrow-right-up-line"></i></span>
+        </a>
+    </header>
+
+    <article>
+        <!-- Post Header -->
+        <header class="post-hero">
+            <span class="post-tag">FEATURED / NUTRITION</span>
+            <h1 class="post-title">The Ultimate Guide to Body Recomposition</h1>
+            <div class="post-meta">
+                <img src="assets/trainer.jpeg" alt="Karan Singh" style="filter: grayscale(100%);">
+                <span>By <strong>Karan Singh</strong></span>
+                <span>•</span>
+                <span>February 21, 2025</span>
+                <span>•</span>
+                <span>8 Min Read</span>
+            </div>
+        </header>
+
+        <!-- Cover Image -->
+        <div class="post-cover">🥩</div>
+
+        <!-- Post Layout -->
+        <div class="post-container">
+            <!-- Article Content -->
+            <div class="post-content">
+                <p>For decades, the fitness industry has operated on a binary: you are either bulking (gaining muscle
+                    and fat in a caloric surplus) or cutting (losing fat and muscle in a caloric deficit). But what if
+                    you could do both at the same time?</p>
+                <p>Body recomposition—building muscle while simultaneously dropping body fat—is the holy grail of
+                    fitness. We're here to tell you that not only is it possible, but there's a clinical, step-by-step
+                    formula to achieve it. It's not magic; it's physics and biology.</p>
+
+                <h2>The 3 Rules of Recomp</h2>
+                <p>True body recomposition requires navigating a very narrow margin of error. You need to provide your
+                    body with enough fuel to synthesize new muscle tissue, while keeping overall calories low enough
+                    that it is forced to oxidize body fat for baseline energy needs.</p>
+                <ul>
+                    <li><strong>The Slight Deficit:</strong> A massive 500+ calorie deficit will catabolize muscle. Keep
+                        your deficit minimal—around 200 to 300 calories below your maintenance level.</li>
+                    <li><strong>Uncompromised Protein Intake:</strong> You must keep protein exceptionally high, usually
+                        between 1.0g to 1.2g per pound of bodyweight, evenly distributed across 4-5 meals.</li>
+                    <li><strong>Progressive Tension Overload:</strong> Muscle growth is a localized response to tension.
+                        If your lifts aren't getting stronger or more controlled, you aren't growing. Period.</li>
+                </ul>
+
+                <blockquote>
+                    "The barbell never lies. If you are lifting heavier weights at the exact same bodyweight six weeks
+                    from now, you have successfully recompositioned your physique."
+                </blockquote>
+
+                <h2>Nutrient Timing and Carb Cycling</h2>
+                <p>When you are eating at maintenance or a slight deficit, nutrient timing matters. Your body needs
+                    carbohydrates the most immediately before and after resistance training. By clustering 70% of your
+                    daily carbohydrates around your workout window, you maximize muscle glycogen for performance while
+                    keeping insulin low the rest of the day to promote fat oxidation.</p>
+                <p>At MRFIT, we program aggressive recomp phases for clients returning from a hiatus or intermediate
+                    lifters who have plateaued. The results consistently speak for themselves: leaner, significantly
+                    stronger, and visually transformed.</p>
+
+                <p><em>Ready to stop spinning your wheels? If you want to put this theory into practice, book an
+                        assessment with our coaching staff today.</em></p>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>Train with the Author</h3>
+                    <p>Stop guessing. Let Karan map out your exact macros, training split, and progressive overload plan
+                        for the next 12 weeks.</p>
+                    <a href="join.html" class="section-cta" style="width: 100%; border-radius: 0;">Apply for
+                        Coaching</a>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Get the Right Fuel</h3>
+                    <p>Body recomposition requires premium protein. Shop our lab-tested whey isolates to hit your daily
+                        targets easily.</p>
+                    <a href="supplements.html" class="section-cta"
+                        style="width: 100%; border-radius: 0; background: transparent; color: var(--text-primary); border: 2px solid var(--border-color); box-shadow: 4px 4px 0px 0px var(--border-color);">Shop
+                        Supplements</a>
+                </div>
+            </aside>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">
+                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg>
+                    <span>MRFIT</span>
+                </div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="trainers.html">Trainers</a>
+                <a href="supplements.html">Supplements</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                    <a href="#"><i class="ri-youtube-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Navbar Overlay -->
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><span>HOME</span></a>
+                <a href="trainers.html" class="nav-link"><span>COACH</span></a>
+                <a href="cafe.html" class="nav-link"><span>CAFE</span></a>
+                <a href="supplements.html" class="nav-link"><span>SUPPLEMENTS</span></a>
+                <a href="blog.html" class="nav-link"><span>DIET BLOG</span></a>
+            </div>
+            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+        <div class="nav-divider"></div>
+        <a href="index.html" class="nav-logo">MRFIT</a>
+        <div class="nav-divider"></div>
+        <button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+            </div>
+        </button>
+    </nav>
+    <script src="script.js"></script>
+</body>
+
+</html>

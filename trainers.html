@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MRFIT - Meet Karan Singh (Head Coach)</title>
-    <meta name="description"
-        content="Learn about our Head Coach Karan Singh, his journey, and the incredible transformations he has engineered for our members.">
+    <title>MRFIT - Our Elite Coaches</title>
+    <meta name="description" content="Meet our Head Coach Karan Singh and the elite team of specialists at MRFIT.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -167,6 +166,104 @@
             padding-left: 16px;
         }
 
+        /* ── New Team Section ── */
+        .team-section {
+            padding: 100px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color);
+        }
+
+        .team-section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-section h2 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--text-primary);
+            margin-bottom: 48px;
+            text-transform: uppercase;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .team-card {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            padding: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .team-img-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #1a1a1a;
+            border: 2px solid var(--border-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .team-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .team-card .role {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .team-card p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* ── Booking CTA ── */
+        .booking-cta {
+            padding: 100px 64px;
+            text-align: center;
+            background: var(--bg-color);
+        }
+
+        .booking-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .booking-cta p {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
         @media (max-width: 768px) {
             .coach-hero {
                 grid-template-columns: 1fr;
@@ -175,7 +272,9 @@
             }
 
             .coach-journey,
-            .coach-results {
+            .coach-results,
+            .team-section,
+            .booking-cta {
                 padding: 60px 24px;
             }
 
@@ -303,6 +402,54 @@
                     total seamlessly."</p>
             </div>
         </div>
+    </section>
+
+    <!-- The Team Roster -->
+    <section class="team-section">
+        <div class="team-section-inner">
+            <h2>The Rest of the Squad.</h2>
+            <div class="team-grid">
+                <!-- Trainer 1 -->
+                <div class="team-card">
+                    <div class="team-img-placeholder">🤸‍♀️</div>
+                    <h3>Priya Sharma</h3>
+                    <span class="role">Mobility & Rehab Specialist</span>
+                    <p>Former gymnast turned physical therapist. Priya focuses on joint health, injury prevention, and
+                        building bulletproof mobility for heavy lifters.</p>
+                    <a href="join.html" class="section-cta" style="width: 100%; border-radius: 0; padding: 12px;">Train
+                        with Priya</a>
+                </div>
+                <!-- Trainer 2 -->
+                <div class="team-card">
+                    <div class="team-img-placeholder">🏋️‍♂️</div>
+                    <h3>Vikram Desai</h3>
+                    <span class="role">Powerbuilding Coach</span>
+                    <p>Bridging the gap between powerlifting and bodybuilding. Vikram is your go-to coach if you want to
+                        be as strong as you look.</p>
+                    <a href="join.html" class="section-cta" style="width: 100%; border-radius: 0; padding: 12px;">Train
+                        with Vikram</a>
+                </div>
+                <!-- Trainer 3 -->
+                <div class="team-card">
+                    <div class="team-img-placeholder">🏃‍♂️</div>
+                    <h3>Rohan Mehta</h3>
+                    <span class="role">Athletic Conditioning</span>
+                    <p>Designed for athletes. Rohan uses plyometrics, sprint mechanics, and high-intensity energy system
+                        development.</p>
+                    <a href="join.html" class="section-cta" style="width: 100%; border-radius: 0; padding: 12px;">Train
+                        with Rohan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section class="booking-cta">
+        <h2>Ready to Put in the Work?</h2>
+        <p>Your transformation begins with a 1-on-1 assessment. Match with the perfect coach for your specific goals.
+        </p>
+        <a href="join.html" class="section-cta particle-btn" style="display: inline-block;">Book Your Assessment <i
+                class="ri-calendar-event-line"></i></a>
     </section>
 
     <!-- Footer -->
