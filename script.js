@@ -360,4 +360,99 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* ══════════════════════════════════════════════════ */
+    /* ══ WHATSAPP FORM SUBMISSIONS ══ */
+    /* ══════════════════════════════════════════════════ */
+    const WA_NUMBER = '917895432666';
+
+    // Trial Form
+    const trialBtn = document.getElementById('trialSubmitBtn');
+    if (trialBtn) {
+        trialBtn.addEventListener('click', () => {
+            const name = document.getElementById('trialName')?.value || '';
+            const phone = document.getElementById('trialPhone')?.value || '';
+            const email = document.getElementById('trialEmail')?.value || '';
+            const date = document.getElementById('trialDate')?.value || '';
+            const time = document.getElementById('trialTime')?.value || '';
+            const goal = document.getElementById('trialGoal')?.value || '';
+            const medical = document.getElementById('trialMedical')?.value || '';
+            if (!name || !phone || !date || !time || !goal) { alert('Please fill in all required fields.'); return; }
+            const msg = `🏋️ *FREE TRIAL BOOKING*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Date:* ${date}\n*Time:* ${time}\n*Goal:* ${goal}\n*Medical:* ${medical || 'None'}`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+    }
+
+    // Franchise Form
+    const franchiseBtn = document.getElementById('franchiseSubmitBtn');
+    if (franchiseBtn) {
+        franchiseBtn.addEventListener('click', () => {
+            const name = document.getElementById('fName')?.value || '';
+            const email = document.getElementById('fEmail')?.value || '';
+            const phone = document.getElementById('fPhone')?.value || '';
+            const city = document.getElementById('fCity')?.value || '';
+            const budget = document.getElementById('fBudget')?.value || '';
+            const space = document.getElementById('fSpace')?.value || '';
+            const exp = document.getElementById('fExperience')?.value || '';
+            if (!name || !email || !phone || !city || !budget) { alert('Please fill in all required fields.'); return; }
+            const msg = `📈 *FRANCHISE INQUIRY*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*City:* ${city}\n*Budget:* ${budget}\n*Space:* ${space || 'N/A'}\n*Experience:* ${exp || 'N/A'}`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+    }
+
+    // Diet Planning Form
+    const dietBtn = document.getElementById('dietSubmitBtn');
+    if (dietBtn) {
+        dietBtn.addEventListener('click', () => {
+            const name = document.getElementById('dName')?.value || '';
+            const age = document.getElementById('dAge')?.value || '';
+            const gender = document.getElementById('dGender')?.value || '';
+            const height = document.getElementById('dHeight')?.value || '';
+            const weight = document.getElementById('dWeight')?.value || '';
+            const activity = document.getElementById('dActivity')?.value || '';
+            const goal = document.getElementById('dGoal')?.value || '';
+            const meals = document.getElementById('dMeals')?.value || '';
+            const phone = document.getElementById('dPhone')?.value || '';
+            const allergies = document.getElementById('dAllergies')?.value || '';
+            const medical = document.getElementById('dMedical')?.value || '';
+            const restrictions = [...document.querySelectorAll('#dietForm .checkbox-item input:checked')].map(cb => cb.value).join(', ');
+            if (!name || !age || !gender || !height || !weight || !activity || !goal || !phone) { alert('Please fill in all required fields.'); return; }
+            const msg = `🥗 *CUSTOM DIET PLAN REQUEST*\n\n*Name:* ${name}\n*Age:* ${age}\n*Gender:* ${gender}\n*Height:* ${height}cm\n*Weight:* ${weight}kg\n*Activity:* ${activity}\n*Goal:* ${goal}\n*Meals/day:* ${meals || 'N/A'}\n*Restrictions:* ${restrictions || 'None'}\n*Allergies:* ${allergies || 'None'}\n*Medical:* ${medical || 'None'}\n*Phone:* ${phone}`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+    }
+
+    /* ══════════════════════════════════════════════════ */
+    /* ══ FAQ ACCORDION ══ */
+    /* ══════════════════════════════════════════════════ */
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+
+    /* ══════════════════════════════════════════════════ */
+    /* ══ GIVEAWAY COUNTDOWN TIMER ══ */
+    /* ══════════════════════════════════════════════════ */
+    const countdownEl = document.getElementById('giveawayCountdown');
+    if (countdownEl) {
+        // Set giveaway end date to 30 days from now (adjust as needed)
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 30);
+        function updateCountdown() {
+            const now = new Date();
+            const diff = endDate - now;
+            if (diff <= 0) { countdownEl.textContent = 'ENDED'; return; }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            countdownEl.innerHTML = `<span>${days}D</span> : <span>${hours}H</span> : <span>${mins}M</span> : <span>${secs}S</span>`;
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+
 });

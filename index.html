@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be Fit - Make Your Gym Incomparable</title>
-    <!-- SEO Meta Tags -->
+    <title>BeFit — Dehradun's Premium Strength Gym</title>
     <meta name="description"
-        content="We are a complete ecosystem of high-quality fitness solutions. We offer high-end equipment and a variety of services to set up your gym from scratch.">
+        content="BeFit is Dehradun's high-performance strength gym with expert coaching, real transformation results, and premium equipment. Start your free trial today.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +18,1162 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Homepage Scoped Styles -->
+    <style>
+        /* ══ CRITICAL: Override fixed video/hero positioning ══ */
+        /* The video-background is position:fixed and hero-section is position:sticky */
+        /* All sections below hero need solid backgrounds + z-index to cover them */
+
+        /* Override hero to NOT be sticky — let it scroll away naturally */
+        .hero-section {
+            position: relative !important;
+            top: auto !important;
+        }
+
+        .stats-bar,
+        .transform-section,
+        .standalone-section,
+        .rising-card-wrapper,
+        .cta-banner,
+        .site-footer {
+            position: relative;
+            z-index: 3;
+            background: var(--bg-color);
+        }
+
+        .funnel-section {
+            position: relative;
+            z-index: 3;
+            background: var(--bg-color);
+            padding: 120px max(64px, calc((100vw - 1200px) / 2 + 64px));
+            width: 100%;
+        }
+
+        .funnel-section--full {
+            position: relative;
+            z-index: 3;
+            background: var(--bg-color);
+            padding: 120px 64px;
+        }
+
+        .funnel-section--dark {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trial-cta-section {
+            position: relative;
+            z-index: 3;
+        }
+
+        .section-label {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            line-height: 1.05;
+            margin-bottom: 24px;
+        }
+
+        .section-desc {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        .section-center {
+            text-align: center;
+        }
+
+        .section-center .section-desc {
+            margin: 0 auto 40px;
+        }
+
+        /* ══ HERO ENHANCEMENTS ══ */
+        .hero-trust-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 100px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+        }
+
+        .trust-badge i {
+            color: var(--red-accent);
+            font-size: 1rem;
+        }
+
+        .trust-badge--gold i {
+            color: #f5c518;
+        }
+
+        .hero-subheadline {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 540px;
+            margin-bottom: 32px;
+        }
+
+        .hero-proof {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-proof-item {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-proof-divider {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--red-accent);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: var(--red-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border: 2px solid var(--red-accent);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #ff1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(204, 0, 0, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
+        }
+
+        /* ══ HOMEPAGE PRICING CARDS ══ */
+        .pricing-grid-home {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 40px 32px;
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .price-card--featured {
+            border-color: var(--red-accent);
+            box-shadow: 0 0 40px rgba(204, 0, 0, 0.15);
+        }
+
+        .price-card--featured:hover {
+            border-color: var(--red-accent);
+        }
+
+        .price-popular-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--red-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            padding: 6px 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .price-card-tag {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .price-card-name {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .price-card-amount {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            margin-bottom: 28px;
+        }
+
+        .price-currency {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--red-accent);
+        }
+
+        .price-value {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .price-period {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .price-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px;
+        }
+
+        .price-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .price-features li.included {
+            color: var(--text-primary);
+        }
+
+        .price-features li.excluded {
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .price-features li i {
+            font-size: 1.1rem;
+        }
+
+        .price-features li.included i {
+            color: #4caf50;
+        }
+
+        .price-features li.excluded i {
+            color: var(--text-secondary);
+        }
+
+        .price-card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .price-card-btn:hover {
+            border-color: var(--red-accent);
+            color: var(--red-accent);
+        }
+
+        .price-card--featured .price-card-btn {
+            background: var(--red-accent);
+            border-color: var(--red-accent);
+            color: #fff;
+        }
+
+        .price-card--featured .price-card-btn:hover {
+            background: #ff1a1a;
+        }
+
+        /* ══ TRAINER SECTION ══ */
+        .trainer-card-home {
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 40px;
+            margin-top: 48px;
+        }
+
+        .trainer-card-home img {
+            width: 280px;
+            height: 340px;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            filter: grayscale(10%);
+            flex-shrink: 0;
+        }
+
+        .trainer-info h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .trainer-info .trainer-role {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .trainer-info p {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .trainer-stats {
+            display: flex;
+            gap: 32px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+
+        .trainer-stat {
+            text-align: center;
+        }
+
+        .trainer-stat-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .trainer-stat-label {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ══ FREE TRIAL CTA ══ */
+        .trial-cta-section {
+            padding: 120px 64px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-color) 0%, rgba(204, 0, 0, 0.05) 50%, var(--bg-color) 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trial-cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .trial-cta-inner .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 20px;
+        }
+
+        .trial-cta-inner .section-title span {
+            color: var(--red-accent);
+        }
+
+        .trial-cta-inner .section-desc {
+            max-width: 550px;
+            margin: 0 auto 40px;
+        }
+
+        .trial-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ══ RESOURCES GRID ══ */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 32px 24px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .resource-card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .resource-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .resource-card p {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .resource-card .resource-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 16px;
+        }
+
+        /* ══ BEYOND TRAINING GRID ══ */
+        .beyond-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .beyond-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 40px 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .beyond-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .beyond-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .beyond-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .beyond-card p {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .beyond-card .beyond-link {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ══ MOBILE STICKY ACTION BAR ══ */
+        .mobile-action-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9998;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-color);
+            padding: 12px 16px;
+            gap: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-action-bar.visible {
+            transform: translateY(0);
+        }
+
+        .mobile-action-bar a {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 8px;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-action-bar .mob-trial {
+            background: var(--red-accent);
+            color: #fff;
+        }
+
+        .mobile-action-bar .mob-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .mobile-action-bar .mob-call {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        /* ══ TRANSFORMATION MICRO CTAs ══ */
+        .transform-micro-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .transform-micro-cta:hover {
+            color: #ff1a1a;
+            gap: 12px;
+        }
+
+        /* ══ AVERAGE RESULTS BAR ══ */
+        .avg-results-bar {
+            position: relative;
+            z-index: 3;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px 48px;
+            margin: 60px auto 0;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .avg-results-label {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: var(--red-accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 24px;
+        }
+
+        .avg-results-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .avg-stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            display: block;
+            line-height: 1;
+        }
+
+        .avg-stat-text {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            display: block;
+        }
+
+        .avg-stat-divider {
+            width: 1px;
+            height: 60px;
+            background: var(--border-color);
+        }
+
+        /* ══ URGENCY MESSAGE ══ */
+        .urgency-msg {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--red-accent);
+            letter-spacing: 1px;
+            margin-top: 12px;
+            animation: urgencyPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes urgencyPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        /* ══ TRIAL TRUST BOOSTERS ══ */
+        .trial-trust-boosters {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .trial-trust-boosters span {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ══ CAFE VOUCHER SECTION ══ */
+        .voucher-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .voucher-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 40px 28px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .voucher-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .voucher-card--gold {
+            border-color: #f5c518;
+            box-shadow: 0 0 40px rgba(245, 197, 24, 0.1);
+        }
+
+        .voucher-card--gold:hover {
+            border-color: #f5c518;
+        }
+
+        .voucher-tier {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .voucher-name {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .voucher-price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 24px;
+        }
+
+        .voucher-price .price-currency {
+            font-size: 1.2rem;
+        }
+
+        .voucher-price .price-value {
+            font-size: 2.8rem;
+        }
+
+        .voucher-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px;
+        }
+
+        .voucher-features li {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .voucher-features li:last-child {
+            border-bottom: none;
+        }
+
+        .voucher-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .voucher-btn:hover {
+            border-color: var(--red-accent);
+            color: var(--red-accent);
+        }
+
+        .voucher-discount-note {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .voucher-discount-note strong {
+            color: var(--red-accent);
+        }
+
+        /* ══ DESKTOP STICKY CTA ══ */
+        .desktop-sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9997;
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-color);
+            padding: 14px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .desktop-sticky-cta.visible {
+            transform: translateY(0);
+        }
+
+        .desktop-sticky-cta-text {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .desktop-sticky-cta-text span {
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            margin-left: 12px;
+        }
+
+        .desktop-sticky-cta-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .desktop-sticky-cta .btn-primary {
+            padding: 12px 28px;
+            font-size: 0.95rem;
+        }
+
+        .desktop-sticky-cta .btn-secondary {
+            padding: 12px 28px;
+            font-size: 0.95rem;
+        }
+
+        /* ══ EXIT POPUP ══ */
+        .exit-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .exit-popup-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .exit-popup {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 56px 48px;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: popupSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes popupSlideIn {
+            from {
+                transform: translateY(30px) scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .exit-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .exit-popup-close:hover {
+            color: var(--text-primary);
+        }
+
+        .exit-popup-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .exit-popup h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .exit-popup p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .exit-popup .btn-primary {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .exit-popup .exit-popup-dismiss {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-decoration: underline;
+        }
+
+        /* ══ LEAD MAGNET CARD ══ */
+        .resource-card--lead-magnet {
+            border-color: var(--red-accent);
+            background: linear-gradient(135deg, rgba(204, 0, 0, 0.08) 0%, var(--card-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card--lead-magnet::before {
+            content: 'FREE';
+            position: absolute;
+            top: 12px;
+            right: -20px;
+            background: var(--red-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            padding: 4px 28px;
+            transform: rotate(45deg);
+        }
+
+        .resource-card--lead-magnet:hover {
+            border-color: var(--red-accent);
+        }
+
+        /* ══ RESPONSIVE ══ */
+        @media (max-width: 1024px) {
+            .pricing-grid-home {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .voucher-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .funnel-section {
+                padding: 80px 24px;
+                width: 100%;
+            }
+
+            .funnel-section--full {
+                padding: 80px 24px;
+            }
+
+            .trial-cta-section {
+                padding: 80px 24px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-ctas a {
+                justify-content: center;
+            }
+
+            .hero-proof {
+                gap: 12px;
+            }
+
+            .hero-proof-item {
+                font-size: 0.85rem;
+            }
+
+            .pricing-grid-home {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .beyond-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .voucher-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .avg-results-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .avg-stat-divider {
+                width: 60px;
+                height: 1px;
+            }
+
+            .avg-results-bar {
+                padding: 32px 24px;
+            }
+
+            .hero-trust-badges {
+                gap: 8px;
+            }
+
+            .trust-badge {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            .trial-trust-boosters {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            /* Hide desktop sticky on mobile */
+            .desktop-sticky-cta {
+                display: none !important;
+            }
+
+            .trainer-card-home {
+                flex-direction: column;
+                padding: 24px;
+            }
+
+            .trainer-card-home img {
+                width: 100%;
+                height: 260px;
+            }
+
+            /* Show mobile action bar */
+            .mobile-action-bar {
+                display: flex;
+            }
+
+            /* Hide floating WhatsApp on mobile (replaced by action bar) */
+            .whatsapp-icon {
+                display: none !important;
+            }
+
+            /* Add bottom padding for sticky bar */
+            .site-footer {
+                padding-bottom: 80px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -33,11 +1188,13 @@
         <div class="video-overlay"></div>
     </div>
 
-    <!-- Subtle Background Glow -->
+    <!-- Background Glow -->
     <div class="bg-glow"></div>
 
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S1: HERO SECTION (ENHANCED) ══ -->
+    <!-- ══════════════════════════════════════════ -->
     <div class="hero-section fade-in">
-        <!-- Header Section -->
         <header class="header">
             <div class="logo">
                 <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,10 +1204,10 @@
                     <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
                     <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
                 </svg>
-                <span>FUEL-9</span>
+                <span>BeFit</span>
             </div>
-            <a href="join.html" id="joinUsBtn" class="cart-btn group" aria-label="Join Us">
-                <span class="cart-text">Join Us</span>
+            <a href="trial.html" id="joinUsBtn" class="cart-btn group" aria-label="Free Trial">
+                <span class="cart-text">Free Trial</span>
                 <span class="cart-count"><i class="ri-arrow-right-up-line"></i></span>
             </a>
         </header>
@@ -58,19 +1215,14 @@
         <!-- Circle Transition Overlay -->
         <div id="circleTransition" class="circle-transition">
             <div class="transition-content">
-                <div class="transition-title">WELCOME</div>
+                <div class="transition-title">BeFit</div>
                 <div class="transition-sub">Loading your experience...</div>
             </div>
         </div>
 
-        <!-- Main Content Center -->
+        <!-- Main Content -->
         <main class="main-content">
-            <div class="badge fade-up" style="animation-delay: 0.1s;">
-                <span class="badge-new">NEW</span>
-                <span class="badge-text">FUEL-9 2025!</span>
-            </div>
-
-            <!-- Slide 1: Deadlift Video -->
+            <!-- Slide 1 -->
             <div id="heroSlide1" class="hero-slide active">
                 <h1 class="main-title fade-up" style="animation-delay: 0.2s;">
                     SILENCE <br>
@@ -78,36 +1230,54 @@
                         <span class="dynamic-text fill-mode">EXCUSES.</span>
                     </span>
                 </h1>
-                <p class="description fade-up" style="animation-delay: 0.3s;">
-                    Competition-grade iron for those who demand results.<br>
-                    <strong>No fluff.</strong> Just work.
+                <p class="hero-subheadline fade-up" style="animation-delay: 0.3s;">
+                    Dehradun's high-performance strength gym with expert coaching and real transformation results.
                 </p>
             </div>
 
-            <!-- Slide 2: Trainer & Member Video -->
+            <!-- Slide 2 -->
             <div id="heroSlide2" class="hero-slide">
                 <h1 class="main-title">
-                    PURE <br>
+                    BUILD REAL <br>
                     <span class="dynamic-text-container">
-                        <span class="dynamic-text fill-mode">PROGRESS.</span>
+                        <span class="dynamic-text fill-mode">STRENGTH.</span>
                     </span>
                 </h1>
-                <p class="description">
-                    Master your mechanics with elite coaching.<br>
-                    <strong>We map the blueprint,</strong> you execute.
+                <p class="hero-subheadline">
+                    Premium equipment, certified trainers, and a community that pushes you past your limits.
                 </p>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="hero-trust-badges fade-up" style="animation-delay: 0.35s;">
+                <span class="trust-badge"><i class="ri-calendar-check-line"></i> 3 Day Free Trial — No Commitment</span>
+                <span class="trust-badge trust-badge--gold"><i class="ri-star-fill"></i> 4.8 Google Rating</span>
+                <span class="trust-badge"><i class="ri-medal-line"></i> #1 Strength Gym in Dehradun</span>
+            </div>
+
+            <!-- Social Proof Line -->
+            <div class="hero-proof fade-up" style="animation-delay: 0.4s;">
+                <span class="hero-proof-item">500+ Active Members</span>
+                <span class="hero-proof-divider"></span>
+                <span class="hero-proof-item">12 Professional Trainers</span>
+                <span class="hero-proof-divider"></span>
+                <span class="hero-proof-item">8+ Years Experience</span>
+            </div>
+
+            <!-- Dual CTAs -->
+            <div class="hero-ctas fade-up" style="animation-delay: 0.5s;">
+                <a href="trial.html" class="btn-primary">Start Free Trial <i class="ri-arrow-right-up-line"></i></a>
+                <a href="#plans" class="btn-secondary">View Membership Plans <i class="ri-arrow-down-line"></i></a>
             </div>
         </main>
 
-        <!-- Footer Section -->
-        <footer class="footer fade-up" style="animation-delay: 0.5s;">
+        <footer class="footer fade-up" style="animation-delay: 0.6s;">
             <div class="scroll-down group">
                 <i class="ri-arrow-down-line group-hover:block transition-all"></i>
                 <span>See more</span>
             </div>
-
             <div class="partners-logo">
-                <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon hover-scale"
+                <a href="https://wa.me/917895432666" target="_blank" class="whatsapp-icon hover-scale"
                     aria-label="Contact us on WhatsApp">
                     <i class="ri-whatsapp-fill"></i>
                 </a>
@@ -115,38 +1285,10 @@
         </footer>
     </div>
 
-    <!-- ══ S2: MARQUEE TICKER ══ -->
-    <div class="marquee-strip">
-        <div class="marquee-track">
-            <span class="marquee-text">FUEL-9 &middot; SILENCE EXCUSES &middot; PURE PROGRESS &middot; DO THE WORK
-                &middot; NO DAYS OFF &middot; FUEL-9 &middot; SILENCE EXCUSES &middot; PURE PROGRESS &middot; DO THE WORK
-                &middot; NO DAYS OFF &middot; FUEL-9 &middot; SILENCE EXCUSES &middot; PURE PROGRESS &middot; DO THE WORK
-                &middot; NO DAYS OFF &middot;</span>
-        </div>
-    </div>
 
-    <!-- ══ BUCKLER-STYLE RISING CARD — SPECIAL OFFERS ══ -->
-    <div class="rising-card-wrapper">
-        <section class="rising-card-section rising-card--compact">
-
-            <div class="offer-block">
-                <div class="offer-content">
-                    <span class="rising-label">🔥 SPECIAL OFFER</span>
-                    <h2 class="rising-heading">Refer 5 Friends.<br>Get a Free Protein Box.</h2>
-                    <p class="offer-desc">Bring your crew to FUEL-9. When 5 of your referrals sign up, you unlock a
-                        premium protein supplement box — on us. No catches, no fine print.</p>
-                    <a href="#join" class="offer-cta">Claim Your Box <i class="ri-arrow-right-up-line"></i></a>
-                </div>
-                <div class="offer-image">
-                    <img src="assets/mb-biozyme.jpg" alt="MuscleBlaze Biozyme Gold 100% Whey" class="offer-product-img">
-                </div>
-            </div>
-
-        </section>
-    </div>
-
-
-    <!-- ══ S4: STATS BAR ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S2: STATS / SOCIAL PROOF BAR ══ -->
+    <!-- ══════════════════════════════════════════ -->
     <section class="stats-bar">
         <div class="stats-inner">
             <div class="stat-item">
@@ -168,77 +1310,18 @@
         </div>
     </section>
 
-    <!-- ══ WHY BEFIT — ONNIT STYLE ══ -->
-    <section class="why-befit" id="whyBefit">
-        <div class="why-befit-media">
-            <div class="why-befit-img-bg"></div>
-            <!-- Floating labels over image -->
-            <div class="why-label why-label--mind">
-                <span class="why-label-dot why-label-dot--orange"></span>
-                <span class="why-label-text">MIND</span>
-            </div>
-            <div class="why-label why-label--body">
-                <span class="why-label-dot why-label-dot--yellow"></span>
-                <span class="why-label-text">BODY</span>
-            </div>
-            <svg class="why-connector" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="140" y1="200" x2="260" y2="420" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"
-                    stroke-dasharray="6 4" />
-            </svg>
-        </div>
-        <div class="why-befit-content">
-            <h2 class="why-befit-heading">WHY<br>BEFIT?</h2>
-            <p class="why-befit-desc">We don’t just build gyms — we build athletes. Every machine, every coach, every
-                program inside FUEL-9 is designed for one purpose: to push you past what you thought was possible. This
-                isn’t a place for half-reps and excuses. It’s a training ground for people who show up, do the work, and
-                leave better than they came.</p>
-            <a href="about.html" class="why-befit-btn">ABOUT US</a>
-        </div>
-    </section>
 
-    <!-- ══ SERVICES WE OFFER — STANDALONE SECTION ══ -->
-    <section class="standalone-section services-standalone">
-        <div class="standalone-inner">
-            <span class="rising-label rising-label--light">SERVICES WE OFFER</span>
-            <h2 class="rising-heading rising-heading--light">Everything You Need.<br>Nothing You Don't.</h2>
-
-            <div class="services-grid">
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-file-list-3-line"></i></div>
-                    <h3>Personalized Split</h3>
-                    <p>Custom training programs built around your schedule, goals, and recovery capacity. Updated
-                        monthly.</p>
-                </a>
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-heart-pulse-line"></i></div>
-                    <h3>Cardio</h3>
-                    <p>Treadmills, rowers, assault bikes, StairMasters. Premium cardio deck with zero wait times.</p>
-                </a>
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-boxing-line"></i></div>
-                    <h3>Strength Training</h3>
-                    <p>Free weights, power racks, platforms. Everything you need to move serious weight safely.</p>
-                </a>
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-loop-left-line"></i></div>
-                    <h3>Resistance Training</h3>
-                    <p>Cables, bands, pin-loaded machines. Controlled tension for targeted muscle development.</p>
-                </a>
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-body-scan-line"></i></div>
-                    <h3>Calisthenics Tools</h3>
-                    <p>Pull-up rigs, dip stations, parallettes, gymnastic rings. Bodyweight mastery starts here.</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ══ STACKING CARDS — SUCCESSFUL TRANSFORMATIONS ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S3: TRANSFORMATION RESULTS ══ -->
+    <!-- ══════════════════════════════════════════ -->
     <section class="transform-section">
         <div class="transform-header">
             <span class="section-dot"></span>
-            <span class="transform-label">SUCCESSFUL TRANSFORMATIONS</span>
-            <h2 class="transform-heading">Transform Your Body<br>Into What You Always Dreamed</h2>
+            <span class="transform-label">PROVEN RESULTS</span>
+            <h2 class="transform-heading">Real<br>Transformations.</h2>
+            <p
+                style="font-family: var(--font-body); color: #B3B3B3; font-size: 1.05rem; max-width: 500px; margin: 16px auto 0; line-height: 1.6;">
+                Real members. Real progress. Real results.</p>
         </div>
 
         <ul class="stack-cards js-stack-cards">
@@ -247,22 +1330,27 @@
                     <div class="stack-card-text">
                         <span class="stack-card-number">01</span>
                         <div>
-                            <h3 class="stack-card-title">12-Week<br>Fat Loss</h3>
-                            <p class="stack-card-desc">Arjun dropped 18kg in 12 weeks following a structured cut with
-                                his FUEL-9 trainer. No crash diets. Just discipline, progressive overload, and
-                                accountability.</p>
+                            <h3 class="stack-card-title">ARJUN SHARMA<br><small
+                                    style="font-size: 0.5em; color: #FF2D2D; letter-spacing: 2px;">-18KG IN 12
+                                    WEEKS</small>
+                            </h3>
+                            <p class="stack-card-desc">Structured cut with his BeFit trainer. No crash diets.
+                                Just discipline, progressive overload, and accountability.</p>
+                            <a href="trial.html" class="transform-micro-cta">Start Your Transformation <i
+                                    class="ri-arrow-right-line"></i></a>
                         </div>
                     </div>
                     <div class="stack-card-image">
                         <div class="ba-images">
                             <div class="ba-img-col">
                                 <span class="ba-label">BEFORE</span>
-                                <img src="assets/before-priya.jpg" alt="Before transformation" class="ba-photo">
+                                <img src="bfeore and after/IMG-20260226-WA0011.jpg.jpeg" alt="Before transformation"
+                                    class="ba-photo">
                             </div>
                             <div class="ba-divider-line"></div>
                             <div class="ba-img-col">
                                 <span class="ba-label">AFTER</span>
-                                <img src="assets/after-priya.jpg" alt="After transformation" class="ba-photo">
+                                <img src="bfeore and after/after.jpg.jpeg" alt="After transformation" class="ba-photo">
                             </div>
                         </div>
                     </div>
@@ -274,21 +1362,26 @@
                     <div class="stack-card-text">
                         <span class="stack-card-number">02</span>
                         <div>
-                            <h3 class="stack-card-title">Strength<br>Rebuild</h3>
-                            <p class="stack-card-desc">Priya went from recovering from a knee injury to deadlifting
+                            <h3 class="stack-card-title">PRIYA VERMA<br><small
+                                    style="font-size: 0.5em; color: #FF2D2D; letter-spacing: 2px;">120KG DEADLIFT
+                                    POST-REHAB</small></h3>
+                            <p class="stack-card-desc">From recovering from a knee injury to deadlifting
                                 120kg in 6 months. Rehabilitation meets raw progression.</p>
+                            <a href="trial.html" class="transform-micro-cta">Start Your Transformation <i
+                                    class="ri-arrow-right-line"></i></a>
                         </div>
                     </div>
                     <div class="stack-card-image">
                         <div class="ba-images">
                             <div class="ba-img-col">
                                 <span class="ba-label">BEFORE</span>
-                                <img src="assets/before-priya.jpg" alt="Before transformation" class="ba-photo">
+                                <img src="bfeore and after/before2.jpg.jpeg" alt="Before transformation"
+                                    class="ba-photo">
                             </div>
                             <div class="ba-divider-line"></div>
                             <div class="ba-img-col">
                                 <span class="ba-label">AFTER</span>
-                                <img src="assets/after-priya.jpg" alt="After transformation" class="ba-photo">
+                                <img src="bfeore and after/after2.jpg.jpeg" alt="After transformation" class="ba-photo">
                             </div>
                         </div>
                     </div>
@@ -300,22 +1393,24 @@
                     <div class="stack-card-text">
                         <span class="stack-card-number">03</span>
                         <div>
-                            <h3 class="stack-card-title">Body<br>Recomposition</h3>
-                            <p class="stack-card-desc">Rohan gained 8kg of lean muscle while maintaining his body fat
+                            <h3 class="stack-card-title">ROHAN MEHTA<br><small
+                                    style="font-size: 0.5em; color: #FF2D2D; letter-spacing: 2px;">+8KG LEAN
+                                    MUSCLE</small>
+                            </h3>
+                            <p class="stack-card-desc">Gained 8kg of lean muscle while maintaining body fat
                                 percentage. Data-driven nutrition and programming at its finest.</p>
+                            <a href="trial.html" class="transform-micro-cta">Start Your Transformation <i
+                                    class="ri-arrow-right-line"></i></a>
                         </div>
                     </div>
                     <div class="stack-card-image">
                         <div class="ba-slider" id="baSlider">
-                            <!-- After image (base layer) -->
                             <div class="ba-slider__after">
-                                <img src="assets/after-rohan.jpg" alt="After transformation">
+                                <img src="bfeore and after/after 3.1.jpg.jpeg" alt="After transformation">
                             </div>
-                            <!-- Before image (overlay, clipped by width) -->
                             <div class="ba-slider__before" id="baSliderBefore" style="width: 50%;">
-                                <img src="assets/before-rohan.jpg" alt="Before transformation">
+                                <img src="bfeore and after/alluarjun.jpg.jpeg" alt="Before transformation">
                             </div>
-                            <!-- Draggable handle -->
                             <div class="ba-slider__handle" id="baSliderHandle" style="left: 50%;">
                                 <div class="ba-slider__handle-line"></div>
                                 <div class="ba-slider__handle-circle">
@@ -330,7 +1425,6 @@
                                 </div>
                                 <div class="ba-slider__handle-line"></div>
                             </div>
-                            <!-- Labels -->
                             <div class="ba-slider__labels">
                                 <span class="ba-slider__label">BEFORE</span>
                                 <span class="ba-slider__label">AFTER</span>
@@ -340,147 +1434,390 @@
                 </div>
             </li>
         </ul>
-    </section>
 
-
-    <!-- ══ S8: HEAD COACH TEASER ══ -->
-    <section class="standalone-section trainers-section">
-        <div class="standalone-inner">
-            <span class="rising-label rising-label--light">HEAD COACH</span>
-            <h2 class="rising-heading rising-heading--light">Meet the Architect of Your Results.</h2>
-
-            <div class="single-coach-card"
-                style="display: flex; gap: 40px; align-items: flex-start; background: var(--card-bg); border: 2px solid var(--border-color); box-shadow: 6px 6px 0px 0px var(--border-color); padding: 32px; margin-top: 40px;">
-                <div class="coach-img" style="flex: 0 0 280px;">
-                    <img src="assets/trainer.jpeg" alt="Head Coach Karan Singh"
-                        style="width: 100%; height: 320px; object-fit: cover; border: 2px solid var(--border-color); filter: grayscale(10%);">
+        <!-- Average Member Results -->
+        <div class="avg-results-bar">
+            <span class="avg-results-label">AVERAGE MEMBER RESULTS</span>
+            <div class="avg-results-stats">
+                <div class="avg-stat">
+                    <span class="avg-stat-number">6kg</span>
+                    <span class="avg-stat-text">Average fat loss in 90 days</span>
                 </div>
-                <div class="coach-info">
-                    <h3
-                        style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--text-primary); margin-bottom: 4px;">
-                        Karan Singh</h3>
-                    <p
-                        style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--red-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
-                        STRENGTH & CONDITIONING SPECIALIST</p>
-                    <p
-                        style="font-family: var(--font-body); font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
-                        Specializing in advanced body recomposition, powerlifting mechanics, and functional hypertrophy.
-                        With over 8 years of in-the-trenches experience, Karan doesn't just train—he educates, breaks
-                        down barriers,
-                        and engineers the strongest version of you.
-                    </p>
-                    <a href="trainers.html" class="section-cta" style="margin-top: 24px;">VIEW FULL PROFILE & RESULTS <i
-                            class="ri-arrow-right-up-line"></i></a>
+                <div class="avg-stat-divider"></div>
+                <div class="avg-stat">
+                    <span class="avg-stat-number">4kg</span>
+                    <span class="avg-stat-text">Average lean muscle gain</span>
                 </div>
             </div>
         </div>
     </section>
 
 
-    <!-- ══ S9: DIET & NUTRITION TEASER ══ -->
-    <section class="standalone-section nutrition-teaser-section" style="text-align: center;">
-        <div class="standalone-inner">
-            <span class="rising-label rising-label--light">THE REAL SECRET</span>
-            <h2 class="rising-heading rising-heading--light"
-                style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15;">
-                Do you know what is more important than <span style="color: var(--red-accent);">working out?</span>
-            </h2>
-            <h3
-                style="font-family: var(--font-heading); font-size: clamp(1.5rem, 3vw, 2.2rem); color: var(--text-primary); margin-top: 16px; text-transform: uppercase;">
-                A Good Diet & Smart Supplementation.
-            </h3>
-            <p
-                style="font-family: var(--font-body); color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; max-width: 700px; margin: 24px auto 40px;">
-                You cannot out-train a bad diet. Muscle is broken down in the gym, but it is built in the kitchen.
-                Whether you are aiming for fat loss, muscle gain, or peak performance, your nutrition dictates your
-                results.
-                Equip yourself with the right knowledge and the highest-grade fuel.
-            </p>
-            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                <a href="supplements.html" class="section-cta">SHOP PREMIUM SUPPLEMENTS <i
-                        class="ri-arrow-right-up-line"></i></a>
-                <a href="blog.html" class="section-cta"
-                    style="background: transparent !important; color: var(--text-primary) !important; border: 2px solid var(--border-color) !important; box-shadow: 4px 4px 0px 0px var(--border-color) !important;">READ
-                    DIET & NUTRITION GUIDES <i class="ri-book-read-line"></i></a>
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S4: MEMBERSHIP PLANS ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="funnel-section section-center" id="plans">
+        <span class="section-label">Membership Plans</span>
+        <h2 class="section-title">Choose Your<br>Plan.</h2>
+        <p class="section-desc">All plans include unlimited access during operating hours. Upgrade or downgrade anytime.
+        </p>
+        <p class="urgency-msg">⚡ Limited memberships available this month</p>
+
+        <div class="pricing-grid-home">
+            <!-- BASIC -->
+            <div class="price-card">
+                <span class="price-card-tag">Starter</span>
+                <h3 class="price-card-name">Basic</h3>
+                <div class="price-card-amount">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value">800</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <ul class="price-features">
+                    <li class="included"><i class="ri-check-line"></i> Full Machines Access</li>
+                    <li class="included"><i class="ri-check-line"></i> All Equipment & Free Weights</li>
+                    <li class="included"><i class="ri-check-line"></i> Locker Room Access</li>
+                    <li class="excluded"><i class="ri-close-line"></i> Manual Cardio Machines</li>
+                    <li class="excluded"><i class="ri-close-line"></i> Electrical Cardio Machines</li>
+                    <li class="excluded"><i class="ri-close-line"></i> Personal Trainer Sessions</li>
+                </ul>
+                <a href="join.html" class="price-card-btn">Join Now <i class="ri-arrow-right-up-line"></i></a>
+            </div>
+
+            <!-- PRO (Most Popular) -->
+            <div class="price-card price-card--featured">
+                <div class="price-popular-badge">MOST POPULAR</div>
+                <span class="price-card-tag">Semi Premium</span>
+                <h3 class="price-card-name">Pro</h3>
+                <div class="price-card-amount">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value">1200</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <ul class="price-features">
+                    <li class="included"><i class="ri-check-line"></i> Full Machines Access</li>
+                    <li class="included"><i class="ri-check-line"></i> All Equipment & Free Weights</li>
+                    <li class="included"><i class="ri-check-line"></i> Locker Room Access</li>
+                    <li class="included"><i class="ri-check-line"></i> <strong>Manual Cardio Machines</strong></li>
+                    <li class="excluded"><i class="ri-close-line"></i> Electrical Cardio Machines</li>
+                    <li class="excluded"><i class="ri-close-line"></i> Personal Trainer Sessions</li>
+                </ul>
+                <a href="join.html" class="price-card-btn">Join Now <i class="ri-arrow-right-up-line"></i></a>
+            </div>
+
+            <!-- ELITE -->
+            <div class="price-card">
+                <span class="price-card-tag">Full Premium</span>
+                <h3 class="price-card-name">Elite</h3>
+                <div class="price-card-amount">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value">1500</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <ul class="price-features">
+                    <li class="included"><i class="ri-check-line"></i> Full Machines Access</li>
+                    <li class="included"><i class="ri-check-line"></i> All Equipment & Free Weights</li>
+                    <li class="included"><i class="ri-check-line"></i> Locker Room Access</li>
+                    <li class="included"><i class="ri-check-line"></i> <strong>Manual Cardio Machines</strong></li>
+                    <li class="included"><i class="ri-check-line"></i> <strong>Electrical Cardio Machines</strong></li>
+                    <li class="included"><i class="ri-check-line"></i> <strong>Personal Trainer Sessions</strong></li>
+                </ul>
+                <a href="join.html" class="price-card-btn">Join Now <i class="ri-arrow-right-up-line"></i></a>
             </div>
         </div>
     </section>
 
 
-    <!-- ══ S10: BLOG TEASER ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S5: TRAINER AUTHORITY ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="funnel-section funnel-section--dark">
+        <span class="section-label">Head Coach</span>
+        <h2 class="section-title">Meet the Architect<br>of Your Results.</h2>
 
-    <!-- ══ CAFE TEASER ══ -->
-    <section class="standalone-section cafe-section">
-        <div class="standalone-inner">
-            <div class="cafe-layout">
-                <div class="cafe-text">
-                    <span class="rising-label rising-label--light">☕ OUR CAFE</span>
-                    <h2 class="rising-heading rising-heading--light">Fuel Before<br>You Lift.</h2>
-                    <p class="cafe-desc">Fresh protein shakes, pre-workout meals and daily nutrition — right inside
-                        FUEL-9. Eat clean, train hard, repeat.</p>
-                    <a href="cafe.html" class="section-cta">Explore the Menu <i class="ri-arrow-right-up-line"></i></a>
-                </div>
-                <div class="cafe-image">
-                    <div class="cafe-img-placeholder">
-                        <span>☕ CAFE BAR</span>
+        <div class="trainer-card-home">
+            <img src="bfeore and after/trainer.jpeg" alt="Head Coach Anshul Uniyal">
+            <div class="trainer-info">
+                <h3>Karan Singh</h3>
+                <span class="trainer-role">Strength & Conditioning Specialist</span>
+                <div class="trainer-stats">
+                    <div class="trainer-stat">
+                        <span class="trainer-stat-number">8+</span>
+                        <span class="trainer-stat-label">Years Exp.</span>
+                    </div>
+                    <div class="trainer-stat">
+                        <span class="trainer-stat-number">200+</span>
+                        <span class="trainer-stat-label">Clients Trained</span>
+                    </div>
+                    <div class="trainer-stat">
+                        <span class="trainer-stat-number">Certified</span>
+                        <span class="trainer-stat-label">Professional</span>
                     </div>
                 </div>
+                <p>Specializing in advanced body recomposition, powerlifting mechanics, and functional hypertrophy.
+                    Karan doesn't just train — he educates, breaks down barriers, and engineers the strongest version of
+                    you.</p>
+                <a href="trainers.html" class="btn-primary" style="margin-top: 16px; display: inline-flex;">Book
+                    Consultation <i class="ri-arrow-right-up-line"></i></a>
             </div>
         </div>
     </section>
 
-    <section class="standalone-section blog-section">
-        <div class="standalone-inner">
-            <span class="rising-label rising-label--light">FROM THE BLOG</span>
-            <h2 class="rising-heading rising-heading--light">Latest Insights.</h2>
 
-            <div class="blog-grid">
-                <a href="blog-post.html" class="blog-card">
-                    <div class="blog-img-placeholder"><span>📝</span></div>
-                    <div class="blog-card-content">
-                        <span class="blog-tag">TRAINING</span>
-                        <h3>5 Deadlift Mistakes Killing Your Progress</h3>
-                        <p class="blog-date">Feb 20, 2025</p>
-                    </div>
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S6: SERVICES / TRAINING TYPES ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="standalone-section services-standalone">
+        <div class="standalone-inner">
+            <span class="rising-label rising-label--light">TRAINING TYPES</span>
+            <h2 class="rising-heading rising-heading--light">Everything You Need.<br>Nothing You Don't.</h2>
+
+            <div class="services-grid">
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-file-list-3-line"></i></div>
+                    <h3>Personalized Split</h3>
+                    <p>Custom training programs built around your schedule, goals, and recovery capacity. Updated
+                        monthly.</p>
+                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
                 </a>
-                <a href="blog-post.html" class="blog-card">
-                    <div class="blog-img-placeholder"><span>🥗</span></div>
-                    <div class="blog-card-content">
-                        <span class="blog-tag">NUTRITION</span>
-                        <h3>The Only Macro Split You Need for Recomp</h3>
-                        <p class="blog-date">Feb 15, 2025</p>
-                    </div>
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-heart-pulse-line"></i></div>
+                    <h3>Cardio</h3>
+                    <p>Treadmills, rowers, assault bikes, StairMasters. Premium cardio deck with zero wait times.</p>
+                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
                 </a>
-                <a href="blog-post.html" class="blog-card">
-                    <div class="blog-img-placeholder"><span>🧠</span></div>
-                    <div class="blog-card-content">
-                        <span class="blog-tag">MINDSET</span>
-                        <h3>Why Consistency Beats Motivation Every Time</h3>
-                        <p class="blog-date">Feb 10, 2025</p>
-                    </div>
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-boxing-line"></i></div>
+                    <h3>Strength Training</h3>
+                    <p>Free weights, power racks, platforms. Everything you need to move serious weight safely.</p>
+                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
+                </a>
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-loop-left-line"></i></div>
+                    <h3>Resistance Training</h3>
+                    <p>Cables, bands, pin-loaded machines. Controlled tension for targeted muscle development.</p>
+                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
+                </a>
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-body-scan-line"></i></div>
+                    <h3>Calisthenics</h3>
+                    <p>Pull-up rigs, dip stations, parallettes, gymnastic rings. Bodyweight mastery starts here.</p>
+                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
                 </a>
             </div>
-
-            <a href="blog.html" class="section-cta">Read All Posts <i class="ri-arrow-right-up-line"></i></a>
         </div>
     </section>
 
 
-    <!-- ══ S11: MEMBERSHIP CTA BANNER ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S7: FREE TRIAL CTA ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="trial-cta-section">
+        <div class="trial-cta-inner">
+            <span class="section-label">No Commitment Required</span>
+            <h2 class="section-title">Try BeFit Free<br>For <span>3 Days.</span></h2>
+            <p class="section-desc">Experience the equipment, coaching, and environment before committing to a
+                membership. Walk in a stranger, walk out a member.</p>
+            <div class="trial-cta-buttons">
+                <a href="trial.html" class="btn-primary">Start Free Trial <i class="ri-arrow-right-up-line"></i></a>
+                <a href="https://wa.me/917895432666?text=Hi%20BeFit!%20I'd%20like%20to%20book%20a%20free%20trial."
+                    target="_blank" class="btn-secondary">Chat on WhatsApp <i class="ri-whatsapp-fill"></i></a>
+            </div>
+            <div class="trial-trust-boosters">
+                <span>✓ No commitment</span>
+                <span>✓ No credit card required</span>
+                <span>✓ Full gym access for 3 days</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S8: RESOURCES ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="funnel-section">
+        <span class="section-label">Resources</span>
+        <h2 class="section-title">Train Smarter.</h2>
+        <p class="section-desc">Free workout plans, diet guides, technique videos, and expert articles to accelerate
+            your progress.</p>
+
+        <div class="resources-grid">
+            <a href="#" class="resource-card resource-card--lead-magnet"
+                onclick="event.preventDefault(); window.open('https://wa.me/917895432666?text=Hi%20BeFit!%20I%20want%20the%20free%20Beginner%20Strength%20Training%20Plan', '_blank')">
+                <span class="resource-card-icon"><img src="assets/icons/icon-training-plan.png" alt=""
+                        style="width: 48px; height: 48px; object-fit: contain;"></span>
+                <h3>Free Training Plan</h3>
+                <p>Download our Beginner Strength Training Plan — perfect for your first 30 days.</p>
+                <span class="resource-arrow">Get Free Plan <i class="ri-download-line"></i></span>
+            </a>
+            <a href="plans.html" class="resource-card">
+                <span class="resource-card-icon"><img src="assets/icons/icon-workout-plans.png" alt=""
+                        style="width: 48px; height: 48px; object-fit: contain;"></span>
+                <h3>Workout Plans</h3>
+                <p>Structured training programs for fat loss, muscle gain, and strength building.</p>
+                <span class="resource-arrow">Explore <i class="ri-arrow-right-up-line"></i></span>
+            </a>
+            <a href="diet-planning.html" class="resource-card">
+                <span class="resource-card-icon"><img src="assets/icons/icon-diet-planning.png" alt=""
+                        style="width: 48px; height: 48px; object-fit: contain;"></span>
+                <h3>Diet Planning</h3>
+                <p>Macro-optimized meal plans and nutrition strategies for every fitness goal.</p>
+                <span class="resource-arrow">Explore <i class="ri-arrow-right-up-line"></i></span>
+            </a>
+            <a href="videos.html" class="resource-card">
+                <span class="resource-card-icon"><img src="assets/icons/icon-fitness-videos.png" alt=""
+                        style="width: 48px; height: 48px; object-fit: contain;"></span>
+                <h3>Fitness Videos</h3>
+                <p>Expert exercise demos, form corrections, and full workout tutorials.</p>
+                <span class="resource-arrow">Watch <i class="ri-arrow-right-up-line"></i></span>
+            </a>
+            <a href="blog.html" class="resource-card">
+                <span class="resource-card-icon"><img src="assets/icons/icon-blog-articles.png" alt=""
+                        style="width: 48px; height: 48px; object-fit: contain;"></span>
+                <h3>Blog & Articles</h3>
+                <p>Training tips, nutrition science, and mindset guides from our coaches.</p>
+                <span class="resource-arrow">Read <i class="ri-arrow-right-up-line"></i></span>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S9: BEYOND TRAINING ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="funnel-section funnel-section--dark section-center">
+        <span class="section-label">Performance Nutrition</span>
+        <h2 class="section-title">Performance Nutrition<br>Inside BeFit.</h2>
+        <p class="section-desc">Fuel your body inside BeFit with premium nutrition, supplements, and wholesome meals.
+        </p>
+
+        <div class="beyond-grid">
+            <a href="cafe.html" class="beyond-card">
+                <span class="beyond-card-icon"><img src="assets/icons/icon-gym-cafe.png" alt=""
+                        style="width: 56px; height: 56px; object-fit: contain;"></span>
+                <h3>Gym Cafe</h3>
+                <p>Fresh protein shakes, pre-workout meals, and daily nutrition — right inside BeFit.</p>
+                <span class="beyond-link">Explore Menu <i class="ri-arrow-right-up-line"></i></span>
+            </a>
+            <a href="supplements.html" class="beyond-card">
+                <span class="beyond-card-icon"><img src="assets/icons/icon-supplements.png" alt=""
+                        style="width: 56px; height: 56px; object-fit: contain;"></span>
+                <h3>Supplements</h3>
+                <p>Premium whey protein, creatine, BCAAs, and performance boosters at the best prices.</p>
+                <span class="beyond-link">Shop Now <i class="ri-arrow-right-up-line"></i></span>
+            </a>
+            <a href="diet-planning.html" class="beyond-card">
+                <span class="beyond-card-icon"><img src="assets/icons/icon-diet-planning.png" alt=""
+                        style="width: 56px; height: 56px; object-fit: contain;"></span>
+                <h3>Nutrition Guidance</h3>
+                <p>Personalized macro plans and diet consultations to match your training goals.</p>
+                <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S9B: CAFE VOUCHERS ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="funnel-section section-center">
+        <span class="section-label">Cafe Vouchers</span>
+        <h2 class="section-title">Fuel Your<br>Workout.</h2>
+        <p class="section-desc">Pre-load your post-workout nutrition with BeFit cafe vouchers. Skip the queue, save
+            money.</p>
+
+        <div class="voucher-grid">
+            <!-- BRONZE -->
+            <div class="voucher-card">
+                <span class="voucher-tier">Bronze</span>
+                <h3 class="voucher-name">Starter</h3>
+                <div class="voucher-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value">200</span>
+                </div>
+                <ul class="voucher-features">
+                    <li>1 Protein Shake</li>
+                    <li>Valid for 30 days</li>
+                </ul>
+                <a href="cafe.html" class="voucher-btn">Buy Voucher <i class="ri-arrow-right-up-line"></i></a>
+            </div>
+
+            <!-- SILVER -->
+            <div class="voucher-card">
+                <span class="voucher-tier">Silver</span>
+                <h3 class="voucher-name">Regular</h3>
+                <div class="voucher-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value">500</span>
+                </div>
+                <ul class="voucher-features">
+                    <li>3 Protein Shakes</li>
+                    <li>1 Pre-Workout Snack</li>
+                    <li>Valid for 30 days</li>
+                </ul>
+                <a href="cafe.html" class="voucher-btn">Buy Voucher <i class="ri-arrow-right-up-line"></i></a>
+            </div>
+
+            <!-- GOLD -->
+            <div class="voucher-card voucher-card--gold">
+                <span class="voucher-tier">Gold</span>
+                <h3 class="voucher-name">Premium</h3>
+                <div class="voucher-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value">1000</span>
+                </div>
+                <ul class="voucher-features">
+                    <li>Weekly Meal Plan</li>
+                    <li>Unlimited Shakes (7 days)</li>
+                    <li>Priority Counter Access</li>
+                </ul>
+                <a href="cafe.html" class="voucher-btn">Buy Voucher <i class="ri-arrow-right-up-line"></i></a>
+            </div>
+        </div>
+
+        <p class="voucher-discount-note">🌟 <strong>Members get 10% off</strong> all cafe voucher packages</p>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S10: SPECIAL OFFER ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <div class="rising-card-wrapper">
+        <section class="rising-card-section rising-card--compact">
+            <div class="offer-block">
+                <div class="offer-content">
+                    <span class="rising-label">🔥 SPECIAL OFFER</span>
+                    <h2 class="rising-heading">Train Together.<br>Win Together.</h2>
+                    <p class="offer-desc">Refer 5 friends to BeFit. When they sign up, you unlock a
+                        premium protein supplement box — on us. No catches, no fine print.</p>
+                    <a href="join.html" class="offer-cta">Refer Friends <i class="ri-arrow-right-up-line"></i></a>
+                </div>
+                <div class="offer-image">
+                    <img src="assets/mb-biozyme.jpg" alt="MuscleBlaze Biozyme Gold 100% Whey" class="offer-product-img">
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ══ S11: FINAL CTA ══ -->
+    <!-- ══════════════════════════════════════════ -->
     <section class="cta-banner">
         <div class="cta-banner-inner">
-            <h2>Stop Thinking.<br>Start Training.</h2>
-            <p>Your best version is one membership away.</p>
+            <h2>Ready To Transform<br>Your Body?</h2>
+            <p>Join BeFit today and start your fitness journey with expert coaching and real results.</p>
             <div class="cta-banner-btns">
-                <a href="join.html" class="cta-btn-primary">View Memberships <i class="ri-arrow-right-up-line"></i></a>
-                <a href="https://wa.me/1234567890" class="cta-btn-secondary">Talk to a Trainer <i
-                        class="ri-whatsapp-fill"></i></a>
+                <a href="trial.html" class="cta-btn-primary">Start Free Trial <i class="ri-arrow-right-up-line"></i></a>
+                <a href="#plans" class="cta-btn-secondary">View Membership <i class="ri-arrow-right-up-line"></i></a>
             </div>
         </div>
     </section>
 
 
+    <!-- ══════════════════════════════════════════ -->
     <!-- ══ S12: FOOTER ══ -->
+    <!-- ══════════════════════════════════════════ -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col footer-brand">
@@ -492,16 +1829,19 @@
                         <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
                         <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
                     </svg>
-                    <span>FUEL-9</span>
+                    <span>BeFit</span>
                 </div>
                 <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
             </div>
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <a href="join.html">Memberships</a>
+                <a href="trial.html">Free Trial</a>
+                <a href="#transformations">Transformations</a>
                 <a href="trainers.html">Trainers</a>
-                <a href="supplements.html">Supplements</a>
+                <a href="wall-of-fame.html">Wall of Fame</a>
                 <a href="blog.html">Blog</a>
+                <a href="franchise.html">Franchise</a>
             </div>
             <div class="footer-col">
                 <h4>Hours</h4>
@@ -513,38 +1853,40 @@
                 <h4>Contact</h4>
                 <p>123 Iron Street, Fitness District</p>
                 <p>+91 98765 43210</p>
-                <p>info@FUEL-9.com</p>
+                <p>info@BeFit.com</p>
                 <div class="footer-socials">
                     <a href="#"><i class="ri-instagram-fill"></i></a>
                     <a href="#"><i class="ri-youtube-fill"></i></a>
-                    <a href="https://wa.me/1234567890"><i class="ri-whatsapp-fill"></i></a>
+                    <a href="https://wa.me/917895432666"><i class="ri-whatsapp-fill"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 FUEL-9. All rights reserved.</p>
+            <p>© 2025 BeFit. All rights reserved.</p>
         </div>
     </footer>
 
 
-    <!-- Navbar Overlay -->
+    <!-- ══ Navigation Overlay ══ -->
     <div id="navOverlay" class="nav-overlay"></div>
 
-    <!-- Slide-up Menu -->
+    <!-- ══ Slide-up Menu ══ -->
     <div id="navMenu" class="nav-menu">
         <div class="nav-menu-inner">
             <div class="nav-links">
                 <a href="index.html" class="nav-link"><span>HOME</span></a>
-                <a href="trainers.html" class="nav-link"><span>COACH</span></a>
+                <a href="trainers.html" class="nav-link"><span>COACHES</span></a>
+                <a href="plans.html" class="nav-link"><span>WORKOUT PLANS</span></a>
+                <a href="videos.html" class="nav-link"><span>VIDEOS</span></a>
                 <a href="cafe.html" class="nav-link"><span>CAFE</span></a>
-                <a href="supplements.html" class="nav-link"><span>SUPPLEMENTS</span></a>
-                <a href="blog.html" class="nav-link"><span>DIET BLOG</span></a>
+                <a href="wall-of-fame.html" class="nav-link"><span>WALL OF FAME</span></a>
+                <a href="blog.html" class="nav-link"><span>ARTICLES</span></a>
             </div>
-            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+            <a href="trial.html" class="nav-cta">START FREE TRIAL <i class="ri-arrow-right-up-line"></i></a>
         </div>
     </div>
 
-    <!-- Floating Navbar -->
+    <!-- ══ Floating Navbar ══ -->
     <nav class="floating-navbar">
         <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
             <span class="hamburger-line top"></span>
@@ -553,7 +1895,7 @@
 
         <div class="nav-divider"></div>
 
-        <a href="#" class="nav-logo">FUEL-9</a>
+        <a href="#" class="nav-logo">BeFit</a>
 
         <div class="nav-divider"></div>
 
@@ -572,8 +1914,125 @@
         </button>
     </nav>
 
+
+    <!-- ══ MOBILE STICKY ACTION BAR ══ -->
+    <div class="mobile-action-bar" id="mobileActionBar">
+        <a href="trial.html" class="mob-trial"><i class="ri-play-circle-line"></i> Free Trial</a>
+        <a href="https://wa.me/917895432666" target="_blank" class="mob-whatsapp"><i class="ri-whatsapp-fill"></i>
+            WhatsApp</a>
+        <a href="tel:+919876543210" class="mob-call"><i class="ri-phone-fill"></i> Call</a>
+    </div>
+
+
+    <!-- ══ DESKTOP STICKY CTA BAR ══ -->
+    <div class="desktop-sticky-cta" id="desktopStickyCta">
+        <div class="desktop-sticky-cta-text">
+            BeFit <span>Dehradun's #1 Strength Gym</span>
+        </div>
+        <div class="desktop-sticky-cta-actions">
+            <a href="trial.html" class="btn-primary">Start Free Trial <i class="ri-arrow-right-up-line"></i></a>
+            <a href="#plans" class="btn-secondary">View Plans <i class="ri-arrow-down-line"></i></a>
+        </div>
+    </div>
+
+
+    <!-- ══ EXIT-INTENT POPUP ══ -->
+    <div class="exit-popup-overlay" id="exitPopup">
+        <div class="exit-popup">
+            <button class="exit-popup-close" id="exitPopupClose"><i class="ri-close-line"></i></button>
+            <span class="exit-popup-icon"><img src="assets/icons/icon-gym-pass.png" alt=""
+                    style="width: 80px; height: 80px; object-fit: contain;"></span>
+            <h3>Wait! Get a<br>Free Gym Pass</h3>
+            <p>Don't leave empty-handed. Claim your complimentary 3-day pass and experience BeFit before you decide.
+            </p>
+            <a href="trial.html" class="btn-primary">Claim Free Pass <i class="ri-arrow-right-up-line"></i></a>
+            <button class="exit-popup-dismiss" id="exitPopupDismiss">No thanks, I'll pass</button>
+        </div>
+    </div>
+
+
     <!-- Scripts -->
     <script src="script.js"></script>
+
+    <!-- CRO Enhancement Scripts -->
+    <script>
+        (function () {
+            // ═══ MOBILE STICKY BAR ═══
+            const bar = document.getElementById('mobileActionBar');
+            const heroH = window.innerHeight;
+
+            function checkBar() {
+                const y = window.scrollY;
+                if (bar) {
+                    if (y > heroH * 0.6) {
+                        bar.classList.add('visible');
+                    } else {
+                        bar.classList.remove('visible');
+                    }
+                }
+            }
+
+            // ═══ DESKTOP STICKY CTA ═══
+            const desktopCta = document.getElementById('desktopStickyCta');
+
+            function checkDesktopCta() {
+                const y = window.scrollY;
+                if (desktopCta) {
+                    if (y > heroH * 0.8 && window.innerWidth > 768) {
+                        desktopCta.classList.add('visible');
+                    } else {
+                        desktopCta.classList.remove('visible');
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', function () {
+                checkBar();
+                checkDesktopCta();
+            }, { passive: true });
+            checkBar();
+            checkDesktopCta();
+
+            // ═══ EXIT-INTENT POPUP ═══
+            const exitPopup = document.getElementById('exitPopup');
+            const exitClose = document.getElementById('exitPopupClose');
+            const exitDismiss = document.getElementById('exitPopupDismiss');
+            let exitShown = false;
+
+            function showExitPopup() {
+                if (!exitShown && exitPopup) {
+                    exitShown = true;
+                    exitPopup.classList.add('active');
+                    sessionStorage.setItem('fuel9ExitShown', 'true');
+                }
+            }
+
+            function closeExitPopup() {
+                if (exitPopup) {
+                    exitPopup.classList.remove('active');
+                }
+            }
+
+            // Only show if not already shown this session
+            if (!sessionStorage.getItem('fuel9ExitShown')) {
+                document.addEventListener('mouseout', function (e) {
+                    if (e.clientY < 10 && !exitShown) {
+                        showExitPopup();
+                    }
+                });
+            } else {
+                exitShown = true;
+            }
+
+            if (exitClose) exitClose.addEventListener('click', closeExitPopup);
+            if (exitDismiss) exitDismiss.addEventListener('click', closeExitPopup);
+            if (exitPopup) {
+                exitPopup.addEventListener('click', function (e) {
+                    if (e.target === exitPopup) closeExitPopup();
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>

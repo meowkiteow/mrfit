@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeFit - Workout Videos</title>
+    <meta name="description"
+        content="Perfect your form with BeFit's exercise video library. Posture guides, technique breakdowns, and common mistake fixes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .vid-hero {
+            padding: 160px 64px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .vid-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px
+        }
+
+        .vid-hero h1 span {
+            color: var(--red-accent)
+        }
+
+        .vid-hero p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto
+        }
+
+        .vid-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 64px;
+            margin-bottom: 48px;
+            flex-wrap: wrap
+        }
+
+        .vid-filter-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            padding: 10px 24px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all .3s ease
+        }
+
+        .vid-filter-btn:hover,
+        .vid-filter-btn.active {
+            background: var(--red-accent);
+            border-color: var(--red-accent);
+            color: #fff
+        }
+
+        .vid-grid-section {
+            padding: 0 64px 80px;
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .vid-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px
+        }
+
+        .vid-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            box-shadow: 6px 6px 0 0 var(--border-color);
+            overflow: hidden;
+            transition: transform .3s ease;
+            cursor: pointer
+        }
+
+        .vid-card:hover {
+            transform: translateY(-8px)
+        }
+
+        .vid-thumb {
+            height: 200px;
+            background: rgba(255, 255, 255, .03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+            font-size: 3rem
+        }
+
+        .vid-play-icon {
+            position: absolute;
+            width: 56px;
+            height: 56px;
+            background: rgba(204, 0, 0, .9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform .3s ease
+        }
+
+        .vid-card:hover .vid-play-icon {
+            transform: scale(1.15)
+        }
+
+        .vid-play-icon i {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-left: 3px
+        }
+
+        .vid-body {
+            padding: 24px
+        }
+
+        .vid-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px
+        }
+
+        .vid-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px
+        }
+
+        .vid-tag {
+            font-family: var(--font-heading);
+            font-size: .75rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            letter-spacing: .5px
+        }
+
+        .vid-meta {
+            display: flex;
+            gap: 16px
+        }
+
+        .vid-meta span {
+            font-family: var(--font-body);
+            font-size: .85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .vid-meta i {
+            color: var(--red-accent)
+        }
+
+        .vid-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .92);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center
+        }
+
+        .vid-modal-overlay.active {
+            display: flex
+        }
+
+        .vid-modal {
+            width: 90%;
+            max-width: 900px;
+            position: relative
+        }
+
+        .vid-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer
+        }
+
+        .vid-modal iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: 2px solid var(--border-color)
+        }
+
+        .vid-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px
+        }
+
+        .vid-placeholder i {
+            font-size: 4rem;
+            color: var(--red-accent)
+        }
+
+        .vid-placeholder p {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            text-transform: uppercase
+        }
+
+        .mistakes-section {
+            padding: 80px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color)
+        }
+
+        .mistakes-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .mistakes-inner h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            text-align: center
+        }
+
+        .mistakes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px
+        }
+
+        .mistake-card {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            box-shadow: 6px 6px 0 0 var(--border-color);
+            padding: 32px 24px;
+            text-align: center
+        }
+
+        .mistake-card .mistake-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 16px
+        }
+
+        .mistake-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            margin-bottom: 8px
+        }
+
+        .mistake-card p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: .85rem;
+            line-height: 1.5
+        }
+
+        @media(max-width:768px) {
+            .vid-hero {
+                padding: 120px 24px 60px
+            }
+
+            .vid-filters {
+                padding: 0 24px
+            }
+
+            .vid-grid-section {
+                padding: 0 24px 60px
+            }
+
+            .vid-grid {
+                grid-template-columns: 1fr
+            }
+
+            .mistakes-section {
+                padding: 60px 24px
+            }
+
+            .mistakes-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:480px) {
+            .mistakes-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="circleTransition" class="circle-transition">
+        <div class="transition-content">
+            <div class="transition-title">BeFit</div>
+            <div class="transition-sub">Loading...</div>
+        </div>
+    </div>
+    <header class="header" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px">
+        <a href="index.html" class="logo" style="text-decoration:none"><svg width="28" height="24" viewBox="0 0 28 24"
+                fill="none">
+                <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+            </svg><span>BeFit</span></a>
+        <a href="join.html" class="cart-btn group" style="text-decoration:none"><span class="cart-text">Join
+                Us</span><span class="cart-count"><i class="ri-arrow-right-up-line"></i></span></a>
+    </header>
+
+    <section class="vid-hero">
+        <span class="rising-label" style="color:var(--red-accent);border-color:var(--red-accent)">VIDEO LIBRARY</span>
+        <h1>Perfect Your<br><span>Form.</span></h1>
+        <p>Watch expert demonstrations of every exercise. Learn proper posture, avoid injuries, and maximize your gains
+            with our video guides.</p>
+    </section>
+
+    <div class="vid-filters">
+        <button class="vid-filter-btn active" data-filter="all">All</button>
+        <button class="vid-filter-btn" data-filter="upper">Upper Body</button>
+        <button class="vid-filter-btn" data-filter="lower">Lower Body</button>
+        <button class="vid-filter-btn" data-filter="core">Core</button>
+        <button class="vid-filter-btn" data-filter="mobility">Mobility</button>
+    </div>
+
+    <section class="vid-grid-section">
+        <div class="vid-grid">
+            <div class="vid-card" data-category="lower" onclick="openVidModal(this)">
+                <div class="vid-thumb">🏋️<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Deadlift — Proper Form</h3>
+                    <div class="vid-tags"><span class="vid-tag">Hamstrings</span><span
+                            class="vid-tag">Glutes</span><span class="vid-tag">Lower Back</span></div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> Intermediate</span><span><i
+                                class="ri-time-line"></i> 4:30</span></div>
+                </div>
+            </div>
+            <div class="vid-card" data-category="upper" onclick="openVidModal(this)">
+                <div class="vid-thumb">💪<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Bench Press — Full Guide</h3>
+                    <div class="vid-tags"><span class="vid-tag">Chest</span><span class="vid-tag">Triceps</span><span
+                            class="vid-tag">Shoulders</span></div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> Beginner</span><span><i
+                                class="ri-time-line"></i> 5:15</span></div>
+                </div>
+            </div>
+            <div class="vid-card" data-category="lower" onclick="openVidModal(this)">
+                <div class="vid-thumb">🦵<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Squat — Depth & Posture</h3>
+                    <div class="vid-tags"><span class="vid-tag">Quads</span><span class="vid-tag">Glutes</span><span
+                            class="vid-tag">Core</span></div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> Beginner</span><span><i
+                                class="ri-time-line"></i> 3:45</span></div>
+                </div>
+            </div>
+            <div class="vid-card" data-category="upper" onclick="openVidModal(this)">
+                <div class="vid-thumb">🏗️<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Overhead Press — Form</h3>
+                    <div class="vid-tags"><span class="vid-tag">Shoulders</span><span class="vid-tag">Triceps</span>
+                    </div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> Intermediate</span><span><i
+                                class="ri-time-line"></i> 3:20</span></div>
+                </div>
+            </div>
+            <div class="vid-card" data-category="core" onclick="openVidModal(this)">
+                <div class="vid-thumb">🧱<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Plank Variations</h3>
+                    <div class="vid-tags"><span class="vid-tag">Abs</span><span class="vid-tag">Obliques</span><span
+                            class="vid-tag">Core</span></div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> Beginner</span><span><i
+                                class="ri-time-line"></i> 6:00</span></div>
+                </div>
+            </div>
+            <div class="vid-card" data-category="upper" onclick="openVidModal(this)">
+                <div class="vid-thumb">🔗<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Barbell Row — Technique</h3>
+                    <div class="vid-tags"><span class="vid-tag">Back</span><span class="vid-tag">Biceps</span><span
+                            class="vid-tag">Rear Delts</span></div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> Intermediate</span><span><i
+                                class="ri-time-line"></i> 4:10</span></div>
+                </div>
+            </div>
+            <div class="vid-card" data-category="lower" onclick="openVidModal(this)">
+                <div class="vid-thumb">🔥<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Romanian Deadlift</h3>
+                    <div class="vid-tags"><span class="vid-tag">Hamstrings</span><span class="vid-tag">Glutes</span>
+                    </div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> Intermediate</span><span><i
+                                class="ri-time-line"></i> 3:50</span></div>
+                </div>
+            </div>
+            <div class="vid-card" data-category="mobility" onclick="openVidModal(this)">
+                <div class="vid-thumb">🧘<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Hip Mobility Routine</h3>
+                    <div class="vid-tags"><span class="vid-tag">Hips</span><span class="vid-tag">Flexibility</span>
+                    </div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> All Levels</span><span><i
+                                class="ri-time-line"></i> 8:00</span></div>
+                </div>
+            </div>
+            <div class="vid-card" data-category="mobility" onclick="openVidModal(this)">
+                <div class="vid-thumb">💆<div class="vid-play-icon"><i class="ri-play-fill"></i></div>
+                </div>
+                <div class="vid-body">
+                    <h3>Shoulder Mobility</h3>
+                    <div class="vid-tags"><span class="vid-tag">Shoulders</span><span class="vid-tag">Warm-up</span>
+                    </div>
+                    <div class="vid-meta"><span><i class="ri-bar-chart-line"></i> All Levels</span><span><i
+                                class="ri-time-line"></i> 5:30</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="vidModalOverlay" class="vid-modal-overlay" onclick="if(event.target===this)closeVidModal()">
+        <div class="vid-modal">
+            <button class="vid-modal-close" onclick="closeVidModal()"><i class="ri-close-line"></i></button>
+            <div class="vid-placeholder">
+                <i class="ri-video-line"></i>
+                <p>Video Coming Soon</p>
+                <span style="font-family:var(--font-body);color:var(--text-secondary);font-size:.9rem">YouTube embed
+                    will appear here once videos are uploaded</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Common Mistakes -->
+    <section class="mistakes-section">
+        <div class="mistakes-inner">
+            <h2>Common Posture Mistakes</h2>
+            <div class="mistakes-grid">
+                <div class="mistake-card"><span class="mistake-icon">⚠️</span>
+                    <h3>Rounded Back Deadlift</h3>
+                    <p>Keep your spine neutral. Engage your lats before pulling. Think "chest up, hips back."</p>
+                </div>
+                <div class="mistake-card"><span class="mistake-icon">⚠️</span>
+                    <h3>Bouncing Bench Press</h3>
+                    <p>Control the eccentric. Pause briefly at the chest. Never bounce the bar off your sternum.</p>
+                </div>
+                <div class="mistake-card"><span class="mistake-icon">⚠️</span>
+                    <h3>Knees Caving In</h3>
+                    <p>Push knees out during squats and lunges. Strengthen your abductors. Use cues like "spread the
+                        floor."</p>
+                </div>
+                <div class="mistake-card"><span class="mistake-icon">⚠️</span>
+                    <h3>Ego Lifting</h3>
+                    <p>Use weight you can control through full ROM. Quality reps > heavy weight with bad form. Always.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="cta-banner-inner">
+            <h2>Learn from<br>the Best.</h2>
+            <p>Book a session with our coaches to perfect your technique in person.</p>
+            <div class="cta-banner-btns"><a href="trial.html" class="cta-btn-primary">Book Free Trial <i
+                        class="ri-arrow-right-up-line"></i></a><a href="trainers.html" class="cta-btn-secondary">Meet
+                    Our Coaches <i class="ri-arrow-right-up-line"></i></a></div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo"><svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg><span>BeFit</span></div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4><a href="join.html">Memberships</a><a href="trainers.html">Trainers</a><a
+                    href="supplements.html">Supplements</a><a href="blog.html">Blog</a><a href="trial.html">Free
+                    Trial</a><a href="wall-of-fame.html">Wall of Fame</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+                <p>Public Holidays: 7:00 AM – 8:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <p>info@BeFit.com</p>
+                <div class="footer-socials"><a href="#"><i class="ri-instagram-fill"></i></a><a href="#"><i
+                            class="ri-youtube-fill"></i></a><a href="https://wa.me/917895432666"><i
+                            class="ri-whatsapp-fill"></i></a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 BeFit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links"><a href="index.html" class="nav-link"><span>HOME</span></a><a href="trainers.html"
+                    class="nav-link"><span>COACH</span></a><a href="plans.html"
+                    class="nav-link"><span>PLANS</span></a><a href="videos.html"
+                    class="nav-link"><span>VIDEOS</span></a><a href="cafe.html" class="nav-link"><span>CAFE</span></a><a
+                    href="wall-of-fame.html" class="nav-link"><span>WALL OF FAME</span></a><a href="blog.html"
+                    class="nav-link"><span>ARTICLES</span></a><a href="trial.html" class="nav-link"><span>FREE
+                        TRIAL</span></a></div><a href="join.html" class="nav-cta">JOIN US <i
+                    class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+    <nav class="floating-navbar"><button id="menuBtn" class="menu-btn" aria-label="Toggle menu"><span
+                class="hamburger-line top"></span><span class="hamburger-line bottom"></span></button>
+        <div class="nav-divider"></div><a href="index.html" class="nav-logo">BeFit</a>
+        <div class="nav-divider"></div><button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+    <a href="https://wa.me/917895432666" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+        aria-label="Chat on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28"
+            fill="white">
+            <path
+                d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.49 2.031 7.797L0 32l8.469-2.004A15.934 15.934 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.486-.289-5.028 1.189 1.243-4.893-.317-.502A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.273-9.878c-.398-.199-2.354-1.162-2.719-1.294-.365-.133-.631-.199-.897.199-.266.397-1.03 1.294-1.263 1.56-.232.265-.465.299-.863.1-.398-.2-1.681-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.174-.811.179-.178.398-.465.597-.697.2-.232.266-.398.398-.664.133-.265.067-.497-.033-.697-.1-.199-.897-2.162-1.229-2.96-.324-.778-.653-.673-.897-.685-.232-.012-.497-.015-.762-.015s-.697.1-1.063.497c-.365.398-1.394 1.362-1.394 3.322 0 1.96 1.427 3.854 1.626 4.12.199.265 2.808 4.287 6.803 5.846.951.366 1.693.584 2.271.748.954.27 1.822.232 2.509.141.765-.1 2.354-.962 2.687-1.892.332-.93.332-1.727.232-1.892-.099-.165-.365-.265-.763-.464z" />
+        </svg><span class="whatsapp-float__text">Chat with us</span></a>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px 12px 14px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .45);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .3px;
+            transition: transform .2s ease, box-shadow .2s ease
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, .55)
+        }
+
+        .whatsapp-float svg {
+            flex-shrink: 0
+        }
+    </style>
+    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.vid-filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.vid-filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); const f = btn.dataset.filter; document.querySelectorAll('.vid-card').forEach(c => { c.style.display = (f === 'all' || c.dataset.category === f) ? '' : 'none' }) }) });
+        function openVidModal() { document.getElementById('vidModalOverlay').classList.add('active'); document.body.style.overflow = 'hidden' }
+        function closeVidModal() { document.getElementById('vidModalOverlay').classList.remove('active'); document.body.style.overflow = '' }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVidModal() });
+    </script>
+</body>
+
+</html>

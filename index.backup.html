@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Fit - Make Your Gym Incomparable</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="We are a complete ecosystem of high-quality fitness solutions. We offer high-end equipment and a variety of services to set up your gym from scratch.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Videos -->
+    <div class="video-background">
+        <video id="bgVideo1" class="bg-video active" autoplay muted loop playsinline>
+            <source src="assets/Video_Generation_Successful.mp4" type="video/mp4">
+        </video>
+        <video id="bgVideo2" class="bg-video" autoplay muted loop playsinline>
+            <source src="assets/Trainer_and_Member_Video_Generated.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Subtle Background Glow -->
+    <div class="bg-glow"></div>
+
+    <div class="hero-section fade-in">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                    <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                    <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                    <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                    <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+                </svg>
+                <span>BeFit</span>
+            </div>
+            <a href="join.html" id="joinUsBtn" class="cart-btn group" aria-label="Join Us">
+                <span class="cart-text">Join Us</span>
+                <span class="cart-count"><i class="ri-arrow-right-up-line"></i></span>
+            </a>
+        </header>
+
+        <!-- Circle Transition Overlay -->
+        <div id="circleTransition" class="circle-transition">
+            <div class="transition-content">
+                <div class="transition-title">WELCOME</div>
+                <div class="transition-sub">Loading your experience...</div>
+            </div>
+        </div>
+
+        <!-- Main Content Center -->
+        <main class="main-content">
+            <div class="badge fade-up" style="animation-delay: 0.1s;">
+                <span class="badge-new">NEW</span>
+                <span class="badge-text">BeFit 2025!</span>
+            </div>
+
+            <!-- Slide 1: Deadlift Video -->
+            <div id="heroSlide1" class="hero-slide active">
+                <h1 class="main-title fade-up" style="animation-delay: 0.2s;">
+                    SILENCE <br>
+                    <span class="dynamic-text-container">
+                        <span class="dynamic-text fill-mode">EXCUSES.</span>
+                    </span>
+                </h1>
+                <p class="description fade-up" style="animation-delay: 0.3s;">
+                    Competition-grade iron for those who demand results.<br>
+                    <strong>No fluff.</strong> Just work.
+                </p>
+            </div>
+
+            <!-- Slide 2: Trainer & Member Video -->
+            <div id="heroSlide2" class="hero-slide">
+                <h1 class="main-title">
+                    PURE <br>
+                    <span class="dynamic-text-container">
+                        <span class="dynamic-text fill-mode">PROGRESS.</span>
+                    </span>
+                </h1>
+                <p class="description">
+                    Master your mechanics with elite coaching.<br>
+                    <strong>We map the blueprint,</strong> you execute.
+                </p>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="footer fade-up" style="animation-delay: 0.5s;">
+            <div class="scroll-down group">
+                <i class="ri-arrow-down-line group-hover:block transition-all"></i>
+                <span>See more</span>
+            </div>
+
+            <div class="partners-logo">
+                <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon hover-scale"
+                    aria-label="Contact us on WhatsApp">
+                    <i class="ri-whatsapp-fill"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ══ S2: MARQUEE TICKER ══ -->
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <span class="marquee-text">BeFit &middot; SILENCE EXCUSES &middot; PURE PROGRESS &middot; DO THE WORK
+                &middot; NO DAYS OFF &middot; BeFit &middot; SILENCE EXCUSES &middot; PURE PROGRESS &middot; DO THE WORK
+                &middot; NO DAYS OFF &middot; BeFit &middot; SILENCE EXCUSES &middot; PURE PROGRESS &middot; DO THE WORK
+                &middot; NO DAYS OFF &middot;</span>
+        </div>
+    </div>
+
+    <!-- ══ BUCKLER-STYLE RISING CARD — SPECIAL OFFERS ══ -->
+    <div class="rising-card-wrapper">
+        <section class="rising-card-section rising-card--compact">
+
+            <div class="offer-block">
+                <div class="offer-content">
+                    <span class="rising-label">🔥 SPECIAL OFFER</span>
+                    <h2 class="rising-heading">Refer 5 Friends.<br>Get a Free Protein Box.</h2>
+                    <p class="offer-desc">Bring your crew to BeFit. When 5 of your referrals sign up, you unlock a
+                        premium protein supplement box — on us. No catches, no fine print.</p>
+                    <a href="#join" class="offer-cta">Claim Your Box <i class="ri-arrow-right-up-line"></i></a>
+                </div>
+                <div class="offer-image">
+                    <img src="assets/mb-biozyme.jpg" alt="MuscleBlaze Biozyme Gold 100% Whey" class="offer-product-img">
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+    <!-- ══ S4: STATS BAR ══ -->
+    <section class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+                <span class="stat-label">Active Members</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="12">0</span>
+                <span class="stat-label">Expert Trainers</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="8">0</span>
+                <span class="stat-label">Years Strong</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="18">0</span><span class="stat-suffix">hrs</span>
+                <span class="stat-label">Open Daily</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ WHY BEFIT — ONNIT STYLE ══ -->
+    <section class="why-befit" id="whyBefit">
+        <div class="why-befit-media">
+            <div class="why-befit-img-bg"></div>
+            <!-- Floating labels over image -->
+            <div class="why-label why-label--mind">
+                <span class="why-label-dot why-label-dot--orange"></span>
+                <span class="why-label-text">MIND</span>
+            </div>
+            <div class="why-label why-label--body">
+                <span class="why-label-dot why-label-dot--yellow"></span>
+                <span class="why-label-text">BODY</span>
+            </div>
+            <svg class="why-connector" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="140" y1="200" x2="260" y2="420" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"
+                    stroke-dasharray="6 4" />
+            </svg>
+        </div>
+        <div class="why-befit-content">
+            <h2 class="why-befit-heading">WHY<br>BEFIT?</h2>
+            <p class="why-befit-desc">We don’t just build gyms — we build athletes. Every machine, every coach, every
+                program inside BeFit is designed for one purpose: to push you past what you thought was possible. This
+                isn’t a place for half-reps and excuses. It’s a training ground for people who show up, do the work, and
+                leave better than they came.</p>
+            <a href="about.html" class="why-befit-btn">ABOUT US</a>
+        </div>
+    </section>
+
+    <!-- ══ SERVICES WE OFFER — STANDALONE SECTION ══ -->
+    <section class="standalone-section services-standalone">
+        <div class="standalone-inner">
+            <span class="rising-label rising-label--light">SERVICES WE OFFER</span>
+            <h2 class="rising-heading rising-heading--light">Everything You Need.<br>Nothing You Don't.</h2>
+
+            <div class="services-grid">
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-file-list-3-line"></i></div>
+                    <h3>Personalized Split</h3>
+                    <p>Custom training programs built around your schedule, goals, and recovery capacity. Updated
+                        monthly.</p>
+                </a>
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-heart-pulse-line"></i></div>
+                    <h3>Cardio</h3>
+                    <p>Treadmills, rowers, assault bikes, StairMasters. Premium cardio deck with zero wait times.</p>
+                </a>
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-boxing-line"></i></div>
+                    <h3>Strength Training</h3>
+                    <p>Free weights, power racks, platforms. Everything you need to move serious weight safely.</p>
+                </a>
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-loop-left-line"></i></div>
+                    <h3>Resistance Training</h3>
+                    <p>Cables, bands, pin-loaded machines. Controlled tension for targeted muscle development.</p>
+                </a>
+                <a class="service-card service-card--dark" href="#">
+                    <div class="service-icon"><i class="ri-body-scan-line"></i></div>
+                    <h3>Calisthenics Tools</h3>
+                    <p>Pull-up rigs, dip stations, parallettes, gymnastic rings. Bodyweight mastery starts here.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ STACKING CARDS — SUCCESSFUL TRANSFORMATIONS ══ -->
+    <section class="transform-section">
+        <div class="transform-header">
+            <span class="section-dot"></span>
+            <span class="transform-label">SUCCESSFUL TRANSFORMATIONS</span>
+            <h2 class="transform-heading">Transform Your Body<br>Into What You Always Dreamed</h2>
+        </div>
+
+        <ul class="stack-cards js-stack-cards">
+            <li class="stack-cards__item stack-card--1 js-stack-cards__item">
+                <div class="stack-card-inner">
+                    <div class="stack-card-text">
+                        <span class="stack-card-number">01</span>
+                        <div>
+                            <h3 class="stack-card-title">12-Week<br>Fat Loss</h3>
+                            <p class="stack-card-desc">Arjun dropped 18kg in 12 weeks following a structured cut with
+                                his BeFit trainer. No crash diets. Just discipline, progressive overload, and
+                                accountability.</p>
+                        </div>
+                    </div>
+                    <div class="stack-card-image">
+                        <div class="ba-images">
+                            <div class="ba-img-col">
+                                <span class="ba-label">BEFORE</span>
+                                <img src="assets/before-priya.jpg" alt="Before transformation" class="ba-photo">
+                            </div>
+                            <div class="ba-divider-line"></div>
+                            <div class="ba-img-col">
+                                <span class="ba-label">AFTER</span>
+                                <img src="assets/after-priya.jpg" alt="After transformation" class="ba-photo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="stack-cards__item stack-card--2 js-stack-cards__item">
+                <div class="stack-card-inner">
+                    <div class="stack-card-text">
+                        <span class="stack-card-number">02</span>
+                        <div>
+                            <h3 class="stack-card-title">Strength<br>Rebuild</h3>
+                            <p class="stack-card-desc">Priya went from recovering from a knee injury to deadlifting
+                                120kg in 6 months. Rehabilitation meets raw progression.</p>
+                        </div>
+                    </div>
+                    <div class="stack-card-image">
+                        <div class="ba-images">
+                            <div class="ba-img-col">
+                                <span class="ba-label">BEFORE</span>
+                                <img src="assets/before-priya.jpg" alt="Before transformation" class="ba-photo">
+                            </div>
+                            <div class="ba-divider-line"></div>
+                            <div class="ba-img-col">
+                                <span class="ba-label">AFTER</span>
+                                <img src="assets/after-priya.jpg" alt="After transformation" class="ba-photo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="stack-cards__item stack-card--3 js-stack-cards__item">
+                <div class="stack-card-inner">
+                    <div class="stack-card-text">
+                        <span class="stack-card-number">03</span>
+                        <div>
+                            <h3 class="stack-card-title">Body<br>Recomposition</h3>
+                            <p class="stack-card-desc">Rohan gained 8kg of lean muscle while maintaining his body fat
+                                percentage. Data-driven nutrition and programming at its finest.</p>
+                        </div>
+                    </div>
+                    <div class="stack-card-image">
+                        <div class="ba-slider" id="baSlider">
+                            <!-- After image (base layer) -->
+                            <div class="ba-slider__after">
+                                <img src="assets/after-rohan.jpg" alt="After transformation">
+                            </div>
+                            <!-- Before image (overlay, clipped by width) -->
+                            <div class="ba-slider__before" id="baSliderBefore" style="width: 50%;">
+                                <img src="assets/before-rohan.jpg" alt="Before transformation">
+                            </div>
+                            <!-- Draggable handle -->
+                            <div class="ba-slider__handle" id="baSliderHandle" style="left: 50%;">
+                                <div class="ba-slider__handle-line"></div>
+                                <div class="ba-slider__handle-circle">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M15 19l-7-7 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 5l7 7-7 7" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="ba-slider__handle-line"></div>
+                            </div>
+                            <!-- Labels -->
+                            <div class="ba-slider__labels">
+                                <span class="ba-slider__label">BEFORE</span>
+                                <span class="ba-slider__label">AFTER</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+
+    <!-- ══ S8: HEAD COACH TEASER ══ -->
+    <section class="standalone-section trainers-section">
+        <div class="standalone-inner">
+            <span class="rising-label rising-label--light">HEAD COACH</span>
+            <h2 class="rising-heading rising-heading--light">Meet the Architect of Your Results.</h2>
+
+            <div class="single-coach-card"
+                style="display: flex; gap: 40px; align-items: flex-start; background: var(--card-bg); border: 2px solid var(--border-color); box-shadow: 6px 6px 0px 0px var(--border-color); padding: 32px; margin-top: 40px;">
+                <div class="coach-img" style="flex: 0 0 280px;">
+                    <img src="assets/trainer.jpeg" alt="Head Coach Karan Singh"
+                        style="width: 100%; height: 320px; object-fit: cover; border: 2px solid var(--border-color); filter: grayscale(10%);">
+                </div>
+                <div class="coach-info">
+                    <h3
+                        style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--text-primary); margin-bottom: 4px;">
+                        Karan Singh</h3>
+                    <p
+                        style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--red-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
+                        STRENGTH & CONDITIONING SPECIALIST</p>
+                    <p
+                        style="font-family: var(--font-body); font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
+                        Specializing in advanced body recomposition, powerlifting mechanics, and functional hypertrophy.
+                        With over 8 years of in-the-trenches experience, Karan doesn't just train—he educates, breaks
+                        down barriers,
+                        and engineers the strongest version of you.
+                    </p>
+                    <a href="trainers.html" class="section-cta" style="margin-top: 24px;">VIEW FULL PROFILE & RESULTS <i
+                            class="ri-arrow-right-up-line"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ S9: DIET & NUTRITION TEASER ══ -->
+    <section class="standalone-section nutrition-teaser-section" style="text-align: center;">
+        <div class="standalone-inner">
+            <span class="rising-label rising-label--light">THE REAL SECRET</span>
+            <h2 class="rising-heading rising-heading--light"
+                style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15;">
+                Do you know what is more important than <span style="color: var(--red-accent);">working out?</span>
+            </h2>
+            <h3
+                style="font-family: var(--font-heading); font-size: clamp(1.5rem, 3vw, 2.2rem); color: var(--text-primary); margin-top: 16px; text-transform: uppercase;">
+                A Good Diet & Smart Supplementation.
+            </h3>
+            <p
+                style="font-family: var(--font-body); color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; max-width: 700px; margin: 24px auto 40px;">
+                You cannot out-train a bad diet. Muscle is broken down in the gym, but it is built in the kitchen.
+                Whether you are aiming for fat loss, muscle gain, or peak performance, your nutrition dictates your
+                results.
+                Equip yourself with the right knowledge and the highest-grade fuel.
+            </p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="supplements.html" class="section-cta">SHOP PREMIUM SUPPLEMENTS <i
+                        class="ri-arrow-right-up-line"></i></a>
+                <a href="blog.html" class="section-cta"
+                    style="background: transparent !important; color: var(--text-primary) !important; border: 2px solid var(--border-color) !important; box-shadow: 4px 4px 0px 0px var(--border-color) !important;">READ
+                    DIET & NUTRITION GUIDES <i class="ri-book-read-line"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ S10: BLOG TEASER ══ -->
+
+    <!-- ══ CAFE TEASER ══ -->
+    <section class="standalone-section cafe-section">
+        <div class="standalone-inner">
+            <div class="cafe-layout">
+                <div class="cafe-text">
+                    <span class="rising-label rising-label--light">☕ OUR CAFE</span>
+                    <h2 class="rising-heading rising-heading--light">Fuel Before<br>You Lift.</h2>
+                    <p class="cafe-desc">Fresh protein shakes, pre-workout meals and daily nutrition — right inside
+                        BeFit. Eat clean, train hard, repeat.</p>
+                    <a href="cafe.html" class="section-cta">Explore the Menu <i class="ri-arrow-right-up-line"></i></a>
+                </div>
+                <div class="cafe-image">
+                    <div class="cafe-img-placeholder">
+                        <span>☕ CAFE BAR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="standalone-section blog-section">
+        <div class="standalone-inner">
+            <span class="rising-label rising-label--light">FROM THE BLOG</span>
+            <h2 class="rising-heading rising-heading--light">Latest Insights.</h2>
+
+            <div class="blog-grid">
+                <a href="blog-post.html" class="blog-card">
+                    <div class="blog-img-placeholder"><span>📝</span></div>
+                    <div class="blog-card-content">
+                        <span class="blog-tag">TRAINING</span>
+                        <h3>5 Deadlift Mistakes Killing Your Progress</h3>
+                        <p class="blog-date">Feb 20, 2025</p>
+                    </div>
+                </a>
+                <a href="blog-post.html" class="blog-card">
+                    <div class="blog-img-placeholder"><span>🥗</span></div>
+                    <div class="blog-card-content">
+                        <span class="blog-tag">NUTRITION</span>
+                        <h3>The Only Macro Split You Need for Recomp</h3>
+                        <p class="blog-date">Feb 15, 2025</p>
+                    </div>
+                </a>
+                <a href="blog-post.html" class="blog-card">
+                    <div class="blog-img-placeholder"><span>🧠</span></div>
+                    <div class="blog-card-content">
+                        <span class="blog-tag">MINDSET</span>
+                        <h3>Why Consistency Beats Motivation Every Time</h3>
+                        <p class="blog-date">Feb 10, 2025</p>
+                    </div>
+                </a>
+            </div>
+
+            <a href="blog.html" class="section-cta">Read All Posts <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </section>
+
+
+    <!-- ══ S11: MEMBERSHIP CTA BANNER ══ -->
+    <section class="cta-banner">
+        <div class="cta-banner-inner">
+            <h2>Stop Thinking.<br>Start Training.</h2>
+            <p>Your best version is one membership away.</p>
+            <div class="cta-banner-btns">
+                <a href="join.html" class="cta-btn-primary">View Memberships <i class="ri-arrow-right-up-line"></i></a>
+                <a href="https://wa.me/1234567890" class="cta-btn-secondary">Talk to a Trainer <i
+                        class="ri-whatsapp-fill"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ S12: FOOTER ══ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">
+                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg>
+                    <span>BeFit</span>
+                </div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="join.html">Memberships</a>
+                <a href="trainers.html">Trainers</a>
+                <a href="supplements.html">Supplements</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+                <p>Public Holidays: 7:00 AM – 8:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <p>info@BeFit.com</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                    <a href="#"><i class="ri-youtube-fill"></i></a>
+                    <a href="https://wa.me/1234567890"><i class="ri-whatsapp-fill"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 BeFit. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Navbar Overlay -->
+    <div id="navOverlay" class="nav-overlay"></div>
+
+    <!-- Slide-up Menu -->
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><span>HOME</span></a>
+                <a href="trainers.html" class="nav-link"><span>COACH</span></a>
+                <a href="cafe.html" class="nav-link"><span>CAFE</span></a>
+                <a href="supplements.html" class="nav-link"><span>SUPPLEMENTS</span></a>
+                <a href="blog.html" class="nav-link"><span>DIET BLOG</span></a>
+            </div>
+            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+
+    <!-- Floating Navbar -->
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+
+        <div class="nav-divider"></div>
+
+        <a href="#" class="nav-logo">BeFit</a>
+
+        <div class="nav-divider"></div>
+
+        <button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

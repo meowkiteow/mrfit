@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeFit - Book Your Free Trial</title>
+    <meta name="description"
+        content="Experience BeFit with a free trial session. Get a guided gym tour, body assessment, and a personal training session — completely free.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .trial-hero {
+            padding: 160px 64px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trial-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .trial-hero h1 span {
+            color: var(--red-accent);
+        }
+
+        .trial-hero p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        /* What to Expect */
+        .trial-expect {
+            padding: 80px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .trial-expect-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trial-expect h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .expect-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .expect-card {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            box-shadow: 6px 6px 0px 0px var(--border-color);
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .expect-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .expect-card .expect-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .expect-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .expect-card p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Form Section */
+        .trial-form-section {
+            padding: 100px 64px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trial-form-section h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .trial-form-section .form-sub {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .trial-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .trial-form .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--red-accent);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239e9e9e' viewBox='0 0 16 16'%3E%3Cpath d='M8 11.5l-5-5h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .trial-submit-btn {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 32px;
+            background: var(--red-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .trial-submit-btn:hover {
+            background: #ff1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(204, 0, 0, 0.4);
+        }
+
+        /* FAQ */
+        .trial-faq {
+            padding: 80px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color);
+        }
+
+        .trial-faq-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trial-faq h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .faq-item {
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-question i {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.open .faq-question i {
+            transform: rotate(45deg);
+            color: var(--red-accent);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding-bottom: 24px;
+        }
+
+        .faq-answer p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .trial-hero {
+                padding: 120px 24px 60px;
+            }
+
+            .trial-expect,
+            .trial-form-section,
+            .trial-faq {
+                padding: 60px 24px;
+            }
+
+            .expect-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trial-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Circle Transition Overlay -->
+    <div id="circleTransition" class="circle-transition">
+        <div class="transition-content">
+            <div class="transition-title">BeFit</div>
+            <div class="transition-sub">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px;">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+            </svg>
+            <span>BeFit</span>
+        </a>
+        <a href="join.html" class="cart-btn group" style="text-decoration: none;">
+            <span class="cart-text">Join Us</span>
+            <span class="cart-count"><i class="ri-arrow-right-up-line"></i></span>
+        </a>
+    </header>
+
+    <!-- Hero -->
+    <section class="trial-hero">
+        <span class="rising-label" style="color: var(--red-accent); border-color: var(--red-accent);">FREE TRIAL</span>
+        <h1>Experience BeFit.<br><span>First Session On Us.</span></h1>
+        <p>Walk in a stranger, walk out a member. Your first trial session is completely free — no commitments, no
+            pressure. Just pure results.</p>
+    </section>
+
+    <!-- What to Expect -->
+    <section class="trial-expect">
+        <div class="trial-expect-inner">
+            <h2>What to Expect</h2>
+            <div class="expect-grid">
+                <div class="expect-card">
+                    <span class="expect-icon">🏋️</span>
+                    <h3>Guided Gym Tour</h3>
+                    <p>Walk through our entire facility. See the equipment, meet the community, and feel the energy of
+                        BeFit firsthand.</p>
+                </div>
+                <div class="expect-card">
+                    <span class="expect-icon">📋</span>
+                    <h3>Body Assessment</h3>
+                    <p>Get a professional body composition analysis and goal-setting session. Know exactly where you
+                        stand and where you're going.</p>
+                </div>
+                <div class="expect-card">
+                    <span class="expect-icon">💪</span>
+                    <h3>Free PT Session</h3>
+                    <p>Train with one of our certified coaches for a full session. Experience the BeFit difference — no
+                        charge, no strings attached.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section class="trial-form-section">
+        <h2>Book Your Trial</h2>
+        <p class="form-sub">Fill in your details and we'll get you set up for your free session.</p>
+
+        <form id="trialForm" class="trial-form" onsubmit="return false;">
+            <div class="form-group">
+                <label for="trialName">Full Name</label>
+                <input type="text" id="trialName" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="trialPhone">Phone Number</label>
+                <input type="tel" id="trialPhone" placeholder="+91 98765 43210" required>
+            </div>
+            <div class="form-group">
+                <label for="trialEmail">Email</label>
+                <input type="email" id="trialEmail" placeholder="john@email.com">
+            </div>
+            <div class="form-group">
+                <label for="trialDate">Preferred Date</label>
+                <input type="date" id="trialDate" required>
+            </div>
+            <div class="form-group">
+                <label for="trialTime">Preferred Time</label>
+                <select id="trialTime" required>
+                    <option value="">Select a time slot</option>
+                    <option>5:00 AM – 7:00 AM</option>
+                    <option>7:00 AM – 9:00 AM</option>
+                    <option>9:00 AM – 11:00 AM</option>
+                    <option>11:00 AM – 1:00 PM</option>
+                    <option>1:00 PM – 3:00 PM</option>
+                    <option>3:00 PM – 5:00 PM</option>
+                    <option>5:00 PM – 7:00 PM</option>
+                    <option>7:00 PM – 9:00 PM</option>
+                    <option>9:00 PM – 11:00 PM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="trialGoal">Fitness Goal</label>
+                <select id="trialGoal" required>
+                    <option value="">Select your goal</option>
+                    <option>Fat Loss</option>
+                    <option>Muscle Gain</option>
+                    <option>Strength Training</option>
+                    <option>General Fitness</option>
+                    <option>Rehabilitation</option>
+                </select>
+            </div>
+            <div class="form-group full-width">
+                <label for="trialMedical">Medical Conditions (Optional)</label>
+                <textarea id="trialMedical"
+                    placeholder="Any injuries, conditions, or allergies we should know about..."></textarea>
+            </div>
+            <button type="submit" class="trial-submit-btn" id="trialSubmitBtn">
+                Book My Free Trial <i class="ri-arrow-right-up-line"></i>
+            </button>
+        </form>
+    </section>
+
+    <!-- FAQ -->
+    <section class="trial-faq">
+        <div class="trial-faq-inner">
+            <h2>Common Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">Is it really free? <i class="ri-add-line"></i></div>
+                <div class="faq-answer">
+                    <p>100% free. No hidden costs, no card required, no obligation to join. We want you to experience
+                        BeFit and decide for yourself.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What should I bring? <i class="ri-add-line"></i></div>
+                <div class="faq-answer">
+                    <p>Just bring yourself, comfortable workout clothes, and a pair of training shoes. We provide water,
+                        towels, and everything else you need.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How long is the trial session? <i class="ri-add-line"></i></div>
+                <div class="faq-answer">
+                    <p>The full experience takes about 90 minutes — including the tour, assessment, and your personal
+                        training session.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I bring a friend? <i class="ri-add-line"></i></div>
+                <div class="faq-answer">
+                    <p>Absolutely! Bring a friend and you both get a free trial session. Training with a partner is one
+                        of the best ways to stay consistent.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do I need to be fit to start? <i class="ri-add-line"></i></div>
+                <div class="faq-answer">
+                    <p>Not at all. We welcome all fitness levels — from complete beginners to advanced athletes. Our
+                        coaches adapt the session to your current ability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+        <div class="cta-banner-inner">
+            <h2>Still Thinking?<br>Just Show Up.</h2>
+            <p>The hardest part is walking through the door. We'll handle the rest.</p>
+            <div class="cta-banner-btns">
+                <a href="https://wa.me/917895432666?text=Hi%20BeFit!%20I'd%20like%20to%20book%20a%20free%20trial%20session."
+                    class="cta-btn-primary" target="_blank">Chat on WhatsApp <i class="ri-whatsapp-fill"></i></a>
+                <a href="join.html" class="cta-btn-secondary">View Memberships <i
+                        class="ri-arrow-right-up-line"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">
+                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg>
+                    <span>BeFit</span>
+                </div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="join.html">Memberships</a>
+                <a href="trainers.html">Trainers</a>
+                <a href="supplements.html">Supplements</a>
+                <a href="blog.html">Blog</a>
+                <a href="trial.html">Free Trial</a>
+                <a href="wall-of-fame.html">Wall of Fame</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+                <p>Public Holidays: 7:00 AM – 8:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <p>info@BeFit.com</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                    <a href="#"><i class="ri-youtube-fill"></i></a>
+                    <a href="https://wa.me/917895432666"><i class="ri-whatsapp-fill"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 BeFit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Navbar Overlay -->
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><span>HOME</span></a>
+                <a href="trainers.html" class="nav-link"><span>COACH</span></a>
+                <a href="plans.html" class="nav-link"><span>PLANS</span></a>
+                <a href="videos.html" class="nav-link"><span>VIDEOS</span></a>
+                <a href="cafe.html" class="nav-link"><span>CAFE</span></a>
+                <a href="wall-of-fame.html" class="nav-link"><span>WALL OF FAME</span></a>
+                <a href="blog.html" class="nav-link"><span>ARTICLES</span></a>
+                <a href="trial.html" class="nav-link"><span>FREE TRIAL</span></a>
+            </div>
+            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+
+    <!-- Floating Navbar -->
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+        <div class="nav-divider"></div>
+        <a href="index.html" class="nav-logo">BeFit</a>
+        <div class="nav-divider"></div>
+        <button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/917895432666" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+        aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="white">
+            <path
+                d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.49 2.031 7.797L0 32l8.469-2.004A15.934 15.934 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.486-.289-5.028 1.189 1.243-4.893-.317-.502A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.273-9.878c-.398-.199-2.354-1.162-2.719-1.294-.365-.133-.631-.199-.897.199-.266.397-1.03 1.294-1.263 1.56-.232.265-.465.299-.863.1-.398-.2-1.681-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.174-.811.179-.178.398-.465.597-.697.2-.232.266-.398.398-.664.133-.265.067-.497-.033-.697-.1-.199-.897-2.162-1.229-2.96-.324-.778-.653-.673-.897-.685-.232-.012-.497-.015-.762-.015s-.697.1-1.063.497c-.365.398-1.394 1.362-1.394 3.322 0 1.96 1.427 3.854 1.626 4.12.199.265 2.808 4.287 6.803 5.846.951.366 1.693.584 2.271.748.954.27 1.822.232 2.509.141.765-.1 2.354-.962 2.687-1.892.332-.93.332-1.727.232-1.892-.099-.165-.365-.265-.763-.464z" />
+        </svg>
+        <span class="whatsapp-float__text">Chat with us</span>
+    </a>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px 12px 14px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+        }
+
+        .whatsapp-float svg {
+            flex-shrink: 0;
+        }
+    </style>
+    <script src="script.js"></script>
+</body>
+
+</html>

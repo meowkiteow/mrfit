@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeFit - Franchise Opportunity</title>
+    <meta name="description"
+        content="Own a BeFit franchise. Join the fastest-growing fitness brand with a proven business model, full support, and high ROI potential.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .franchise-hero {
+            padding: 160px 64px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .franchise-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .franchise-hero h1 span {
+            color: var(--red-accent);
+        }
+
+        .franchise-hero p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Why Franchise */
+        .franchise-benefits {
+            padding: 80px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .franchise-benefits-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .franchise-benefits h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .benefit-card {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            box-shadow: 6px 6px 0px 0px var(--border-color);
+            padding: 40px 28px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .benefit-card .benefit-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .franchise-stats {
+            padding: 80px 64px;
+        }
+
+        .franchise-stats-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .f-stat-item .f-stat-number {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            color: var(--red-accent);
+            display: block;
+        }
+
+        .f-stat-item .f-stat-label {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Inquiry Form */
+        .franchise-form-section {
+            padding: 100px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color);
+        }
+
+        .franchise-form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .franchise-form-section h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .franchise-form-section .form-sub {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .franchise-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .franchise-form .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--red-accent);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239e9e9e' viewBox='0 0 16 16'%3E%3Cpath d='M8 11.5l-5-5h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .franchise-submit-btn {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 32px;
+            background: var(--red-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .franchise-submit-btn:hover {
+            background: #ff1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(204, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .franchise-hero {
+                padding: 120px 24px 60px;
+            }
+
+            .franchise-benefits,
+            .franchise-stats,
+            .franchise-form-section {
+                padding: 60px 24px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .franchise-stats-inner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .franchise-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="circleTransition" class="circle-transition">
+        <div class="transition-content">
+            <div class="transition-title">BeFit</div>
+            <div class="transition-sub">Loading...</div>
+        </div>
+    </div>
+
+    <header class="header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px;">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+            </svg>
+            <span>BeFit</span>
+        </a>
+        <a href="join.html" class="cart-btn group" style="text-decoration: none;">
+            <span class="cart-text">Join Us</span>
+            <span class="cart-count"><i class="ri-arrow-right-up-line"></i></span>
+        </a>
+    </header>
+
+    <!-- Hero -->
+    <section class="franchise-hero">
+        <span class="rising-label" style="color: var(--red-accent); border-color: var(--red-accent);">FRANCHISE
+            OPPORTUNITY</span>
+        <h1>Own a BeFit.<br><span>Build Your Empire.</span></h1>
+        <p>Join the fastest-growing premium fitness brand. We provide the blueprint, the brand, and the support — you
+            build a legacy.</p>
+    </section>
+
+    <!-- Benefits -->
+    <section class="franchise-benefits">
+        <div class="franchise-benefits-inner">
+            <h2>Why Franchise with BeFit</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">📈</span>
+                    <h3>Proven Model</h3>
+                    <p>A battle-tested business model with 8+ years of track record and 500+ active members per
+                        location.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🎓</span>
+                    <h3>Full Training</h3>
+                    <p>Complete onboarding for you and your team. From operations to marketing — we train you on
+                        everything.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🏗️</span>
+                    <h3>Turnkey Setup</h3>
+                    <p>We handle gym layout, equipment sourcing, branding, and launch. You open ready to go from day
+                        one.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">💰</span>
+                    <h3>High ROI</h3>
+                    <p>Competitive margins in the booming fitness industry. Most franchise partners break even within 18
+                        months.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="franchise-stats">
+        <div class="franchise-stats-inner">
+            <div class="f-stat-item">
+                <span class="f-stat-number">500+</span>
+                <span class="f-stat-label">Members Per Location</span>
+            </div>
+            <div class="f-stat-item">
+                <span class="f-stat-number">92%</span>
+                <span class="f-stat-label">Member Retention Rate</span>
+            </div>
+            <div class="f-stat-item">
+                <span class="f-stat-number">18mo</span>
+                <span class="f-stat-label">Avg. Breakeven Time</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form -->
+    <section class="franchise-form-section">
+        <div class="franchise-form-wrapper">
+            <h2>Submit Your Inquiry</h2>
+            <p class="form-sub">Interested in opening a BeFit? Fill in the details and our franchise team will reach out
+                within 48 hours.</p>
+
+            <form id="franchiseForm" class="franchise-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="fName">Full Name</label>
+                    <input type="text" id="fName" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="fEmail">Email</label>
+                    <input type="email" id="fEmail" placeholder="you@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="fPhone">Phone Number</label>
+                    <input type="tel" id="fPhone" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="form-group">
+                    <label for="fCity">City / Location</label>
+                    <input type="text" id="fCity" placeholder="Which city are you targeting?" required>
+                </div>
+                <div class="form-group">
+                    <label for="fBudget">Investment Budget</label>
+                    <select id="fBudget" required>
+                        <option value="">Select budget range</option>
+                        <option>₹10 Lakh – ₹25 Lakh</option>
+                        <option>₹25 Lakh – ₹50 Lakh</option>
+                        <option>₹50 Lakh – ₹1 Crore</option>
+                        <option>₹1 Crore+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fSpace">Available Space (sq ft)</label>
+                    <select id="fSpace">
+                        <option value="">Select space size</option>
+                        <option>1,000 – 2,000 sq ft</option>
+                        <option>2,000 – 4,000 sq ft</option>
+                        <option>4,000 – 6,000 sq ft</option>
+                        <option>6,000+ sq ft</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label for="fExperience">Business Experience</label>
+                    <textarea id="fExperience"
+                        placeholder="Tell us about your background — any business or fitness industry experience..."></textarea>
+                </div>
+                <button type="submit" class="franchise-submit-btn" id="franchiseSubmitBtn">
+                    Submit Inquiry <i class="ri-arrow-right-up-line"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">
+                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg>
+                    <span>BeFit</span>
+                </div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="join.html">Memberships</a>
+                <a href="trainers.html">Trainers</a>
+                <a href="supplements.html">Supplements</a>
+                <a href="blog.html">Blog</a>
+                <a href="trial.html">Free Trial</a>
+                <a href="wall-of-fame.html">Wall of Fame</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+                <p>Public Holidays: 7:00 AM – 8:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <p>info@BeFit.com</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                    <a href="#"><i class="ri-youtube-fill"></i></a>
+                    <a href="https://wa.me/917895432666"><i class="ri-whatsapp-fill"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 BeFit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Nav -->
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><span>HOME</span></a>
+                <a href="trainers.html" class="nav-link"><span>COACH</span></a>
+                <a href="plans.html" class="nav-link"><span>PLANS</span></a>
+                <a href="videos.html" class="nav-link"><span>VIDEOS</span></a>
+                <a href="cafe.html" class="nav-link"><span>CAFE</span></a>
+                <a href="wall-of-fame.html" class="nav-link"><span>WALL OF FAME</span></a>
+                <a href="blog.html" class="nav-link"><span>ARTICLES</span></a>
+                <a href="trial.html" class="nav-link"><span>FREE TRIAL</span></a>
+            </div>
+            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+        <div class="nav-divider"></div>
+        <a href="index.html" class="nav-logo">BeFit</a>
+        <div class="nav-divider"></div>
+        <button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+
+    <a href="https://wa.me/917895432666" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+        aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="white">
+            <path
+                d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.49 2.031 7.797L0 32l8.469-2.004A15.934 15.934 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.486-.289-5.028 1.189 1.243-4.893-.317-.502A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.273-9.878c-.398-.199-2.354-1.162-2.719-1.294-.365-.133-.631-.199-.897.199-.266.397-1.03 1.294-1.263 1.56-.232.265-.465.299-.863.1-.398-.2-1.681-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.174-.811.179-.178.398-.465.597-.697.2-.232.266-.398.398-.664.133-.265.067-.497-.033-.697-.1-.199-.897-2.162-1.229-2.96-.324-.778-.653-.673-.897-.685-.232-.012-.497-.015-.762-.015s-.697.1-1.063.497c-.365.398-1.394 1.362-1.394 3.322 0 1.96 1.427 3.854 1.626 4.12.199.265 2.808 4.287 6.803 5.846.951.366 1.693.584 2.271.748.954.27 1.822.232 2.509.141.765-.1 2.354-.962 2.687-1.892.332-.93.332-1.727.232-1.892-.099-.165-.365-.265-.763-.464z" />
+        </svg>
+        <span class="whatsapp-float__text">Chat with us</span>
+    </a>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px 12px 14px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+        }
+
+        .whatsapp-float svg {
+            flex-shrink: 0;
+        }
+    </style>
+    <script src="script.js"></script>
+</body>
+
+</html>

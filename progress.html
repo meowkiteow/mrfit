@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeFit - Member Progress</title>
+    <meta name="description"
+        content="Track your fitness journey. See real member milestones, achievements, and transformation progress at BeFit.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .prog-hero {
+            padding: 160px 64px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .prog-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px
+        }
+
+        .prog-hero h1 span {
+            color: var(--red-accent)
+        }
+
+        .prog-hero p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto
+        }
+
+        .milestones-section {
+            padding: 80px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color)
+        }
+
+        .milestones-inner {
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        .milestones-inner h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            text-align: center
+        }
+
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px
+        }
+
+        .milestone-card {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            box-shadow: 6px 6px 0 0 var(--border-color);
+            padding: 36px 24px;
+            text-align: center;
+            transition: transform .3s ease
+        }
+
+        .milestone-card:hover {
+            transform: translateY(-8px)
+        }
+
+        .milestone-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 16px
+        }
+
+        .milestone-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px
+        }
+
+        .milestone-card p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: .85rem;
+            line-height: 1.5
+        }
+
+        .milestone-badge {
+            display: inline-block;
+            background: var(--red-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: .75rem;
+            padding: 4px 12px;
+            letter-spacing: 1px;
+            margin-top: 12px
+        }
+
+        .progress-stories {
+            padding: 80px 64px;
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        .progress-stories h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            text-align: center
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px
+        }
+
+        .story-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            box-shadow: 6px 6px 0 0 var(--border-color);
+            overflow: hidden
+        }
+
+        .story-header {
+            padding: 32px 28px 0;
+            display: flex;
+            align-items: center;
+            gap: 16px
+        }
+
+        .story-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(204, 0, 0, .15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--red-accent)
+        }
+
+        .story-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase
+        }
+
+        .story-info span {
+            font-family: var(--font-heading);
+            font-size: .85rem;
+            color: var(--red-accent);
+            letter-spacing: 1px
+        }
+
+        .story-body {
+            padding: 20px 28px 28px
+        }
+
+        .story-body p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: .95rem;
+            line-height: 1.6;
+            margin-bottom: 16px
+        }
+
+        .story-stats {
+            display: flex;
+            gap: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color)
+        }
+
+        .story-stat {
+            text-align: center;
+            flex: 1
+        }
+
+        .story-stat .val {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--red-accent);
+            display: block
+        }
+
+        .story-stat .lbl {
+            font-family: var(--font-heading);
+            font-size: .75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: .5px
+        }
+
+        .progress-bar-section {
+            padding: 80px 64px;
+            background: var(--card-bg);
+            border-top: 2px solid var(--border-color)
+        }
+
+        .progress-bar-inner {
+            max-width: 800px;
+            margin: 0 auto
+        }
+
+        .progress-bar-inner h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            text-align: center
+        }
+
+        .prog-bar-item {
+            margin-bottom: 32px
+        }
+
+        .prog-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px
+        }
+
+        .prog-bar-label span {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-transform: uppercase
+        }
+
+        .prog-bar-label .pct {
+            color: var(--red-accent)
+        }
+
+        .prog-bar-track {
+            height: 12px;
+            background: var(--border-color);
+            border-radius: 0;
+            overflow: hidden
+        }
+
+        .prog-bar-fill {
+            height: 100%;
+            background: var(--red-accent);
+            transition: width 1.5s ease
+        }
+
+        @media(max-width:768px) {
+            .prog-hero {
+                padding: 120px 24px 60px
+            }
+
+            .milestones-section,
+            .progress-stories,
+            .progress-bar-section {
+                padding: 60px 24px
+            }
+
+            .milestone-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:480px) {
+            .milestone-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="circleTransition" class="circle-transition">
+        <div class="transition-content">
+            <div class="transition-title">BeFit</div>
+            <div class="transition-sub">Loading...</div>
+        </div>
+    </div>
+    <header class="header" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px">
+        <a href="index.html" class="logo" style="text-decoration:none"><svg width="28" height="24" viewBox="0 0 28 24"
+                fill="none">
+                <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+            </svg><span>BeFit</span></a>
+        <a href="join.html" class="cart-btn group" style="text-decoration:none"><span class="cart-text">Join
+                Us</span><span class="cart-count"><i class="ri-arrow-right-up-line"></i></span></a>
+    </header>
+
+    <section class="prog-hero">
+        <span class="rising-label" style="color:var(--red-accent);border-color:var(--red-accent)">MEMBER PROGRESS</span>
+        <h1>Track the<br><span>Grind.</span></h1>
+        <p>Real members, real milestones, real progress. See how our community is crushing their goals and building the
+            bodies they deserve.</p>
+    </section>
+
+    <section class="milestones-section">
+        <div class="milestones-inner">
+            <h2>Member Milestones</h2>
+            <div class="milestone-grid">
+                <div class="milestone-card"><span class="milestone-icon">🎯</span>
+                    <h3>First 5kg Lost</h3>
+                    <p>The first 5kg is always the hardest. 47 members unlocked this milestone this month.</p><span
+                        class="milestone-badge">47 THIS MONTH</span>
+                </div>
+                <div class="milestone-card"><span class="milestone-icon">💪</span>
+                    <h3>100kg Bench</h3>
+                    <p>Joining the 100kg bench club is a rite of passage at BeFit. 12 new members qualified.</p><span
+                        class="milestone-badge">12 MEMBERS</span>
+                </div>
+                <div class="milestone-card"><span class="milestone-icon">🔥</span>
+                    <h3>30-Day Streak</h3>
+                    <p>30 consecutive days of training. No excuses. 23 members earned this badge.</p><span
+                        class="milestone-badge">23 ACTIVE</span>
+                </div>
+                <div class="milestone-card"><span class="milestone-icon">🏆</span>
+                    <h3>Body Recomp</h3>
+                    <p>Lost fat AND gained muscle simultaneously. The ultimate achievement. 8 members this quarter.</p>
+                    <span class="milestone-badge">8 THIS QUARTER</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="progress-stories">
+        <h2>Progress Spotlights</h2>
+        <div class="story-grid">
+            <div class="story-card">
+                <div class="story-header">
+                    <div class="story-avatar">RV</div>
+                    <div class="story-info">
+                        <h3>Rahul Verma</h3><span>MEMBER SINCE JAN 2024</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <p>"I started at 95kg with zero gym experience. 8 months in, I'm 78kg with visible abs for the first
+                        time in my life. BeFit's coaching and community kept me accountable."</p>
+                    <div class="story-stats">
+                        <div class="story-stat"><span class="val">-17kg</span><span class="lbl">Weight Lost</span></div>
+                        <div class="story-stat"><span class="val">8mo</span><span class="lbl">Duration</span></div>
+                        <div class="story-stat"><span class="val">22%→12%</span><span class="lbl">Body Fat</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-card">
+                <div class="story-header">
+                    <div class="story-avatar">NT</div>
+                    <div class="story-info">
+                        <h3>Neha Tandon</h3><span>MEMBER SINCE MAR 2024</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <p>"Post-pregnancy fitness felt impossible. The personalized diet plan and supportive training
+                        environment at BeFit made me stronger than my pre-baby self."</p>
+                    <div class="story-stats">
+                        <div class="story-stat"><span class="val">-12kg</span><span class="lbl">Weight Lost</span></div>
+                        <div class="story-stat"><span class="val">6mo</span><span class="lbl">Duration</span></div>
+                        <div class="story-stat"><span class="val">60kg</span><span class="lbl">Deadlift PR</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-card">
+                <div class="story-header">
+                    <div class="story-avatar">AK</div>
+                    <div class="story-info">
+                        <h3>Amit Kumar</h3><span>MEMBER SINCE OCT 2023</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <p>"Skinny guy transformation. 62kg to 78kg in 14 months — all lean mass. The clean bulk diet from
+                        BeFit's nutritionist was the game changer."</p>
+                    <div class="story-stats">
+                        <div class="story-stat"><span class="val">+16kg</span><span class="lbl">Mass Gained</span></div>
+                        <div class="story-stat"><span class="val">14mo</span><span class="lbl">Duration</span></div>
+                        <div class="story-stat"><span class="val">120kg</span><span class="lbl">Squat PR</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-card">
+                <div class="story-header">
+                    <div class="story-avatar">PS</div>
+                    <div class="story-info">
+                        <h3>Pooja Singh</h3><span>MEMBER SINCE JUL 2024</span>
+                    </div>
+                </div>
+                <div class="story-body">
+                    <p>"From not being able to do a single pull-up to doing 10 strict reps. The progressive coaching
+                        approach at BeFit is unmatched."</p>
+                    <div class="story-stats">
+                        <div class="story-stat"><span class="val">10</span><span class="lbl">Pull-ups</span></div>
+                        <div class="story-stat"><span class="val">5mo</span><span class="lbl">Duration</span></div>
+                        <div class="story-stat"><span class="val">365</span><span class="lbl">Day Streak</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="progress-bar-section">
+        <div class="progress-bar-inner">
+            <h2>Community Stats</h2>
+            <div class="prog-bar-item">
+                <div class="prog-bar-label"><span>Members Who Hit Their Goal</span><span class="pct">87%</span></div>
+                <div class="prog-bar-track">
+                    <div class="prog-bar-fill" style="width:87%"></div>
+                </div>
+            </div>
+            <div class="prog-bar-item">
+                <div class="prog-bar-label"><span>Average Attendance</span><span class="pct">92%</span></div>
+                <div class="prog-bar-track">
+                    <div class="prog-bar-fill" style="width:92%"></div>
+                </div>
+            </div>
+            <div class="prog-bar-item">
+                <div class="prog-bar-label"><span>Members on Custom Diet Plans</span><span class="pct">64%</span></div>
+                <div class="prog-bar-track">
+                    <div class="prog-bar-fill" style="width:64%"></div>
+                </div>
+            </div>
+            <div class="prog-bar-item">
+                <div class="prog-bar-label"><span>Member Retention Rate</span><span class="pct">95%</span></div>
+                <div class="prog-bar-track">
+                    <div class="prog-bar-fill" style="width:95%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="cta-banner-inner">
+            <h2>Your Progress<br>Starts Now.</h2>
+            <p>Join a community that tracks, supports, and celebrates every step forward.</p>
+            <div class="cta-banner-btns"><a href="trial.html" class="cta-btn-primary">Book Free Trial <i
+                        class="ri-arrow-right-up-line"></i></a><a href="wall-of-fame.html"
+                    class="cta-btn-secondary">Wall of Fame <i class="ri-arrow-right-up-line"></i></a></div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo"><svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg><span>BeFit</span></div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4><a href="join.html">Memberships</a><a href="trainers.html">Trainers</a><a
+                    href="supplements.html">Supplements</a><a href="blog.html">Blog</a><a href="trial.html">Free
+                    Trial</a><a href="wall-of-fame.html">Wall of Fame</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+                <p>Public Holidays: 7:00 AM – 8:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <p>info@BeFit.com</p>
+                <div class="footer-socials"><a href="#"><i class="ri-instagram-fill"></i></a><a href="#"><i
+                            class="ri-youtube-fill"></i></a><a href="https://wa.me/917895432666"><i
+                            class="ri-whatsapp-fill"></i></a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 BeFit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links"><a href="index.html" class="nav-link"><span>HOME</span></a><a href="trainers.html"
+                    class="nav-link"><span>COACH</span></a><a href="plans.html"
+                    class="nav-link"><span>PLANS</span></a><a href="videos.html"
+                    class="nav-link"><span>VIDEOS</span></a><a href="cafe.html" class="nav-link"><span>CAFE</span></a><a
+                    href="wall-of-fame.html" class="nav-link"><span>WALL OF FAME</span></a><a href="blog.html"
+                    class="nav-link"><span>ARTICLES</span></a><a href="trial.html" class="nav-link"><span>FREE
+                        TRIAL</span></a></div><a href="join.html" class="nav-cta">JOIN US <i
+                    class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+    <nav class="floating-navbar"><button id="menuBtn" class="menu-btn" aria-label="Toggle menu"><span
+                class="hamburger-line top"></span><span class="hamburger-line bottom"></span></button>
+        <div class="nav-divider"></div><a href="index.html" class="nav-logo">BeFit</a>
+        <div class="nav-divider"></div><button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+    <a href="https://wa.me/917895432666" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+        aria-label="Chat on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28"
+            fill="white">
+            <path
+                d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.49 2.031 7.797L0 32l8.469-2.004A15.934 15.934 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.486-.289-5.028 1.189 1.243-4.893-.317-.502A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.273-9.878c-.398-.199-2.354-1.162-2.719-1.294-.365-.133-.631-.199-.897.199-.266.397-1.03 1.294-1.263 1.56-.232.265-.465.299-.863.1-.398-.2-1.681-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.174-.811.179-.178.398-.465.597-.697.2-.232.266-.398.398-.664.133-.265.067-.497-.033-.697-.1-.199-.897-2.162-1.229-2.96-.324-.778-.653-.673-.897-.685-.232-.012-.497-.015-.762-.015s-.697.1-1.063.497c-.365.398-1.394 1.362-1.394 3.322 0 1.96 1.427 3.854 1.626 4.12.199.265 2.808 4.287 6.803 5.846.951.366 1.693.584 2.271.748.954.27 1.822.232 2.509.141.765-.1 2.354-.962 2.687-1.892.332-.93.332-1.727.232-1.892-.099-.165-.365-.265-.763-.464z" />
+        </svg><span class="whatsapp-float__text">Chat with us</span></a>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px 12px 14px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .45);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .3px;
+            transition: transform .2s ease, box-shadow .2s ease
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, .55)
+        }
+
+        .whatsapp-float svg {
+            flex-shrink: 0
+        }
+    </style>
+    <script src="script.js"></script>
+</body>
+
+</html>
