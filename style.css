@@ -704,11 +704,17 @@ body {
     /* Floating Navbar */
     .floating-navbar {
         width: calc(100% - 2rem);
-        max-width: 326px;
-        height: 48px;
-        bottom: 16px;
-        padding: 0 18px;
+        max-width: 280px;
+        height: 44px;
+        bottom: 70px;
+        padding: 0 16px;
         border-radius: 0;
+    }
+
+    /* Hide music button & its divider on mobile */
+    .floating-navbar .music-btn,
+    .floating-navbar .nav-divider:last-of-type {
+        display: none;
     }
 
     .nav-logo {
@@ -2966,7 +2972,7 @@ body {
     /* ═══════════════════════════════ */
     .floating-navbar {
         height: 44px !important;
-        bottom: 12px !important;
+        bottom: 70px !important;
         padding: 0 14px !important;
     }
 
