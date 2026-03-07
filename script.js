@@ -132,52 +132,54 @@ document.addEventListener('DOMContentLoaded', () => {
     let isMusicPlaying = false;
     let animationFrameId = null;
 
-    const audio = new Audio('tunetank-jazz-cafe-music-348267.mp3');
-    audio.loop = true;
-    audio.volume = 0.4;
+    if (musicBtn) {
+        const audio = new Audio('tunetank-jazz-cafe-music-348267.mp3');
+        audio.loop = true;
+        audio.volume = 0.4;
 
-    function startMusic() {
-        audio.play();
-        isMusicPlaying = true;
-        animateBars();
-    }
-
-    function stopMusic() {
-        audio.pause();
-        isMusicPlaying = false;
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
+        function startMusic() {
+            audio.play();
+            isMusicPlaying = true;
+            animateBars();
         }
+
+        function stopMusic() {
+            audio.pause();
+            isMusicPlaying = false;
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            musicBars.forEach(bar => {
+                bar.style.height = bar.getAttribute('data-h') + 'px';
+                bar.style.backgroundColor = 'rgba(3, 3, 3, 0.4)';
+            });
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) { stopMusic(); } else { startMusic(); }
+        }
+
+        function animateBars() {
+            if (!isMusicPlaying) return;
+            const time = Date.now() / 1000;
+            musicBars.forEach((bar, i) => {
+                const baseH = parseFloat(bar.getAttribute('data-h'));
+                const mod = Math.sin(time * (1.5 + i * 0.2) + i) * 0.5 + 0.5;
+                const h = baseH + mod * (baseH * 1.2);
+                bar.style.height = h + 'px';
+                bar.style.backgroundColor = '#030303';
+            });
+            animationFrameId = requestAnimationFrame(animateBars);
+        }
+
+        musicBtn.addEventListener('click', toggleMusic);
+
+        // Initial bar heights
         musicBars.forEach(bar => {
             bar.style.height = bar.getAttribute('data-h') + 'px';
-            bar.style.backgroundColor = 'rgba(3, 3, 3, 0.4)';
         });
     }
-
-    function toggleMusic() {
-        if (isMusicPlaying) { stopMusic(); } else { startMusic(); }
-    }
-
-    function animateBars() {
-        if (!isMusicPlaying) return;
-        const time = Date.now() / 1000;
-        musicBars.forEach((bar, i) => {
-            const baseH = parseFloat(bar.getAttribute('data-h'));
-            const mod = Math.sin(time * (1.5 + i * 0.2) + i) * 0.5 + 0.5;
-            const h = baseH + mod * (baseH * 1.2);
-            bar.style.height = h + 'px';
-            bar.style.backgroundColor = '#030303';
-        });
-        animationFrameId = requestAnimationFrame(animateBars);
-    }
-
-    musicBtn.addEventListener('click', toggleMusic);
-
-    // Initial bar heights
-    musicBars.forEach(bar => {
-        bar.style.height = bar.getAttribute('data-h') + 'px';
-    });
 
     // ══ STATS COUNTER-UP ANIMATION ══
     const statNumbers = document.querySelectorAll('.stat-number[data-target]');
