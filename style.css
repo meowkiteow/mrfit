@@ -757,7 +757,7 @@ body {
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
-    width: 326px;
+    width: 200px;
     height: 53px;
     background-color: #d1c9b8;
     color: #030303;
@@ -765,7 +765,8 @@ body {
     border: 2px solid #000000;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
     padding: 0 24px;
     box-shadow: 4px 4px 0px 0px #000000;
     opacity: 1;

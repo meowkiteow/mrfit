@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeFit — Fitness Challenges & Competitions</title>
+    <meta name="description"
+        content="Join BeFit's fitness challenges. Compete with members in fat loss, strength gains, and transformation competitions. Win prizes and recognition.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══ CHALLENGES PAGE ══ */
+
+        .challenge-hero {
+            padding: 160px 64px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255, 45, 45, 0.06) 0%, #0A0A0A 60%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 45, 45, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .challenge-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .challenge-hero h1 span {
+            color: #FF2D2D;
+        }
+
+        .challenge-hero p {
+            font-family: var(--font-body);
+            color: #B3B3B3;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            max-width: 550px;
+            margin: 0 auto 40px;
+        }
+
+        .challenge-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #FF2D2D;
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 18px 40px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-hero-cta:hover {
+            background: #ff4545;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 45, 45, 0.3);
+        }
+
+        /* Current Challenge */
+        .current-challenge {
+            padding: 100px 64px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .challenge-active-card {
+            background: #141414;
+            border: 1px solid #222;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-active-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #FF2D2D;
+        }
+
+        .challenge-live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 45, 45, 0.15);
+            border: 1px solid rgba(255, 45, 45, 0.3);
+            padding: 6px 16px;
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            color: #FF2D2D;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .challenge-live-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #FF2D2D;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .challenge-active-card h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 32px;
+        }
+
+        .challenge-meta {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .challenge-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .challenge-meta-label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: #B3B3B3;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .challenge-meta-value {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .challenge-perks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .challenge-perk {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: #B3B3B3;
+        }
+
+        .challenge-perk i {
+            color: #FF2D2D;
+            font-size: 1.1rem;
+        }
+
+        .challenge-prizes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .prize-card {
+            background: #0F0F0F;
+            border: 1px solid #1a1a1a;
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .prize-rank {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: #FF2D2D;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .prize-rank-label {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: #B3B3B3;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .prize-reward {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: #fff;
+        }
+
+        .challenge-register-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #FF2D2D;
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 36px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-register-btn:hover {
+            background: #ff4545;
+            transform: translateY(-2px);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 100px 64px;
+            background: #0A0A0A;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .how-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .how-header span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: #FF2D2D;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .how-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .how-step {
+            text-align: center;
+            padding: 40px 24px;
+            background: #141414;
+            border: 1px solid #222;
+            position: relative;
+        }
+
+        .how-step-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 45, 45, 0.1);
+            border: 1px solid rgba(255, 45, 45, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.3rem;
+            color: #FF2D2D;
+        }
+
+        .how-step-number {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            color: #FF2D2D;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .how-step h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .how-step p {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: #B3B3B3;
+            line-height: 1.6;
+        }
+
+        /* Leaderboard */
+        .leaderboard-section {
+            padding: 100px 64px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .leaderboard-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .leaderboard-header span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: #FF2D2D;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .leaderboard-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .leaderboard-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 24px;
+            background: #141414;
+            border: 1px solid #1a1a1a;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard-row:hover {
+            border-color: rgba(255, 45, 45, 0.3);
+            box-shadow: 0 0 20px rgba(255, 45, 45, 0.08);
+        }
+
+        .leaderboard-row:first-child {
+            border-color: rgba(255, 45, 45, 0.4);
+            background: linear-gradient(90deg, rgba(255, 45, 45, 0.08), #141414);
+        }
+
+        .lb-rank {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: #FF2D2D;
+            width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .lb-name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: #fff;
+            flex: 1;
+        }
+
+        .lb-result {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: #B3B3B3;
+        }
+
+        .lb-badge {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            color: #FF2D2D;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(255, 45, 45, 0.1);
+            padding: 4px 12px;
+        }
+
+        /* Past Winners */
+        .past-winners {
+            padding: 100px 64px;
+            background: #0A0A0A;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .past-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .past-header span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: #FF2D2D;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .past-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .past-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .past-card {
+            background: #141414;
+            border: 1px solid #222;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .past-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 30px rgba(255, 45, 45, 0.15);
+        }
+
+        .past-card-img {
+            height: 240px;
+            background: #0F0F0F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .past-card-img i {
+            font-size: 3.5rem;
+            color: rgba(255, 45, 45, 0.2);
+        }
+
+        .past-card-body {
+            padding: 28px 24px;
+        }
+
+        .past-card-badge {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            color: #FF2D2D;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(255, 45, 45, 0.1);
+            padding: 4px 12px;
+            margin-bottom: 12px;
+        }
+
+        .past-card-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .past-card-body p {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: #B3B3B3;
+            line-height: 1.5;
+        }
+
+        /* Community */
+        .community-section {
+            padding: 120px 64px;
+            text-align: center;
+            background: linear-gradient(180deg, #0A0A0A 0%, rgba(255, 45, 45, 0.04) 50%, #0A0A0A 100%);
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .community-section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .community-section h2 span {
+            color: #FF2D2D;
+        }
+
+        .community-section p {
+            font-family: var(--font-body);
+            color: #B3B3B3;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 120px 64px;
+            text-align: center;
+            background: #0A0A0A;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .final-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.05;
+            margin-bottom: 40px;
+        }
+
+        .final-cta h2 span {
+            color: #FF2D2D;
+        }
+
+        .final-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #FF2D2D;
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 36px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-primary:hover {
+            background: #ff4545;
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 36px;
+            text-decoration: none;
+            border: 2px solid #222;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-secondary:hover {
+            border-color: #FF2D2D;
+            color: #FF2D2D;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .ch-footer {
+            padding: 48px 64px;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+        }
+
+        .ch-footer p {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: #B3B3B3;
+        }
+
+        .ch-footer a {
+            color: #FF2D2D;
+            text-decoration: none;
+        }
+
+        /* ══ RESPONSIVE ══ */
+        @media (max-width: 768px) {
+            .challenge-hero {
+                padding: 120px 24px 64px;
+            }
+
+            .current-challenge {
+                padding: 64px 24px;
+            }
+
+            .challenge-active-card {
+                padding: 36px 24px;
+            }
+
+            .challenge-meta {
+                gap: 24px;
+            }
+
+            .challenge-prizes {
+                grid-template-columns: 1fr;
+            }
+
+            .how-it-works {
+                padding: 64px 24px;
+            }
+
+            .how-steps {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .leaderboard-section {
+                padding: 64px 24px;
+            }
+
+            .leaderboard-row {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .past-winners {
+                padding: 64px 24px;
+            }
+
+            .past-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .community-section,
+            .final-cta {
+                padding: 80px 24px;
+            }
+
+            .ch-footer {
+                padding: 36px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ HERO ══ -->
+    <section class="challenge-hero">
+        <h1>Compete.<br><span>Improve.</span><br>Win.</h1>
+        <p>Join our community fitness challenges and push yourself to the next level. Compete with members, track
+            progress, and win exclusive rewards.</p>
+        <a href="trial.html" class="challenge-hero-cta">Join Next Challenge <i class="ri-arrow-right-up-line"></i></a>
+    </section>
+
+    <!-- ══ CURRENT CHALLENGE ══ -->
+    <section class="current-challenge">
+        <div class="challenge-active-card">
+            <div class="challenge-live-badge">LIVE NOW</div>
+            <h2>BeFit Summer<br>Transformation Challenge</h2>
+
+            <div class="challenge-meta">
+                <div class="challenge-meta-item">
+                    <span class="challenge-meta-label">Duration</span>
+                    <span class="challenge-meta-value">8 Weeks</span>
+                </div>
+                <div class="challenge-meta-item">
+                    <span class="challenge-meta-label">Category</span>
+                    <span class="challenge-meta-value">Fat Loss & Muscle</span>
+                </div>
+                <div class="challenge-meta-item">
+                    <span class="challenge-meta-label">Participants</span>
+                    <span class="challenge-meta-value">24 Members</span>
+                </div>
+                <div class="challenge-meta-item">
+                    <span class="challenge-meta-label">Status</span>
+                    <span class="challenge-meta-value" style="color: #FF2D2D;">Registrations Open</span>
+                </div>
+            </div>
+
+            <h3
+                style="font-family: var(--font-heading); font-size: 0.8rem; color: #B3B3B3; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">
+                What Participants Get</h3>
+            <div class="challenge-perks">
+                <div class="challenge-perk"><i class="ri-bar-chart-fill"></i> Weekly progress tracking</div>
+                <div class="challenge-perk"><i class="ri-user-star-fill"></i> Coaching guidance</div>
+                <div class="challenge-perk"><i class="ri-trophy-fill"></i> Competition leaderboard</div>
+                <div class="challenge-perk"><i class="ri-camera-fill"></i> Transformation photos</div>
+            </div>
+
+            <h3
+                style="font-family: var(--font-heading); font-size: 0.8rem; color: #B3B3B3; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">
+                Prizes</h3>
+            <div class="challenge-prizes">
+                <div class="prize-card">
+                    <div class="prize-rank">1<sup style="font-size:0.5em;">ST</sup></div>
+                    <span class="prize-rank-label">First Place</span>
+                    <p class="prize-reward">Free 3-month membership</p>
+                </div>
+                <div class="prize-card">
+                    <div class="prize-rank">2<sup style="font-size:0.5em;">ND</sup></div>
+                    <span class="prize-rank-label">Second Place</span>
+                    <p class="prize-reward">Gym merchandise pack</p>
+                </div>
+                <div class="prize-card">
+                    <div class="prize-rank">3<sup style="font-size:0.5em;">RD</sup></div>
+                    <span class="prize-rank-label">Third Place</span>
+                    <p class="prize-reward">Premium supplement pack</p>
+                </div>
+            </div>
+
+            <a href="trial.html" class="challenge-register-btn">Register for Challenge <i
+                    class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </section>
+
+    <!-- ══ HOW IT WORKS ══ -->
+    <section class="how-it-works">
+        <div class="how-header">
+            <span>The Process</span>
+            <h2>How It Works</h2>
+        </div>
+        <div class="how-steps">
+            <div class="how-step">
+                <div class="how-step-icon"><i class="ri-edit-2-line"></i></div>
+                <span class="how-step-number">Step 01</span>
+                <h3>Register</h3>
+                <p>Sign up for the active challenge and commit to the program.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-icon"><i class="ri-line-chart-line"></i></div>
+                <span class="how-step-number">Step 02</span>
+                <h3>Track Progress</h3>
+                <p>Check in weekly with measurements, photos, and performance data.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-icon"><i class="ri-sword-fill"></i></div>
+                <span class="how-step-number">Step 03</span>
+                <h3>Compete</h3>
+                <p>Push yourself against other members on the live leaderboard.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-icon"><i class="ri-medal-fill"></i></div>
+                <span class="how-step-number">Step 04</span>
+                <h3>Win</h3>
+                <p>Top performers earn prizes, recognition, and exclusive gym perks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ LEADERBOARD ══ -->
+    <section class="leaderboard-section">
+        <div class="leaderboard-header">
+            <span>Live Rankings</span>
+            <h2>Current Leaderboard</h2>
+        </div>
+        <div class="leaderboard-table">
+            <div class="leaderboard-row">
+                <span class="lb-rank">1</span>
+                <span class="lb-name">Rahul Singh</span>
+                <span class="lb-result">6kg fat loss</span>
+                <span class="lb-badge">Leader</span>
+            </div>
+            <div class="leaderboard-row">
+                <span class="lb-rank">2</span>
+                <span class="lb-name">Aman Verma</span>
+                <span class="lb-result">5.5kg fat loss</span>
+            </div>
+            <div class="leaderboard-row">
+                <span class="lb-rank">3</span>
+                <span class="lb-name">Arjun Sharma</span>
+                <span class="lb-result">5kg fat loss</span>
+            </div>
+            <div class="leaderboard-row">
+                <span class="lb-rank">4</span>
+                <span class="lb-name">Priya Verma</span>
+                <span class="lb-result">4.8kg fat loss</span>
+            </div>
+            <div class="leaderboard-row">
+                <span class="lb-rank">5</span>
+                <span class="lb-name">Rohan Mehta</span>
+                <span class="lb-result">4.5kg fat loss</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ PAST WINNERS ══ -->
+    <section class="past-winners">
+        <div class="past-header">
+            <span>Hall of Champions</span>
+            <h2>BeFit Transformation<br>Champions</h2>
+        </div>
+        <div class="past-grid">
+            <div class="past-card">
+                <div class="past-card-img"><i class="ri-trophy-fill"></i></div>
+                <div class="past-card-body">
+                    <span class="past-card-badge">Winner — Winter 2024</span>
+                    <h3>Neeraj Kumar</h3>
+                    <p>Lost 12kg in 10 weeks. Complete body recomposition with discipline and consistency.</p>
+                </div>
+            </div>
+            <div class="past-card">
+                <div class="past-card-img"><i class="ri-trophy-fill"></i></div>
+                <div class="past-card-body">
+                    <span class="past-card-badge">Winner — Monsoon 2024</span>
+                    <h3>Sneha Kapoor</h3>
+                    <p>Gained 6kg of lean muscle and achieved her first unassisted pull-up.</p>
+                </div>
+            </div>
+            <div class="past-card">
+                <div class="past-card-img"><i class="ri-trophy-fill"></i></div>
+                <div class="past-card-body">
+                    <span class="past-card-badge">Winner — Summer 2024</span>
+                    <h3>Vikram Thapa</h3>
+                    <p>Dropped 15% body fat while increasing all major lifts by 20%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ COMMUNITY ══ -->
+    <section class="community-section">
+        <h2>Train Together.<br><span>Grow Together.</span></h2>
+        <p>The BeFit challenges are more than competitions. They are about building discipline, consistency, and a
+            strong fitness community. Every challenge makes every member stronger — whether you win or not.</p>
+    </section>
+
+    <!-- ══ FINAL CTA ══ -->
+    <section class="final-cta">
+        <h2>Ready For Your<br><span>Next Challenge?</span></h2>
+        <div class="final-cta-buttons">
+            <a href="trial.html" class="cta-btn-primary">Join Next Challenge <i class="ri-arrow-right-up-line"></i></a>
+            <a href="trial.html" class="cta-btn-secondary">Start Free Trial <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="ch-footer">
+        <p>&copy; 2025 BeFit. All rights reserved. <a href="index.html">Back to Home</a></p>
+    </footer>
+
+    <!-- ══ Nav & Menu ══ -->
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="nav-menu" id="navMenu">
+        <div class="nav-menu-inner">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><span>HOME</span></a>
+                <a href="trainers.html" class="nav-link"><span>TRAINERS</span></a>
+                <a href="plans.html" class="nav-link"><span>PLANS</span></a>
+                <a href="videos.html" class="nav-link"><span>VIDEOS</span></a>
+                <a href="cafe.html" class="nav-link"><span>CAFE</span></a>
+                <a href="wall-of-fame.html" class="nav-link"><span>WALL OF FAME</span></a>
+                <a href="challenges.html" class="nav-link"><span>CHALLENGES</span></a>
+                <a href="blog.html" class="nav-link"><span>ARTICLES</span></a>
+                <a href="trial.html" class="nav-link"><span>FREE TRIAL</span></a>
+            </div>
+            <a href="join.html" class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+
+    <nav class="floating-navbar">
+        <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line top"></span>
+            <span class="hamburger-line bottom"></span>
+        </button>
+        <div class="nav-divider"></div>
+        <a href="index.html" class="nav-logo">BeFit</a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
