@@ -86,6 +86,80 @@
             box-shadow: 0 8px 30px rgba(255, 45, 45, 0.3) !important;
         }
 
+        /* Hero Eyebrow */
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: #FF2D2D;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+        }
+
+        .hero-eyebrow i {
+            font-size: 1rem;
+            animation: pulse-fire 1.5s infinite;
+        }
+
+        @keyframes pulse-fire {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Countdown Timer */
+        .countdown-timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 45, 45, 0.08);
+            border: 1px solid rgba(255, 45, 45, 0.2);
+            padding: 16px 24px;
+            min-width: 80px;
+        }
+
+        .countdown-value {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #fff;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            color: #B3B3B3;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 6px;
+        }
+
+        .countdown-sep {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: #FF2D2D;
+            padding-bottom: 20px;
+        }
+
         /* Current Challenge */
         .current-challenge {
             padding: 100px 64px;
@@ -216,12 +290,75 @@
             border: 1px solid #1a1a1a;
             padding: 28px 24px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .prize-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+        }
+
+        .prize-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .prize-card.gold {
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .prize-card.gold::before {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+        }
+
+        .prize-card.gold:hover {
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
+        }
+
+        .prize-card.gold .prize-rank {
+            color: #FFD700;
+        }
+
+        .prize-card.silver {
+            border-color: rgba(192, 192, 192, 0.3);
+        }
+
+        .prize-card.silver::before {
+            background: linear-gradient(90deg, #C0C0C0, #A8A8A8);
+        }
+
+        .prize-card.silver:hover {
+            box-shadow: 0 8px 30px rgba(192, 192, 192, 0.12);
+        }
+
+        .prize-card.silver .prize-rank {
+            color: #C0C0C0;
+        }
+
+        .prize-card.bronze {
+            border-color: rgba(205, 127, 50, 0.3);
+        }
+
+        .prize-card.bronze::before {
+            background: linear-gradient(90deg, #CD7F32, #B87333);
+        }
+
+        .prize-card.bronze:hover {
+            box-shadow: 0 8px 30px rgba(205, 127, 50, 0.12);
+        }
+
+        .prize-card.bronze .prize-rank {
+            color: #CD7F32;
         }
 
         .prize-rank {
             font-family: var(--font-heading);
             font-size: 2.5rem;
-            color: #FF2D2D;
             line-height: 1;
             margin-bottom: 8px;
         }
@@ -414,11 +551,59 @@
             flex-shrink: 0;
         }
 
+        .lb-rank.gold-rank {
+            color: #FFD700;
+        }
+
+        .lb-rank.silver-rank {
+            color: #C0C0C0;
+        }
+
+        .lb-rank.bronze-rank {
+            color: #CD7F32;
+        }
+
+        .lb-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 45, 45, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            color: #fff;
+            flex-shrink: 0;
+            letter-spacing: 1px;
+        }
+
+        .lb-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
         .lb-name {
             font-family: var(--font-heading);
             font-size: 1.1rem;
             color: #fff;
-            flex: 1;
+        }
+
+        .lb-progress {
+            width: 100%;
+            height: 4px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lb-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #FF2D2D, #ff6b6b);
+            border-radius: 2px;
+            transition: width 1s ease;
         }
 
         .lb-result {
@@ -435,6 +620,56 @@
             letter-spacing: 2px;
             background: rgba(255, 45, 45, 0.1);
             padding: 4px 12px;
+        }
+
+        /* Community Stats */
+        .community-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 700px;
+            margin: 48px auto 0;
+        }
+
+        .community-stat {
+            text-align: center;
+            padding: 24px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .community-stat-value {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: #FF2D2D;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .community-stat-label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: #B3B3B3;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* How It Works connectors */
+        .how-step::after {
+            content: '→';
+            position: absolute;
+            right: -18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #FF2D2D;
+            z-index: 1;
+        }
+
+        .how-step:last-child::after {
+            display: none;
         }
 
         /* Past Winners */
@@ -662,6 +897,24 @@
                 padding: 120px 24px 64px;
             }
 
+            .countdown-timer {
+                gap: 6px;
+            }
+
+            .countdown-unit {
+                padding: 10px 12px;
+                min-width: 56px;
+            }
+
+            .countdown-value {
+                font-size: 1.6rem;
+            }
+
+            .countdown-sep {
+                font-size: 1.2rem;
+                padding-bottom: 14px;
+            }
+
             .challenge-hero-cta,
             .challenge-register-btn,
             .cta-btn-primary,
@@ -701,6 +954,10 @@
                 padding: 28px 16px;
             }
 
+            .how-step::after {
+                display: none;
+            }
+
             .leaderboard-section {
                 padding: 64px 16px;
             }
@@ -709,6 +966,10 @@
                 flex-wrap: wrap;
                 gap: 8px;
                 padding: 16px;
+            }
+
+            .lb-info {
+                min-width: 120px;
             }
 
             .past-winners {
@@ -722,6 +983,11 @@
             .community-section,
             .final-cta {
                 padding: 80px 24px;
+            }
+
+            .community-stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
 
             .final-cta-buttons {
@@ -745,10 +1011,32 @@
 
     <!-- ══ HERO ══ -->
     <section class="challenge-hero">
+        <span class="hero-eyebrow"><i class="ri-fire-fill"></i> NEXT CHALLENGE STARTS IN</span>
+        <div class="countdown-timer" id="countdownTimer">
+            <div class="countdown-unit">
+                <span class="countdown-value" id="countDays">12</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+                <span class="countdown-value" id="countHours">08</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+                <span class="countdown-value" id="countMins">45</span>
+                <span class="countdown-label">Mins</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+                <span class="countdown-value" id="countSecs">30</span>
+                <span class="countdown-label">Secs</span>
+            </div>
+        </div>
         <h1>Compete.<br><span>Improve.</span><br>Win.</h1>
-        <p>Join our community fitness challenges and push yourself to the next level. Compete with members, track
-            progress, and win exclusive rewards.</p>
-        <a href="trial.html" class="challenge-hero-cta">Join Next Challenge <i class="ri-arrow-right-up-line"></i></a>
+        <p>Join the ultimate fitness challenges, push your limits, and climb the leaderboard. Compete with members and
+            win exclusive rewards.</p>
+        <a href="trial.html" class="challenge-hero-cta">Enter Next Challenge <i class="ri-arrow-right-up-line"></i></a>
     </section>
 
     <!-- ══ CURRENT CHALLENGE ══ -->
@@ -790,17 +1078,17 @@
                 style="font-family: var(--font-heading); font-size: 0.8rem; color: #B3B3B3; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">
                 Prizes</h3>
             <div class="challenge-prizes">
-                <div class="prize-card">
+                <div class="prize-card gold">
                     <div class="prize-rank">1<sup style="font-size:0.5em;">ST</sup></div>
                     <span class="prize-rank-label">First Place</span>
                     <p class="prize-reward">Free 3-month membership</p>
                 </div>
-                <div class="prize-card">
+                <div class="prize-card silver">
                     <div class="prize-rank">2<sup style="font-size:0.5em;">ND</sup></div>
                     <span class="prize-rank-label">Second Place</span>
                     <p class="prize-reward">Gym merchandise pack</p>
                 </div>
-                <div class="prize-card">
+                <div class="prize-card bronze">
                     <div class="prize-rank">3<sup style="font-size:0.5em;">RD</sup></div>
                     <span class="prize-rank-label">Third Place</span>
                     <p class="prize-reward">Premium supplement pack</p>
@@ -854,29 +1142,54 @@
         </div>
         <div class="leaderboard-table">
             <div class="leaderboard-row">
-                <span class="lb-rank">1</span>
-                <span class="lb-name">Rahul Singh</span>
+                <span class="lb-rank gold-rank">1</span>
+                <div class="lb-avatar" style="background: linear-gradient(135deg, #FFD700, #FFA500);">RS</div>
+                <div class="lb-info"><span class="lb-name">Rahul Singh</span>
+                    <div class="lb-progress">
+                        <div class="lb-progress-bar" style="width: 92%;"></div>
+                    </div>
+                </div>
                 <span class="lb-result">6kg fat loss</span>
                 <span class="lb-badge">Leader</span>
             </div>
             <div class="leaderboard-row">
-                <span class="lb-rank">2</span>
-                <span class="lb-name">Aman Verma</span>
+                <span class="lb-rank silver-rank">2</span>
+                <div class="lb-avatar" style="background: linear-gradient(135deg, #C0C0C0, #A8A8A8);">AV</div>
+                <div class="lb-info"><span class="lb-name">Aman Verma</span>
+                    <div class="lb-progress">
+                        <div class="lb-progress-bar" style="width: 84%;"></div>
+                    </div>
+                </div>
                 <span class="lb-result">5.5kg fat loss</span>
             </div>
             <div class="leaderboard-row">
-                <span class="lb-rank">3</span>
-                <span class="lb-name">Arjun Sharma</span>
+                <span class="lb-rank bronze-rank">3</span>
+                <div class="lb-avatar" style="background: linear-gradient(135deg, #CD7F32, #B87333);">AS</div>
+                <div class="lb-info"><span class="lb-name">Arjun Sharma</span>
+                    <div class="lb-progress">
+                        <div class="lb-progress-bar" style="width: 78%;"></div>
+                    </div>
+                </div>
                 <span class="lb-result">5kg fat loss</span>
             </div>
             <div class="leaderboard-row">
                 <span class="lb-rank">4</span>
-                <span class="lb-name">Priya Verma</span>
+                <div class="lb-avatar">PV</div>
+                <div class="lb-info"><span class="lb-name">Priya Verma</span>
+                    <div class="lb-progress">
+                        <div class="lb-progress-bar" style="width: 72%;"></div>
+                    </div>
+                </div>
                 <span class="lb-result">4.8kg fat loss</span>
             </div>
             <div class="leaderboard-row">
                 <span class="lb-rank">5</span>
-                <span class="lb-name">Rohan Mehta</span>
+                <div class="lb-avatar">RM</div>
+                <div class="lb-info"><span class="lb-name">Rohan Mehta</span>
+                    <div class="lb-progress">
+                        <div class="lb-progress-bar" style="width: 65%;"></div>
+                    </div>
+                </div>
                 <span class="lb-result">4.5kg fat loss</span>
             </div>
         </div>
@@ -921,6 +1234,20 @@
         <h2>Train Together.<br><span>Grow Together.</span></h2>
         <p>The BeFit challenges are more than competitions. They are about building discipline, consistency, and a
             strong fitness community. Every challenge makes every member stronger — whether you win or not.</p>
+        <div class="community-stats">
+            <div class="community-stat">
+                <div class="community-stat-value">12+</div>
+                <div class="community-stat-label">Challenges Run</div>
+            </div>
+            <div class="community-stat">
+                <div class="community-stat-value">200+</div>
+                <div class="community-stat-label">Members Competed</div>
+            </div>
+            <div class="community-stat">
+                <div class="community-stat-value">85%</div>
+                <div class="community-stat-label">Achieved Goals</div>
+            </div>
+        </div>
     </section>
 
     <!-- ══ FINAL CTA ══ -->
@@ -966,6 +1293,29 @@
     </nav>
 
     <script src="script.js"></script>
+    <script>
+        // Countdown Timer
+        (function () {
+            const target = new Date();
+            target.setDate(target.getDate() + 12);
+            target.setHours(target.getHours() + 8);
+            function update() {
+                const now = new Date();
+                const diff = target - now;
+                if (diff <= 0) return;
+                const d = Math.floor(diff / 86400000);
+                const h = Math.floor((diff % 86400000) / 3600000);
+                const m = Math.floor((diff % 3600000) / 60000);
+                const s = Math.floor((diff % 60000) / 1000);
+                document.getElementById('countDays').textContent = String(d).padStart(2, '0');
+                document.getElementById('countHours').textContent = String(h).padStart(2, '0');
+                document.getElementById('countMins').textContent = String(m).padStart(2, '0');
+                document.getElementById('countSecs').textContent = String(s).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
+        })();
+    </script>
 </body>
 
 </html>

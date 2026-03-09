@@ -22,6 +22,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+    overflow-x: clip;
+    max-width: 100vw;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
@@ -29,7 +34,9 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100vw;
+    width: 100%;
 }
 
 /* Background Videos */
@@ -706,7 +713,7 @@ body {
         width: calc(100% - 2rem);
         max-width: 280px;
         height: 44px;
-        bottom: 70px;
+        bottom: 24px !important;
         padding: 0 16px;
         border-radius: 0;
     }
@@ -733,7 +740,7 @@ body {
     .nav-menu {
         width: calc(100% - 2rem);
         max-width: 326px;
-        bottom: calc(16px + 48px);
+        bottom: calc(46px + 48px + 56px);
     }
 
     /* Circle Transition text */
@@ -2750,18 +2757,19 @@ body {
 
     /* Keep sticky cards, but adjust height for mobile */
     .stack-cards__item {
-        height: 320px !important;
+        height: auto !important;
+        min-height: auto !important;
         border-radius: 12px !important;
     }
 
     /* Keep 2-column layout (text | images) but give images more space */
     .stack-card-inner {
-        grid-template-columns: 1fr 1.2fr !important;
+        grid-template-columns: 1fr !important;
     }
 
     /* Text side — compact for phone */
     .stack-card-text {
-        padding: 16px 14px !important;
+        padding: 24px 20px !important;
     }
 
     .stack-card-number {
@@ -2770,13 +2778,13 @@ body {
     }
 
     .stack-card-title {
-        font-size: 1.1rem !important;
-        margin-bottom: 4px !important;
+        font-size: 1.3rem !important;
+        margin-bottom: 6px !important;
     }
 
     .stack-card-desc {
-        font-size: 0.7rem !important;
-        line-height: 1.4 !important;
+        font-size: 0.82rem !important;
+        line-height: 1.5 !important;
     }
 
     .stack-card-result {
@@ -2790,12 +2798,13 @@ body {
     /* Image side — show at full height */
     .stack-card-image {
         display: flex !important;
+        height: 220px !important;
     }
 
     .ba-images {
         width: 100% !important;
         height: 100% !important;
-        border-radius: 0 12px 12px 0 !important;
+        border-radius: 0 0 12px 12px !important;
     }
 
     .ba-label {
@@ -2973,7 +2982,7 @@ body {
     /* ═══════════════════════════════ */
     .floating-navbar {
         height: 44px !important;
-        bottom: 70px !important;
+        bottom: 24px !important;
         padding: 0 14px !important;
     }
 

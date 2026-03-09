@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260309e">
 
     <!-- Homepage Scoped Styles -->
     <style>
@@ -549,6 +549,13 @@
             margin-top: 48px;
         }
 
+        /* ══ CHALLENGE GRID ══ */
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
         .beyond-card {
             background: var(--card-bg);
             border: 2px solid var(--border-color);
@@ -600,14 +607,14 @@
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: 99999;
+            z-index: 99998;
             background: #0A0A0A;
-            border-top: 1px solid #222;
-            padding: 0 12px;
-            height: 75px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 16px;
+            padding-bottom: max(10px, env(safe-area-inset-bottom));
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+            gap: 10px;
+            box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5);
             transform: translateY(100%);
             transition: transform 0.3s ease;
         }
@@ -621,17 +628,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding: 14px 4px;
+            gap: 8px;
+            padding: 12px 8px;
             font-family: var(--font-heading);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             transition: all 0.2s ease;
             color: #fff;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .mobile-action-bar a i {
@@ -641,30 +649,35 @@
         .mobile-action-bar .mob-trial {
             background: #FF2D2D;
             color: #fff;
+            flex: 1.3;
         }
 
         .mobile-action-bar .mob-trial:active {
-            background: #ff4545;
+            background: #e02525;
+            transform: scale(0.97);
         }
 
         .mobile-action-bar .mob-plans {
-            background: #141414;
-            border: 1px solid #222;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             color: #fff;
         }
 
         .mobile-action-bar .mob-plans:active {
-            background: #1a1a1a;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(0.97);
         }
 
         .mobile-action-bar .mob-call {
-            background: #141414;
-            border: 1px solid #222;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             color: #fff;
+            flex: 0.6;
         }
 
         .mobile-action-bar .mob-call:active {
-            background: #1a1a1a;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(0.97);
         }
 
         /* ══ TRANSFORMATION MICRO CTAs ══ */
@@ -948,7 +961,7 @@
             font-size: 0.95rem;
         }
 
-        /* ══ EXIT POPUP ══ */
+        /* ══ EXIT POPUP — PREMIUM SPLIT LAYOUT ══ */
         .exit-popup-overlay {
             position: fixed;
             top: 0;
@@ -956,13 +969,13 @@
             right: 0;
             bottom: 0;
             z-index: 100000;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
             display: none;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
         .exit-popup-overlay.active {
@@ -971,19 +984,24 @@
         }
 
         .exit-popup {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            padding: 56px 48px;
-            max-width: 520px;
-            width: 90%;
-            text-align: center;
+            display: flex;
+            max-width: 740px;
+            width: 92%;
             position: relative;
-            animation: popupSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 16px;
+            overflow: hidden;
+            animation: popupSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(18, 18, 18, 0.95);
+            border: 1.5px solid rgba(255, 45, 45, 0.25);
+            box-shadow:
+                0 0 60px rgba(255, 45, 45, 0.08),
+                0 25px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         @keyframes popupSlideIn {
             from {
-                transform: translateY(30px) scale(0.95);
+                transform: translateY(40px) scale(0.92);
                 opacity: 0;
             }
 
@@ -993,58 +1011,262 @@
             }
         }
 
+        /* ── Left: Image Panel ── */
+        .exit-popup-image {
+            width: 42%;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .exit-popup-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7) contrast(1.1);
+        }
+
+        .exit-popup-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 45, 45, 0.15) 0%, transparent 60%),
+                linear-gradient(to right, transparent 50%, rgba(18, 18, 18, 0.95) 100%);
+            pointer-events: none;
+        }
+
+        /* ── Right: Content Panel ── */
+        .exit-popup-content {
+            flex: 1;
+            padding: 40px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         .exit-popup-close {
             position: absolute;
-            top: 16px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.5rem;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: color 0.2s;
+            transition: all 0.2s ease;
+            z-index: 10;
         }
 
         .exit-popup-close:hover {
-            color: var(--text-primary);
+            background: rgba(255, 45, 45, 0.15);
+            border-color: rgba(255, 45, 45, 0.3);
+            color: #fff;
         }
 
-        .exit-popup-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
+        /* Brand */
+        .exit-popup-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
         }
 
+        .exit-popup-brand svg {
+            width: 18px;
+            height: 16px;
+        }
+
+        .exit-popup-brand span {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Urgency badge */
+        .exit-popup-urgency {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 45, 45, 0.12);
+            border: 1px solid rgba(255, 45, 45, 0.3);
+            color: #FF2D2D;
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+            width: fit-content;
+            animation: urgencyGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes urgencyGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(255, 45, 45, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(255, 45, 45, 0.3);
+            }
+        }
+
+        .exit-popup-urgency i {
+            font-size: 0.8rem;
+        }
+
+        /* Heading */
         .exit-popup h3 {
             font-family: var(--font-heading);
-            font-size: 2.2rem;
-            color: var(--text-primary);
+            font-size: 1.85rem;
+            color: #fff;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
         }
 
-        .exit-popup p {
+        .exit-popup h3 span {
+            color: #FF2D2D;
+        }
+
+        /* Benefits */
+        .exit-popup-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .exit-popup-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 28px;
+            font-size: 0.92rem;
+            color: #ccc;
         }
 
-        .exit-popup .btn-primary {
-            width: 100%;
+        .exit-popup-benefits li i {
+            color: #FF2D2D;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+
+        /* Social proof */
+        .exit-popup-social {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 22px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .exit-popup-stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .exit-popup-stars i {
+            color: #f5c518;
+            font-size: 0.75rem;
+        }
+
+        .exit-popup-social span {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* CTA Button */
+        .exit-popup-cta {
+            display: flex;
+            align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            gap: 10px;
+            width: 100%;
+            padding: 15px 24px;
+            background: #FF2D2D;
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(255, 45, 45, 0.3);
         }
 
-        .exit-popup .exit-popup-dismiss {
+        .exit-popup-cta:hover {
+            background: #ff4545;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 45, 45, 0.4);
+        }
+
+        .exit-popup-cta:active {
+            transform: translateY(0);
+        }
+
+        /* Dismiss */
+        .exit-popup-dismiss {
             font-family: var(--font-body);
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 0.8rem;
+            color: #555;
             cursor: pointer;
             background: none;
             border: none;
-            text-decoration: underline;
+            margin-top: 14px;
+            text-align: center;
+            width: 100%;
+            transition: color 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .exit-popup-dismiss:hover {
+            color: #888;
+        }
+
+        /* ── Mobile responsive ── */
+        @media (max-width: 640px) {
+            .exit-popup {
+                flex-direction: column;
+                max-width: 380px;
+            }
+
+            .exit-popup-image {
+                width: 100%;
+                height: 180px;
+            }
+
+            .exit-popup-image::after {
+                background: linear-gradient(135deg, rgba(255, 45, 45, 0.15) 0%, transparent 60%),
+                    linear-gradient(to bottom, transparent 40%, rgba(18, 18, 18, 0.95) 100%);
+            }
+
+            .exit-popup-content {
+                padding: 28px 24px;
+            }
+
+            .exit-popup h3 {
+                font-size: 1.5rem;
+            }
         }
 
         /* ══ LEAD MAGNET CARD ══ */
@@ -1179,9 +1401,9 @@
                 height: 260px;
             }
 
-            /* Show mobile action bar */
+            /* Hide mobile action bar */
             .mobile-action-bar {
-                display: flex;
+                display: none !important;
             }
 
             /* Hide floating WhatsApp on mobile (replaced by action bar) */
@@ -1189,15 +1411,441 @@
                 display: none !important;
             }
 
-            /* Add bottom padding for sticky bar */
+            /* No extra bottom padding needed */
             .site-footer {
-                padding-bottom: 80px !important;
+                padding-bottom: 20px !important;
+            }
+        }
+
+        /* ══════════════════════════════════════════ */
+        /* ══ PHONE NUCLEAR FIX (≤480px) ══ */
+        /* ══════════════════════════════════════════ */
+        @media (max-width: 480px) {
+
+            /* Force everything within viewport */
+            *,
+            *::before,
+            *::after {
+                max-width: 100vw !important;
+            }
+
+            /* Hero — reduce padding, stack vertically */
+            .hero-section {
+                padding: 1.5rem 1rem !important;
+            }
+
+            .hero-ctas {
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+
+            .hero-ctas a {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 14px 20px !important;
+                font-size: 0.9rem !important;
+            }
+
+            .hero-subheadline {
+                font-size: 0.9rem !important;
+            }
+
+            .hero-trust-badges {
+                gap: 6px !important;
+            }
+
+            .trust-badge {
+                font-size: 0.72rem !important;
+                padding: 5px 10px !important;
+            }
+
+            .hero-proof-item {
+                font-size: 0.75rem !important;
+            }
+
+            /* Section padding — all tight */
+            .funnel-section,
+            .funnel-section--full,
+            .funnel-section--dark {
+                padding: 48px 16px !important;
+                width: 100% !important;
+            }
+
+            .trial-cta-section {
+                padding: 48px 16px !important;
+            }
+
+            .standalone-section,
+            .svc-section {
+                padding: 48px 16px !important;
+            }
+
+            /* Section headings */
+            .section-title {
+                font-size: 1.6rem !important;
+            }
+
+            .section-desc {
+                font-size: 0.9rem !important;
+            }
+
+            .section-label {
+                font-size: 0.7rem !important;
+            }
+
+            /* ALL GRIDS — single column */
+            .pricing-grid-home,
+            .resources-grid,
+            .beyond-grid,
+            .voucher-grid,
+            .services-grid,
+            .challenge-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            /* Pricing cards */
+            .price-card {
+                padding: 28px 20px !important;
+            }
+
+            .price-card-name {
+                font-size: 1.8rem !important;
+            }
+
+            .price-value {
+                font-size: 2.5rem !important;
+            }
+
+            .price-features li {
+                font-size: 0.85rem !important;
+            }
+
+            /* Trainer card — stack */
+            .trainer-card-home {
+                flex-direction: column !important;
+                padding: 20px !important;
+                gap: 20px !important;
+            }
+
+            .trainer-card-home img {
+                width: 100% !important;
+                height: 220px !important;
+            }
+
+            .trainer-info h3 {
+                font-size: 1.8rem !important;
+            }
+
+            .trainer-info p {
+                font-size: 0.9rem !important;
+            }
+
+            .trainer-stats {
+                gap: 20px !important;
+            }
+
+            /* Resource cards */
+            .resource-card {
+                padding: 24px 20px !important;
+            }
+
+            .resource-card h3 {
+                font-size: 1.1rem !important;
+            }
+
+            /* Beyond cards */
+            .beyond-card {
+                padding: 28px 20px !important;
+            }
+
+            .beyond-card h3 {
+                font-size: 1.2rem !important;
+            }
+
+            /* Stats bar */
+            .stats-bar {
+                padding: 32px 16px !important;
+            }
+
+            /* Why Befit - stack */
+            .why-befit {
+                grid-template-columns: 1fr !important;
+                min-height: auto !important;
+                margin: 40px 0 !important;
+            }
+
+            .why-befit-media {
+                min-height: 200px !important;
+            }
+
+            .why-befit-content {
+                padding: 32px 20px !important;
+            }
+
+            .why-befit-heading {
+                font-size: 2.5rem !important;
+                margin-bottom: 32px !important;
+            }
+
+            /* Services redesign */
+            .svc-hero-row {
+                grid-template-columns: 1fr !important;
+            }
+
+            .svc-compact-row {
+                grid-template-columns: 1fr !important;
+            }
+
+            .svc-hero-card {
+                height: 240px !important;
+            }
+
+            .svc-heading {
+                font-size: 1.6rem !important;
+            }
+
+            /* Transform section */
+            .transform-section {
+                padding: 40px 16px 32px !important;
+            }
+
+            /* Services standalone */
+            .rising-heading {
+                font-size: 1.5rem !important;
+            }
+
+            /* CTA Banner */
+            .cta-banner {
+                padding: 48px 16px !important;
+            }
+
+            /* Trial CTA */
+            .trial-cta-inner .section-title {
+                font-size: 1.8rem !important;
+            }
+
+            .trial-cta-buttons {
+                flex-direction: column !important;
+            }
+
+            .trial-cta-buttons a {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+
+            /* Average results */
+            .avg-results-bar {
+                padding: 24px 16px !important;
+            }
+
+            .avg-results-stats {
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+
+            /* Challenge section */
+            .challenge-card {
+                padding: 24px 16px !important;
+            }
+
+            /* Voucher */
+            .voucher-card {
+                padding: 24px 16px !important;
+            }
+
+            /* Footer */
+            .site-footer {
+                padding: 40px 16px 20px !important;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- ══ ROTATING PROMO BANNER ══ -->
+    <div class="promo-banner" id="promoBanner">
+        <div class="promo-banner-inner">
+            <div class="promo-slide active">
+                <i class="ri-fire-fill"></i>
+                <span>🎯 Get <strong>3 Days FREE Gym Pass</strong> — No Commitment</span>
+                <a href="trial.html" class="promo-link">Claim Now →</a>
+            </div>
+            <div class="promo-slide">
+                <i class="ri-trophy-fill"></i>
+                <span>🏆 Join Our Challenge & Win a <strong>Free Protein Box</strong></span>
+                <a href="challenges.html" class="promo-link">Join Now →</a>
+            </div>
+            <div class="promo-slide">
+                <i class="ri-timer-flash-fill"></i>
+                <span>⏰ Limited: Only <strong>5 Spots Left</strong> This Month</span>
+                <a href="plans.html" class="promo-link">View Plans →</a>
+            </div>
+            <div class="promo-slide">
+                <i class="ri-whatsapp-fill"></i>
+                <span>💬 DM "FIT" on WhatsApp for <strong>Exclusive Offer</strong></span>
+                <a href="https://wa.me/919876543210?text=FIT" target="_blank" class="promo-link">Message →</a>
+            </div>
+        </div>
+        <button class="promo-close" id="promoClose" aria-label="Close banner">✕</button>
+    </div>
+
+    <style>
+        .promo-banner {
+            position: relative;
+            z-index: 100000;
+            background: linear-gradient(90deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%);
+            border-bottom: 1px solid rgba(255, 45, 45, 0.2);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .promo-banner-inner {
+            position: relative;
+            height: 44px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .promo-slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 48px 0 16px;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+        }
+
+        .promo-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .promo-slide i {
+            color: #FF2D2D;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .promo-slide span {
+            font-family: var(--font-body, 'Inter', sans-serif);
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.85);
+            white-space: nowrap;
+        }
+
+        .promo-slide strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .promo-link {
+            font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+            font-size: 0.72rem;
+            color: #FF2D2D;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 45, 45, 0.3);
+            padding: 4px 12px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .promo-link:hover {
+            background: rgba(255, 45, 45, 0.1);
+            border-color: #FF2D2D;
+        }
+
+        .promo-close {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 8px;
+            line-height: 1;
+            z-index: 2;
+            transition: color 0.2s ease;
+        }
+
+        .promo-close:hover {
+            color: #fff;
+        }
+
+        .promo-banner.hidden {
+            display: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .promo-banner-inner {
+                height: 40px;
+            }
+
+            .promo-slide {
+                gap: 6px;
+                padding: 0 36px 0 12px;
+            }
+
+            .promo-slide i {
+                display: none;
+            }
+
+            .promo-slide span {
+                font-size: 0.68rem;
+                white-space: normal;
+                text-align: center;
+                line-height: 1.3;
+            }
+
+            .promo-link {
+                font-size: 0.6rem;
+                padding: 3px 8px;
+            }
+
+            .promo-close {
+                right: 6px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Rotating Promo Banner
+        (function () {
+            const slides = document.querySelectorAll('.promo-slide');
+            const banner = document.getElementById('promoBanner');
+            const closeBtn = document.getElementById('promoClose');
+            let current = 0;
+            let interval;
+
+            function nextSlide() {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }
+
+            interval = setInterval(nextSlide, 4000);
+
+            closeBtn.addEventListener('click', function () {
+                banner.classList.add('hidden');
+                clearInterval(interval);
+            });
+        })();
+    </script>
     <!-- Background Videos -->
     <div class="video-background">
         <video id="bgVideo1" class="bg-video active" autoplay muted loop playsinline>
@@ -1493,7 +2141,7 @@
                     consistency, track progress, and push you beyond your limits.</p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 48px;">
+            <div class="challenge-grid" style="margin-bottom: 48px;">
                 <!-- Card 1 -->
                 <div style="background: #141414; border: 1px solid #222; padding: 36px 28px; transition: all 0.3s ease;"
                     onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 0 30px rgba(255,45,45,0.12)'"
@@ -1664,44 +2312,366 @@
 
 
     <!-- ══════════════════════════════════════════ -->
-    <!-- ══ S6: SERVICES / TRAINING TYPES ══ -->
+    <!-- ══ S6: SERVICES / TRAINING TYPES — PREMIUM REDESIGN ══ -->
     <!-- ══════════════════════════════════════════ -->
-    <section class="standalone-section services-standalone">
-        <div class="standalone-inner">
-            <span class="rising-label rising-label--light">TRAINING TYPES</span>
-            <h2 class="rising-heading rising-heading--light">Everything You Need.<br>Nothing You Don't.</h2>
+    <style>
+        /* ══ SERVICES — ASYMMETRIC PREMIUM GRID ══ */
+        .svc-section {
+            position: relative;
+            z-index: 3;
+            background: var(--bg-color);
+            padding: 100px 64px;
+        }
 
-            <div class="services-grid">
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-file-list-3-line"></i></div>
-                    <h3>Personalized Split</h3>
-                    <p>Custom training programs built around your schedule, goals, and recovery capacity. Updated
-                        monthly.</p>
-                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
+        .svc-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .svc-label {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .svc-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 48px;
+        }
+
+        /* ── Hero Row: 2 large image cards ── */
+        .svc-hero-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .svc-hero-card {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 340px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .svc-hero-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 45, 45, 0.1);
+        }
+
+        .svc-hero-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5) contrast(1.1);
+            transition: transform 0.6s ease, filter 0.4s ease;
+        }
+
+        .svc-hero-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.6) contrast(1.15);
+        }
+
+        .svc-hero-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .svc-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 32px;
+        }
+
+        .svc-num {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: #FF2D2D;
+            letter-spacing: 2px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .svc-hero-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .svc-hero-desc {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            max-width: 400px;
+            margin-bottom: 16px;
+        }
+
+        .svc-hero-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: #FF2D2D;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .svc-hero-card:hover .svc-hero-link {
+            gap: 10px;
+        }
+
+        /* ── Compact Row: 3 glassmorphism cards ── */
+        .svc-compact-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .svc-compact-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            padding: 32px 28px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .svc-compact-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(255, 45, 45, 0) 0%, rgba(255, 45, 45, 0) 100%);
+            z-index: -1;
+            transition: background 0.4s ease;
+            pointer-events: none;
+        }
+
+        .svc-compact-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 45, 45, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 45, 45, 0.06);
+        }
+
+        .svc-compact-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .svc-compact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 45, 45, 0.08);
+            border: 1px solid rgba(255, 45, 45, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #FF2D2D;
+            transition: all 0.3s ease;
+        }
+
+        .svc-compact-card:hover .svc-compact-icon {
+            background: rgba(255, 45, 45, 0.15);
+            border-color: rgba(255, 45, 45, 0.3);
+        }
+
+        .svc-compact-num {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .svc-compact-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .svc-compact-desc {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .svc-compact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            color: #FF2D2D;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin-top: auto;
+            transition: gap 0.3s ease;
+        }
+
+        .svc-compact-card:hover .svc-compact-link {
+            gap: 10px;
+        }
+
+        /* ── Red accent bar at the bottom of compact cards ── */
+        .svc-compact-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 28px;
+            right: 28px;
+            height: 2px;
+            background: #FF2D2D;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .svc-compact-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* ── Services Mobile ── */
+        @media (max-width: 1024px) {
+            .svc-section {
+                padding: 80px 40px;
+            }
+
+            .svc-hero-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .svc-compact-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .svc-hero-card {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .svc-section {
+                padding: 64px 24px;
+            }
+
+            .svc-hero-row {
+                grid-template-columns: 1fr;
+            }
+
+            .svc-compact-row {
+                grid-template-columns: 1fr;
+            }
+
+            .svc-hero-card {
+                height: 260px;
+            }
+        }
+    </style>
+
+    <section class="svc-section">
+        <div class="svc-inner">
+            <span class="svc-label">TRAINING TYPES</span>
+            <h2 class="svc-heading">Everything You Need.<br>Nothing You Don't.</h2>
+
+            <!-- Hero Row: 2 Large Image Cards -->
+            <div class="svc-hero-row">
+                <a class="svc-hero-card" href="#">
+                    <img src="assets/service-personalized.png" alt="Personalized Training">
+                    <div class="svc-hero-content">
+                        <span class="svc-num">01</span>
+                        <h3 class="svc-hero-title">Personalized Split</h3>
+                        <p class="svc-hero-desc">Custom training programs built around your schedule, goals, and
+                            recovery capacity. Updated monthly.</p>
+                        <span class="svc-hero-link">Explore <i class="ri-arrow-right-up-line"></i></span>
+                    </div>
                 </a>
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-heart-pulse-line"></i></div>
-                    <h3>Cardio</h3>
-                    <p>Treadmills, rowers, assault bikes, StairMasters. Premium cardio deck with zero wait times.</p>
-                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
+                <a class="svc-hero-card" href="#">
+                    <img src="assets/service-cardio.png" alt="Cardio Training">
+                    <div class="svc-hero-content">
+                        <span class="svc-num">02</span>
+                        <h3 class="svc-hero-title">Cardio</h3>
+                        <p class="svc-hero-desc">Treadmills, rowers, assault bikes, StairMasters. Premium cardio deck
+                            with zero wait times.</p>
+                        <span class="svc-hero-link">Explore <i class="ri-arrow-right-up-line"></i></span>
+                    </div>
                 </a>
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-boxing-line"></i></div>
-                    <h3>Strength Training</h3>
-                    <p>Free weights, power racks, platforms. Everything you need to move serious weight safely.</p>
-                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
+            </div>
+
+            <!-- Compact Row: 3 Glassmorphism Cards -->
+            <div class="svc-compact-row">
+                <a class="svc-compact-card" href="#">
+                    <div class="svc-compact-top">
+                        <div class="svc-compact-icon"><i class="ri-boxing-line"></i></div>
+                        <span class="svc-compact-num">03</span>
+                    </div>
+                    <h3 class="svc-compact-title">Strength Training</h3>
+                    <p class="svc-compact-desc">Free weights, power racks, platforms. Everything you need to move
+                        serious weight safely.</p>
+                    <span class="svc-compact-link">Explore <i class="ri-arrow-right-up-line"></i></span>
                 </a>
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-loop-left-line"></i></div>
-                    <h3>Resistance Training</h3>
-                    <p>Cables, bands, pin-loaded machines. Controlled tension for targeted muscle development.</p>
-                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
+                <a class="svc-compact-card" href="#">
+                    <div class="svc-compact-top">
+                        <div class="svc-compact-icon"><i class="ri-loop-left-line"></i></div>
+                        <span class="svc-compact-num">04</span>
+                    </div>
+                    <h3 class="svc-compact-title">Resistance Training</h3>
+                    <p class="svc-compact-desc">Cables, bands, pin-loaded machines. Controlled tension for targeted
+                        muscle development.</p>
+                    <span class="svc-compact-link">Explore <i class="ri-arrow-right-up-line"></i></span>
                 </a>
-                <a class="service-card service-card--dark" href="#">
-                    <div class="service-icon"><i class="ri-body-scan-line"></i></div>
-                    <h3>Calisthenics</h3>
-                    <p>Pull-up rigs, dip stations, parallettes, gymnastic rings. Bodyweight mastery starts here.</p>
-                    <span class="beyond-link">Learn More <i class="ri-arrow-right-up-line"></i></span>
+                <a class="svc-compact-card" href="#">
+                    <div class="svc-compact-top">
+                        <div class="svc-compact-icon"><i class="ri-body-scan-line"></i></div>
+                        <span class="svc-compact-num">05</span>
+                    </div>
+                    <h3 class="svc-compact-title">Calisthenics</h3>
+                    <p class="svc-compact-desc">Pull-up rigs, dip stations, parallettes, gymnastic rings. Bodyweight
+                        mastery starts here.</p>
+                    <span class="svc-compact-link">Explore <i class="ri-arrow-right-up-line"></i></span>
                 </a>
             </div>
         </div>
@@ -1900,6 +2870,441 @@
 
 
     <!-- ══════════════════════════════════════════ -->
+    <!-- ══ GOOGLE REVIEWS ══ -->
+    <!-- ══════════════════════════════════════════ -->
+    <style>
+        /* ── Google Reviews Section ── */
+        .gr-section {
+            position: relative;
+            z-index: 3;
+            padding: 100px 60px;
+            background: var(--bg-primary);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .gr-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 45, 45, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .gr-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .gr-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .gr-label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--red-accent);
+            animation: gr-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gr-pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+
+        .gr-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 48px;
+        }
+
+        /* ── Google Rating Badge ── */
+        .gr-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px 36px;
+            margin-bottom: 48px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .gr-badge-score {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .gr-badge-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .gr-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .gr-stars i {
+            color: #FBBF24;
+            font-size: 1.1rem;
+        }
+
+        .gr-badge-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .gr-badge-text img {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ── Review Cards Grid ── */
+        .gr-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .gr-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            padding: 32px 28px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gr-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gr-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(251, 191, 36, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(251, 191, 36, 0.04);
+        }
+
+        .gr-card:hover::before {
+            opacity: 1;
+        }
+
+        .gr-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .gr-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF2D2D, #FF6B35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .gr-card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .gr-card-name {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .gr-card-verified {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .gr-card-verified i {
+            color: #4285F4;
+            font-size: 0.8rem;
+        }
+
+        .gr-card-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 14px;
+        }
+
+        .gr-card-stars i {
+            color: #FBBF24;
+            font-size: 0.9rem;
+        }
+
+        .gr-card-quote {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-style: italic;
+            position: relative;
+            padding-left: 16px;
+            border-left: 2px solid rgba(251, 191, 36, 0.25);
+        }
+
+        /* ── CTA ── */
+        .gr-cta-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gr-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: var(--red-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gr-cta:hover {
+            background: #e62626;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(255, 45, 45, 0.3);
+        }
+
+        .gr-cta i {
+            font-size: 1.1rem;
+        }
+
+        .gr-helper {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ── Google Reviews Mobile ── */
+        @media (max-width: 1024px) {
+            .gr-section {
+                padding: 80px 40px;
+            }
+
+            .gr-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gr-section {
+                padding: 64px 20px;
+            }
+
+            .gr-badge {
+                padding: 16px 24px;
+                gap: 14px;
+            }
+
+            .gr-badge-score {
+                font-size: 2.5rem;
+            }
+
+            .gr-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .gr-card {
+                padding: 24px 20px;
+            }
+
+            .gr-cta {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <section class="gr-section" id="google-reviews">
+        <div class="gr-inner">
+            <span class="gr-label">Member Reviews</span>
+            <h2 class="gr-heading">What Our Members Say.</h2>
+
+            <!-- Google Rating Badge -->
+            <div class="gr-badge">
+                <span class="gr-badge-score">4.9</span>
+                <div class="gr-badge-meta">
+                    <div class="gr-stars">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-s-fill"></i>
+                    </div>
+                    <span class="gr-badge-text">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="#4285F4"
+                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
+                            <path fill="#34A853"
+                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                            <path fill="#FBBC05"
+                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" />
+                            <path fill="#EA4335"
+                                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                        </svg>
+                        Google Reviews
+                    </span>
+                </div>
+            </div>
+
+            <!-- Review Cards -->
+            <div class="gr-cards">
+                <!-- Review 1 -->
+                <div class="gr-card">
+                    <div class="gr-card-header">
+                        <div class="gr-avatar">RS</div>
+                        <div class="gr-card-info">
+                            <span class="gr-card-name">Rahul Sharma</span>
+                            <span class="gr-card-verified"><i class="ri-checkbox-circle-fill"></i> Google Review</span>
+                        </div>
+                    </div>
+                    <div class="gr-card-stars">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="gr-card-quote">"Best gym in Dehradun, hands down. The coaches actually care about your
+                        form and progress. Lost 12kg in 3 months with their structured training program."</p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="gr-card">
+                    <div class="gr-card-header">
+                        <div class="gr-avatar">AN</div>
+                        <div class="gr-card-info">
+                            <span class="gr-card-name">Ankita Negi</span>
+                            <span class="gr-card-verified"><i class="ri-checkbox-circle-fill"></i> Google Review</span>
+                        </div>
+                    </div>
+                    <div class="gr-card-stars">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="gr-card-quote">"The environment is so welcoming, especially for women. Equipment is
+                        top-notch and always clean. The cafe protein shakes are an added bonus after every session!"</p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="gr-card">
+                    <div class="gr-card-header">
+                        <div class="gr-avatar">VK</div>
+                        <div class="gr-card-info">
+                            <span class="gr-card-name">Vikram Khanna</span>
+                            <span class="gr-card-verified"><i class="ri-checkbox-circle-fill"></i> Google Review</span>
+                        </div>
+                    </div>
+                    <div class="gr-card-stars">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="gr-card-quote">"I've trained at 5+ gyms in the city. BeFit is the only one with
+                        competition-grade equipment AND knowledgeable trainers. Worth every rupee of the membership."
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="gr-cta-wrap">
+                <a href="https://search.google.com/local/writereview?placeid=ChIJv8nyw5gpOTkRIeVHH7PZ1Lw"
+                    target="_blank" rel="noopener noreferrer" class="gr-cta">
+                    Leave a Review on Google <i class="ri-arrow-right-up-line"></i>
+                </a>
+                <span class="gr-helper">Share your BeFit experience</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════ -->
     <!-- ══ S11: FINAL CTA ══ -->
     <!-- ══════════════════════════════════════════ -->
     <section class="cta-banner">
@@ -2018,17 +3423,56 @@
     </div>
 
 
-    <!-- ══ EXIT-INTENT POPUP ══ -->
+    <!-- ══ EXIT-INTENT POPUP — PREMIUM SPLIT LAYOUT ══ -->
     <div class="exit-popup-overlay" id="exitPopup">
         <div class="exit-popup">
             <button class="exit-popup-close" id="exitPopupClose"><i class="ri-close-line"></i></button>
-            <span class="exit-popup-icon"><img src="assets/icons/icon-gym-pass.png" alt=""
-                    style="width: 80px; height: 80px; object-fit: contain;"></span>
-            <h3>Wait! Get a<br>Free Gym Pass</h3>
-            <p>Don't leave empty-handed. Claim your complimentary 3-day pass and experience BeFit before you decide.
-            </p>
-            <a href="trial.html" class="btn-primary">Claim Free Pass <i class="ri-arrow-right-up-line"></i></a>
-            <button class="exit-popup-dismiss" id="exitPopupDismiss">No thanks, I'll pass</button>
+
+            <!-- Left: Dramatic Image -->
+            <div class="exit-popup-image">
+                <img src="assets/popup-athlete.png" alt="BeFit Athlete">
+            </div>
+
+            <!-- Right: Content -->
+            <div class="exit-popup-content">
+                <div class="exit-popup-brand">
+                    <svg width="18" height="16" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="5" width="3" height="14" fill="#FF2D2D" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="#FF2D2D" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="#FF2D2D" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="#FF2D2D" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="#FF2D2D" />
+                    </svg>
+                    <span>BeFit</span>
+                </div>
+
+                <div class="exit-popup-urgency">
+                    <i class="ri-fire-fill"></i> Only 5 passes left this week
+                </div>
+
+                <h3>Your <span>Free Pass</span><br>Is Waiting</h3>
+
+                <ul class="exit-popup-benefits">
+                    <li><i class="ri-checkbox-circle-fill"></i> Full gym access for 3 days</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> Personal trainer consultation</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> No credit card required</li>
+                </ul>
+
+                <div class="exit-popup-social">
+                    <div class="exit-popup-stars">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <span>327 members claimed this month</span>
+                </div>
+
+                <a href="trial.html" class="exit-popup-cta">Claim My Free Pass <i
+                        class="ri-arrow-right-up-line"></i></a>
+                <button class="exit-popup-dismiss" id="exitPopupDismiss">No thanks, I'll pass</button>
+            </div>
         </div>
     </div>
 
