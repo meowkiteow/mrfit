@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeFit — Custom Programs Built For You</title>
+    <meta name="description"
+        content="Get a personalized workout split or diet plan built by BeFit's expert coaches. Tailored to your body, goals, and schedule. Delivered via WhatsApp in 48 hours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══ PROGRAMS PAGE STYLES ══ */
+        .programs-hero {
+            padding: 160px 64px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .programs-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .programs-hero h1 span {
+            color: var(--red-accent);
+        }
+
+        .programs-hero p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* ══ PRODUCT CARDS ══ */
+        .programs-section {
+            padding: 0 64px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin-bottom: 32px;
+        }
+
+        .program-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 40px 32px;
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .program-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .program-card-tag {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: var(--red-accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .program-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .program-card-desc {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .program-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+
+        .program-currency {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--red-accent);
+        }
+
+        .program-price {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .program-price-note {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-left: 4px;
+        }
+
+        .program-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px;
+            flex-grow: 1;
+        }
+
+        .program-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .program-features li:last-child {
+            border-bottom: none;
+        }
+
+        .program-features li i {
+            color: var(--red-accent);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .program-cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .program-cta-btn:hover {
+            border-color: var(--red-accent);
+            color: var(--red-accent);
+        }
+
+        /* ══ BUNDLE CARD — HIGHLIGHTED ══ */
+        .program-bundle {
+            background: var(--card-bg);
+            border: 2px solid var(--red-accent);
+            padding: 48px 40px;
+            position: relative;
+            box-shadow: 0 0 60px rgba(204, 0, 0, 0.15), inset 4px 0 0 var(--red-accent);
+            transition: transform 0.3s ease;
+        }
+
+        .program-bundle:hover {
+            transform: translateY(-8px);
+        }
+
+        .bundle-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--red-accent);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            padding: 8px 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .bundle-inner {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .bundle-info h3 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            line-height: 1.05;
+        }
+
+        .bundle-info .program-card-desc {
+            max-width: 420px;
+        }
+
+        .bundle-savings {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(204, 0, 0, 0.15);
+            border: 1px solid rgba(204, 0, 0, 0.3);
+            padding: 8px 16px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--red-accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+
+        .bundle-divider {
+            width: 1px;
+            height: 200px;
+            background: var(--border-color);
+        }
+
+        .bundle-pricing {
+            text-align: center;
+        }
+
+        .bundle-old-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            opacity: 0.5;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .bundle-pricing .program-price {
+            font-size: 4.5rem;
+        }
+
+        .bundle-pricing .program-cta-btn {
+            margin-top: 24px;
+            background: var(--red-accent);
+            border-color: var(--red-accent);
+            color: #fff;
+        }
+
+        .bundle-pricing .program-cta-btn:hover {
+            background: #ff1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(204, 0, 0, 0.4);
+        }
+
+        /* ══ REASSURANCE ══ */
+        .programs-reassurance {
+            text-align: center;
+            padding: 40px 64px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reassurance-items {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .reassurance-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .reassurance-item i {
+            color: #4caf50;
+            font-size: 1.2rem;
+        }
+
+        .reassurance-delivery {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--red-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            display: block;
+        }
+
+        /* ══ HOW IT WORKS ══ */
+        .programs-how {
+            padding: 100px 64px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .programs-how h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .programs-how>p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto 48px;
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .how-step {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 40px 28px;
+            text-align: center;
+            position: relative;
+        }
+
+        .how-step-num {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: var(--red-accent);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .how-step h4 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .how-step p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ══ FAQ ══ */
+        .programs-faq {
+            padding: 0 64px 100px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .programs-faq h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-q {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+
+        .faq-q i {
+            color: var(--red-accent);
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-q i {
+            transform: rotate(45deg);
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.open .faq-a {
+            max-height: 200px;
+            padding-bottom: 20px;
+        }
+
+        .faq-a p {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ══ MOBILE RESPONSIVE ══ */
+        @media (max-width: 768px) {
+            .programs-hero {
+                padding: 120px 24px 60px;
+            }
+
+            .programs-section {
+                padding: 0 24px 60px;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bundle-inner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .bundle-divider {
+                width: 100%;
+                height: 1px;
+            }
+
+            .bundle-info .program-card-desc {
+                max-width: none;
+            }
+
+            .programs-reassurance {
+                padding: 20px 24px 0;
+            }
+
+            .reassurance-items {
+                gap: 16px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .programs-how {
+                padding: 60px 24px;
+            }
+
+            .how-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .programs-faq {
+                padding: 0 24px 60px;
+            }
+
+            .program-bundle {
+                padding: 48px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="circleTransition" class="circle-transition">
+        <div class="transition-content">
+            <div class="transition-title">BeFit</div>
+            <div class="transition-sub">Loading...</div>
+        </div>
+    </div>
+
+    <header class="header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px;">
+        <a href="index.html" class="logo" style="text-decoration: none;"><svg width="28" height="24" viewBox="0 0 28 24"
+                fill="none">
+                <rect x="1" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="6" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="18" y="2" width="4" height="20" fill="#d1c9b8" rx="1" />
+                <rect x="24" y="5" width="3" height="14" fill="#d1c9b8" rx="1" />
+                <rect x="10" y="10.5" width="8" height="3" fill="#d1c9b8" />
+            </svg><span>BeFit</span></a>
+        <a href="https://wa.me/917895432666?text=Hi%20BeFit!%20I'm%20interested%20in%20joining." target="_blank"
+            class="cart-btn group" style="text-decoration: none;"><span class="cart-text">Join
+                Us</span><span class="cart-count"><i class="ri-arrow-right-up-line"></i></span></a>
+    </header>
+
+
+    <!-- ══ HERO ══ -->
+    <section class="programs-hero">
+        <span class="rising-label" style="color: var(--red-accent); border-color: var(--red-accent);">TRAIN
+            SMARTER</span>
+        <h1>Programs.<br><span>Built For You.</span></h1>
+        <p>Stop following generic plans. Get a personalized workout split or diet plan built by BeFit's expert coaches —
+            tailored to your body, goals, and schedule.</p>
+    </section>
+
+
+    <!-- ══ PRODUCT CARDS ══ -->
+    <section class="programs-section">
+        <div class="programs-grid">
+            <!-- WORKOUT SPLIT CARD -->
+            <div class="program-card">
+                <span class="program-card-icon">🏋️</span>
+                <span class="program-card-tag">Workout Program</span>
+                <h3>Custom Workout Split</h3>
+                <p class="program-card-desc">PPL, Upper/Lower, Full Body, or Bro Split — tailored to your goal,
+                    experience level, and weekly schedule.</p>
+                <div class="program-price-row">
+                    <span class="program-currency">₹</span>
+                    <span class="program-price">499</span>
+                    <span class="program-price-note">one-time</span>
+                </div>
+                <ul class="program-features">
+                    <li><i class="ri-checkbox-circle-fill"></i> Progressive overload structure</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> Exercise selection for your goal</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> Rep, set & rest guidance</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> Warm-up & cooldown routine</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> WhatsApp delivery in 48hrs</li>
+                </ul>
+                <a href="https://wa.me/917895432666?text=Hi%20BeFit!%20I%27m%20interested%20in%20the%20Custom%20Workout%20Split%20(%E2%82%B9499).%20Please%20share%20details!"
+                    target="_blank" class="program-cta-btn">Get My Plan <i class="ri-arrow-right-up-line"></i></a>
+            </div>
+
+            <!-- DIET PLAN CARD -->
+            <div class="program-card">
+                <span class="program-card-icon">🥗</span>
+                <span class="program-card-tag">Nutrition Program</span>
+                <h3>Custom Diet Plan</h3>
+                <p class="program-card-desc">Macro-calculated, goal-specific meal structure — whether you're cutting,
+                    bulking, or maintaining.</p>
+                <div class="program-price-row">
+                    <span class="program-currency">₹</span>
+                    <span class="program-price">799</span>
+                    <span class="program-price-note">one-time</span>
+                </div>
+                <ul class="program-features">
+                    <li><i class="ri-checkbox-circle-fill"></i> 7-day structured meal plan</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> Macro breakdown per meal</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> Grocery list included</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> Veg & non-veg options</li>
+                    <li><i class="ri-checkbox-circle-fill"></i> WhatsApp delivery in 48hrs</li>
+                </ul>
+                <a href="https://wa.me/917895432666?text=Hi%20BeFit!%20I%27m%20interested%20in%20the%20Custom%20Diet%20Plan%20(%E2%82%B9799).%20Please%20share%20details!"
+                    target="_blank" class="program-cta-btn">Get My Plan <i class="ri-arrow-right-up-line"></i></a>
+            </div>
+        </div>
+
+        <!-- ══ BUNDLE CARD ══ -->
+        <div class="program-bundle">
+            <span class="bundle-badge">🔥 BEST VALUE</span>
+            <div class="bundle-inner">
+                <div class="bundle-info">
+                    <span class="program-card-tag">Complete Package</span>
+                    <h3>Workout Split +<br>Diet Plan</h3>
+                    <p class="program-card-desc">Get both your custom workout split and personalized diet plan together
+                        — built to work as one system for maximum results.</p>
+                    <div class="bundle-savings">
+                        <i class="ri-price-tag-3-fill"></i> Save ₹299 with the bundle
+                    </div>
+                </div>
+                <div class="bundle-divider"></div>
+                <div class="bundle-pricing">
+                    <span class="bundle-old-price">₹1,298</span>
+                    <div class="program-price-row" style="justify-content: center;">
+                        <span class="program-currency">₹</span>
+                        <span class="program-price" style="font-size: 4.5rem;">999</span>
+                    </div>
+                    <a href="https://wa.me/917895432666?text=Hi%20BeFit!%20I%27m%20interested%20in%20the%20Workout%20%2B%20Diet%20Bundle%20(%E2%82%B9999).%20Please%20share%20details!"
+                        target="_blank" class="program-cta-btn"
+                        style="background: var(--red-accent); border-color: var(--red-accent); color: #fff;">
+                        Get The Bundle <i class="ri-arrow-right-up-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ REASSURANCE ══ -->
+    <div class="programs-reassurance">
+        <div class="reassurance-items">
+            <span class="reassurance-item"><i class="ri-whatsapp-fill" style="color: #25D366;"></i> Delivered via
+                WhatsApp</span>
+            <span class="reassurance-item"><i class="ri-time-fill"></i> Ready within 48 hours</span>
+            <span class="reassurance-item"><i class="ri-shield-check-fill"></i> Built by certified coaches</span>
+            <span class="reassurance-item"><i class="ri-refresh-fill"></i> Free revision included</span>
+        </div>
+        <span class="reassurance-delivery">Delivered via WhatsApp within 48 hours. No app needed.</span>
+    </div>
+
+
+    <!-- ══ HOW IT WORKS ══ -->
+    <section class="programs-how">
+        <span class="rising-label" style="color: var(--red-accent); border-color: var(--red-accent);">SIMPLE
+            PROCESS</span>
+        <h2>How It Works</h2>
+        <p>Three steps to your personalized program. No complicated forms, no waiting weeks.</p>
+        <div class="how-steps">
+            <div class="how-step">
+                <div class="how-step-num">01</div>
+                <h4>Message Us</h4>
+                <p>Click "Get My Plan" and send us a WhatsApp message. Tell us your goal, experience level, and
+                    schedule.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-num">02</div>
+                <h4>We Build It</h4>
+                <p>Our certified coaches design your personalized program within 48 hours — no generic templates.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-num">03</div>
+                <h4>Start Training</h4>
+                <p>Receive your plan via WhatsApp as a clean PDF. Start crushing your workouts immediately.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ FAQ ══ -->
+    <section class="programs-faq">
+        <h2>Questions? Answered.</h2>
+        <div class="faq-item">
+            <button class="faq-q">Do I need to be a BeFit member? <i class="ri-add-line"></i></button>
+            <div class="faq-a">
+                <p>No! Our custom programs are available to everyone — whether you train at BeFit or at home. Though,
+                    members get priority delivery and a follow-up check-in.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">How is this different from free plans? <i class="ri-add-line"></i></button>
+            <div class="faq-a">
+                <p>Our free plans are sample templates. Custom programs are built specifically for YOU — your body type,
+                    goals, available equipment, dietary preferences, and weekly schedule. No two plans are the same.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">What if I need changes? <i class="ri-add-line"></i></button>
+            <div class="faq-a">
+                <p>Every program comes with one free revision within 7 days of delivery. Just message us on WhatsApp
+                    with your feedback and we'll adjust.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">How do I pay? <i class="ri-add-line"></i></button>
+            <div class="faq-a">
+                <p>After you message us, we'll share a UPI/payment link on WhatsApp. Once payment is confirmed, we start
+                    building your program right away.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">Can I get a plan for a specific goal? <i class="ri-add-line"></i></button>
+            <div class="faq-a">
+                <p>Absolutely. Fat loss, muscle gain, strength, competition prep, home workouts, body recomposition —
+                    we've built programs for every goal. Just tell us what you're after.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ CTA BANNER ══ -->
+    <section class="cta-banner">
+        <div class="cta-banner-inner">
+            <h2>Ready To Get<br>Your Custom Plan?</h2>
+            <p>Message us on WhatsApp and get your personalized program within 48 hours.</p>
+            <div class="cta-banner-btns">
+                <a href="https://wa.me/917895432666?text=Hi%20BeFit!%20I%27m%20interested%20in%20a%20custom%20program.%20Please%20share%20details!"
+                    target="_blank" class="cta-btn-primary">Get My Plan <i class="ri-arrow-right-up-line"></i></a>
+                <a href="https://wa.me/917895432666?text=Hi%20BeFit!%20I'd%20like%20to%20book%20a%20free%20trial."
+                    target="_blank" class="cta-btn-secondary">Book Free Trial <i class="ri-arrow-right-up-line"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo"><svg width="28" height="24" viewBox="0 0 28 24" fill="none">
+                        <rect x="1" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="6" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="18" y="2" width="4" height="20" fill="currentColor" rx="1" />
+                        <rect x="24" y="5" width="3" height="14" fill="currentColor" rx="1" />
+                        <rect x="10" y="10.5" width="8" height="3" fill="currentColor" />
+                    </svg><span>BeFit</span></div>
+                <p class="footer-tagline">Competition-grade fitness for those who demand results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4><a href="join.html">Memberships</a><a href="trainers.html">Trainers</a><a
+                    href="supplements.html">Supplements</a><a href="blog.html">Blog</a><a href="trial.html">Free
+                    Trial</a><a href="wall-of-fame.html">Wall of Fame</a>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon – Sat: 5:00 AM – 11:00 PM</p>
+                <p>Sunday: 6:00 AM – 10:00 PM</p>
+                <p>Public Holidays: 7:00 AM – 8:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Iron Street, Fitness District</p>
+                <p>+91 98765 43210</p>
+                <p>info@BeFit.com</p>
+                <div class="footer-socials"><a href="#"><i class="ri-instagram-fill"></i></a><a href="#"><i
+                            class="ri-youtube-fill"></i></a><a href="https://wa.me/917895432666"><i
+                            class="ri-whatsapp-fill"></i></a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 BeFit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="navOverlay" class="nav-overlay"></div>
+    <div id="navMenu" class="nav-menu">
+        <div class="nav-menu-inner">
+            <div class="nav-links"><a href="index.html" class="nav-link"><span>HOME</span></a><a href="trainers.html"
+                    class="nav-link"><span>COACH</span></a><a href="plans.html"
+                    class="nav-link"><span>PLANS</span></a><a href="videos.html"
+                    class="nav-link"><span>VIDEOS</span></a><a href="cafe.html" class="nav-link"><span>CAFE</span></a><a
+                    href="wall-of-fame.html" class="nav-link"><span>WALL OF FAME</span></a><a href="blog.html"
+                    class="nav-link"><span>ARTICLES</span></a><a href="trial.html" class="nav-link"><span>FREE
+                        TRIAL</span></a></div><a
+                href="https://wa.me/917895432666?text=Hi%20BeFit!%20I'm%20interested%20in%20joining." target="_blank"
+                class="nav-cta">JOIN US <i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+    <nav class="floating-navbar"><button id="menuBtn" class="menu-btn" aria-label="Toggle menu"><span
+                class="hamburger-line top"></span><span class="hamburger-line bottom"></span></button>
+        <div class="nav-divider"></div><a href="index.html" class="nav-logo">BeFit</a>
+        <div class="nav-divider"></div><button id="musicBtn" class="music-btn" aria-label="Play music">
+            <div class="music-bars">
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="5"></div>
+                <div class="bar" data-h="8"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="7"></div>
+                <div class="bar" data-h="3"></div>
+                <div class="bar" data-h="6"></div>
+                <div class="bar" data-h="4"></div>
+                <div class="bar" data-h="3"></div>
+            </div>
+        </button>
+    </nav>
+
+    <a href="https://wa.me/917895432666" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+        aria-label="Chat on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28"
+            fill="white">
+            <path
+                d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.49 2.031 7.797L0 32l8.469-2.004A15.934 15.934 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.771-1.851l-.486-.289-5.028 1.189 1.243-4.893-.317-.502A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.273-9.878c-.398-.199-2.354-1.162-2.719-1.294-.365-.133-.631-.199-.897.199-.266.397-1.03 1.294-1.263 1.56-.232.265-.465.299-.863.1-.398-.2-1.681-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.174-.811.179-.178.398-.465.597-.697.2-.232.266-.398.398-.664.133-.265.067-.497-.033-.697-.1-.199-.897-2.162-1.229-2.96-.324-.778-.653-.673-.897-.685-.232-.012-.497-.015-.762-.015s-.697.1-1.063.497c-.365.398-1.394 1.362-1.394 3.322 0 1.96 1.427 3.854 1.626 4.12.199.265 2.808 4.287 6.803 5.846.951.366 1.693.584 2.271.748.954.27 1.822.232 2.509.141.765-.1 2.354-.962 2.687-1.892.332-.93.332-1.727.232-1.892-.099-.165-.365-.265-.763-.464z" />
+        </svg><span class="whatsapp-float__text">Chat with us</span></a>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px 12px 14px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .45);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .3px;
+            transition: transform .2s ease, box-shadow .2s ease
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, .55)
+        }
+
+        .whatsapp-float svg {
+            flex-shrink: 0
+        }
+    </style>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
+</body>
+
+</html>
